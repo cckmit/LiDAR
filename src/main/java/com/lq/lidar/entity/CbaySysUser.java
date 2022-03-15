@@ -27,7 +27,7 @@ public class CbaySysUser implements Serializable {
     @TableId("\"USER_ID\"")
     private String userId;
     /**
-     *
+     *归属公司
      */
     @TableField("\"OFC_ID\"")
     private String ofcId;
@@ -67,9 +67,15 @@ public class CbaySysUser implements Serializable {
     @TableField("\"USER_EMAIL\"")
     private String userEmail;
 
+    /**
+     * 电话
+     */
     @TableField("\"USER_TEL\"")
     private String userTel;
 
+    /**
+     * 手机
+     */
     @TableField("\"USER_MOBILE\"")
     private String userMobile;
 
@@ -88,6 +94,9 @@ public class CbaySysUser implements Serializable {
     @TableField("\"LOGIN_IND\"")
     private String loginInd;
 
+    /**
+     * 状态
+     */
     @TableField("\"VALID_IND\"")
     private String validInd;
 
