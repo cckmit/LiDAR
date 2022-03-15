@@ -1,5 +1,7 @@
 package com.lq.lidar.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
@@ -7,7 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author LQ
@@ -16,66 +18,83 @@ import java.time.LocalDateTime;
 @TableName("cbay_sys_user")
 public class CbaySysUser implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
 
     /**
      * 用户id
      */
+    @TableId("\"USER_ID\"")
     private String userId;
-
     /**
      *
      */
+    @TableField("\"OFC_ID\"")
     private String ofcId;
-
     /**
      * 部门id
      */
+    @TableField("\"DEP_ID\"")
     private String depId;
 
     /**
      * 登录名
      */
+    @TableField("\"LOGIN_NM\"")
     private String loginNm;
 
     /**
      * 密码
      */
+    @TableField("\"PASSWORD\"")
     private String password;
 
     /**
      * 编号
      */
+    @TableField("\"USER_NBR\"")
     private String userNbr;
 
     /**
      * 用户名
      */
+    @TableField("\"USER_NM\"")
     private String userNm;
 
     /**
      * 邮箱
      */
+    @TableField("\"USER_EMAIL\"")
     private String userEmail;
 
+    @TableField("\"USER_TEL\"")
     private String userTel;
 
+    @TableField("\"USER_MOBILE\"")
     private String userMobile;
 
+    @TableField("\"USER_TYPE_CD\"")
     private String userTypeCd;
 
+    @TableField("\"USER_PHOTO_URL\"")
     private String userPhotoUrl;
 
+    @TableField("\"LOGIN_IP\"")
     private String loginIp;
 
+    @TableField("\"LOGIN_TIME\"")
     private LocalDateTime loginTime;
 
+    @TableField("\"LOGIN_IND\"")
     private String loginInd;
 
+    @TableField("\"VALID_IND\"")
     private String validInd;
 
+    @TableField("\"USER_OA_NM\"")
     private String userOaNm;
 
+    @TableField("\"WEAK_PW_IND\"")
     private String weakPwInd;
 
 
@@ -225,25 +244,6 @@ public class CbaySysUser implements Serializable {
 
     @Override
     public String toString() {
-        return "CbaySysUser{" +
-        "userId=" + userId +
-        ", ofcId=" + ofcId +
-        ", depId=" + depId +
-        ", loginNm=" + loginNm +
-        ", password=" + password +
-        ", userNbr=" + userNbr +
-        ", userNm=" + userNm +
-        ", userEmail=" + userEmail +
-        ", userTel=" + userTel +
-        ", userMobile=" + userMobile +
-        ", userTypeCd=" + userTypeCd +
-        ", userPhotoUrl=" + userPhotoUrl +
-        ", loginIp=" + loginIp +
-        ", loginTime=" + loginTime +
-        ", loginInd=" + loginInd +
-        ", validInd=" + validInd +
-        ", userOaNm=" + userOaNm +
-        ", weakPwInd=" + weakPwInd +
-        "}";
+        return "CbaySysUser{" + "userId=" + userId + ", ofcId=" + ofcId + ", depId=" + depId + ", loginNm=" + loginNm + ", password=" + password + ", userNbr=" + userNbr + ", userNm=" + userNm + ", userEmail=" + userEmail + ", userTel=" + userTel + ", userMobile=" + userMobile + ", userTypeCd=" + userTypeCd + ", userPhotoUrl=" + userPhotoUrl + ", loginIp=" + loginIp + ", loginTime=" + loginTime + ", loginInd=" + loginInd + ", validInd=" + validInd + ", userOaNm=" + userOaNm + ", weakPwInd=" + weakPwInd + "}";
     }
 }

@@ -1,6 +1,9 @@
 package com.lq.lidar.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -9,23 +12,29 @@ import java.io.Serializable;
  * </p>
  *
  * @author LQ
- * @since 2022-02-28
+ * @since 2022-03-15
  */
 @TableName("cbay_sys_dict_type")
 public class CbaySysDictType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId("\"DICT_TYPE_CD\"")
     private String dictTypeCd;
 
+    @TableField("\"DICT_TYPE_EN_DESC\"")
     private String dictTypeEnDesc;
 
+    @TableField("\"DICT_TYPE_CN_DESC\"")
     private String dictTypeCnDesc;
 
+    @TableField("\"APP_CD\"")
     private String appCd;
 
+    @TableField("\"DEF_VAL\"")
     private String defVal;
 
+    @TableField("\"VALID_IND\"")
     private String validInd;
 
 
