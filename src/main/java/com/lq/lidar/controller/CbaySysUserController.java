@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ *  用户管理前端控制器
  * </p>
  *
  * @author LQ
