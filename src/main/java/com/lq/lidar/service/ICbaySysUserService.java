@@ -2,6 +2,9 @@ package com.lq.lidar.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.lq.lidar.common.core.page.PageDomain;
+import com.lq.lidar.common.core.page.TableDataInfo;
 import com.lq.lidar.entity.CbaySysUser;
 
 import java.util.List;
@@ -16,5 +19,5 @@ import java.util.List;
  */
 public interface ICbaySysUserService extends IService<CbaySysUser> {
 
-    List<CbaySysUser> list(CbaySysUser sysUser);
+    PageInfo<CbaySysUser> list(CbaySysUser sysUser);
 }

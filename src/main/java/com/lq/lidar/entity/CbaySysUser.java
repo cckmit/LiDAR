@@ -31,11 +31,19 @@ public class CbaySysUser implements Serializable {
      */
     @TableField("\"OFC_ID\"")
     private String ofcId;
+
+    @TableField(exist = false)
+    private CbaySysOffice ofc;
     /**
      * 部门id
      */
     @TableField("\"DEP_ID\"")
     private String depId;
+
+    @TableField(exist = false)
+    private CbaySysOffice dep;
+
+
 
     /**
      * 登录名
@@ -249,6 +257,22 @@ public class CbaySysUser implements Serializable {
 
     public void setWeakPwInd(String weakPwInd) {
         this.weakPwInd = weakPwInd;
+    }
+
+    public CbaySysOffice getOfc() {
+        return ofc;
+    }
+
+    public void setOfc(CbaySysOffice ofc) {
+        this.ofc = ofc;
+    }
+
+    public CbaySysOffice getDep() {
+        return dep;
+    }
+
+    public void setDep(CbaySysOffice dep) {
+        this.dep = dep;
     }
 
     @Override

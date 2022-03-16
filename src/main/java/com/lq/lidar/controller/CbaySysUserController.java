@@ -1,6 +1,7 @@
 package com.lq.lidar.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.common.core.page.TableDataInfo;
@@ -35,8 +36,8 @@ public class CbaySysUserController extends BaseController {
     @GetMapping("/list")
     public ResponseEntity list(CbaySysUser sysUser) {
         startPage();
-        List<CbaySysUser> list = iCbaySysUserService.list(sysUser);
-        return ResponseEntity.success(getDataTable(list));
+        PageInfo<CbaySysUser> pageInfo = iCbaySysUserService.list(sysUser);
+        return ResponseEntity.success(getDataTable(pageInfo));
     }
 }
 
