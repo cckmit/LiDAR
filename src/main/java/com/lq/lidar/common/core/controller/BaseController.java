@@ -80,6 +80,17 @@ public class BaseController
         rspData.setPageCount(new PageInfo(list).getPages());
         return rspData;
     }
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    protected TableDataInfo getDataTable(PageInfo<?> pageInfo)
+    {
+        TableDataInfo rspData = new TableDataInfo();
+//        rspData.setCode(HttpStatus.SUCCESS);
+//        rspData.setMsg("查询成功");
+        rspData.setRows(pageInfo.getList());
+        rspData.setTotal(pageInfo.getTotal());
+        rspData.setPageCount(pageInfo.getPages());
+        return rspData;
+    }
 
     /**
      * 返回成功
