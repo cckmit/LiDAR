@@ -36,5 +36,11 @@ public class CbaySysDictTypeController extends BaseController {
         List<CbaySysDictType> list = iCbaySysDictTypeService.list();
         return ResponseEntity.success(getDataTable(list));
     }
+
+    @PostMapping("/add")
+    public ResponseEntity add(@RequestBody CbaySysDictType cbaySysDictType){
+        iCbaySysDictTypeService.save(cbaySysDictType);
+        return ResponseEntity.success("新增成功");
+    }
 }
 
