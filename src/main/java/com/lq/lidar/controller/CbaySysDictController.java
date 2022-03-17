@@ -26,9 +26,9 @@ public class CbaySysDictController extends BaseController {
     ICbaySysDictService iCbaySysDictService;
 
     @GetMapping("/list")
-    public ResponseEntity list() {
+    public ResponseEntity list(CbaySysDict cbaySysDict) {
         startPage();
-        List<CbaySysDict> list = iCbaySysDictService.list();
+        List<CbaySysDict> list = iCbaySysDictService.list(cbaySysDict);
         return ResponseEntity.success(getDataTable(list));
     }
 
