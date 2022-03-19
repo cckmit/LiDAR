@@ -11,7 +11,6 @@ import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,6 +71,14 @@ public class GlobalExceptionHandler
         return org.springframework.http.ResponseEntity.internalServerError().build();
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public org.springframework.http.ResponseEntity handleIllegalArgumentException(RuntimeException e, HttpServletRequest request)
+    {
+        String requestURI = request.getRequestURI();
+        log.error("请求地址'{}',发生异常参数校验【{}】", requestURI, e.getMessage());
+        return org.springframework.http.ResponseEntity.badRequest().body(ResponseEntity.error(e.getMessage()));
+    }
+
     /**
      * 系统异常
      */
@@ -98,11 +105,11 @@ public class GlobalExceptionHandler
      * 自定义验证异常
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException e)
+    public org.springframework.http.ResponseEntity handleMethodArgumentNotValidException(MethodArgumentNotValidException e)
     {
         log.error(e.getMessage(), e);
         String message = e.getBindingResult().getFieldError().getDefaultMessage();
-        return ResponseEntity.error(message);
+        return org.springframework.http.ResponseEntity.badRequest().body(ResponseEntity.error(message));
     }
 
 }
