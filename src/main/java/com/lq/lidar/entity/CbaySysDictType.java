@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -20,6 +21,7 @@ public class CbaySysDictType implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId("\"DICT_TYPE_CD\"")
+    @NotBlank(message = "字典类型不能为空")
     private String dictTypeCd;
 
     @TableField("\"DICT_TYPE_EN_DESC\"")
