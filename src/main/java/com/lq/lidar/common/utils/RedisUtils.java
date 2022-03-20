@@ -210,7 +210,7 @@ public class RedisUtils
      * 删除Hash中的数据
      * 
      * @param key
-     * @param mapkey
+     * @param hkey
      */
     public void delCacheMapValue(final String key, final String hkey)
     {
@@ -239,5 +239,10 @@ public class RedisUtils
     public Collection<String> keys(final String pattern)
     {
         return redisTemplate.keys(pattern);
+    }
+
+    public Boolean hasKey(final String pattern)
+    {
+        return redisTemplate.hasKey(pattern);
     }
 }

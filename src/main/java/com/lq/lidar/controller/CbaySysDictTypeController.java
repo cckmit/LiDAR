@@ -3,20 +3,18 @@ package com.lq.lidar.controller;
 
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.common.core.page.TableDataInfo;
-import com.lq.lidar.entity.CbaySysDict;
 import com.lq.lidar.entity.CbaySysDictType;
 import com.lq.lidar.service.ICbaySysDictTypeService;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
-
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author LQ
@@ -38,9 +36,19 @@ public class CbaySysDictTypeController extends BaseController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody CbaySysDictType cbaySysDictType){
-        iCbaySysDictTypeService.save(cbaySysDictType);
-        return ResponseEntity.success("新增成功");
+    public ResponseEntity add(@RequestBody @Valid CbaySysDictType cbaySysDictType) {
+        CbaySysDictType sysDictType = iCbaySysDictTypeService.getById(cbaySysDictType.getDictTypeCd());
+        Assert.isNull(sysDictType, "该字典类型已存在，不可重复添加！");
+        if (iCbaySysDictTypeService.save(cbaySysDictType)) {
+            return   ResponseEntity.success("新增成功");
+        }
+        return ResponseEntity.error("新增失败");
+    }
+
+    @DeleteMapping("/delete/{dictCodes}")
+    public ResponseEntity delete(@PathVariable String[] dictCodes){
+        logger.error("dictCodes:{}",dictCodes.length);
+        return ResponseEntity.success("删除成功");
     }
 }
 

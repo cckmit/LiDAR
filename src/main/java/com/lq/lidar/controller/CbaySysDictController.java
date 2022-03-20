@@ -25,6 +25,7 @@ public class CbaySysDictController extends BaseController {
     @Resource
     ICbaySysDictService iCbaySysDictService;
 
+
     @GetMapping("/list")
     public ResponseEntity list(CbaySysDict cbaySysDict) {
         startPage();
@@ -34,7 +35,7 @@ public class CbaySysDictController extends BaseController {
 
     @GetMapping("/getByDictTypeCd/{dictTypeCd}")
     public ResponseEntity getByDictTypeCd(@PathVariable String dictTypeCd) {
-        List<CbaySysDict> list = iCbaySysDictService.lambdaQuery().eq(CbaySysDict::getDictTypeCd,dictTypeCd).list();
+        List<CbaySysDict> list = iCbaySysDictService.getByDictTypeCd(dictTypeCd);
         return ResponseEntity.success(list);
     }
 }
