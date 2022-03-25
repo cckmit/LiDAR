@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ICbaySysDictTypeService extends IService<CbaySysDictType> {
 
+    void deleteByDictTypeCd(String[] dictCds);
 }

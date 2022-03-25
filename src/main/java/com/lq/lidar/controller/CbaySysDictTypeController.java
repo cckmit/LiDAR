@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- * 前端控制器
+ * 字典类型前端控制器
  * </p>
  *
  * @author LQ
@@ -28,6 +28,11 @@ public class CbaySysDictTypeController extends BaseController {
     @Resource
     ICbaySysDictTypeService iCbaySysDictTypeService;
 
+    /**
+     * 字典类型列表分页条件查询
+     *
+     * @return
+     */
     @GetMapping("/list")
     public ResponseEntity list() {
         startPage();
@@ -35,19 +40,32 @@ public class CbaySysDictTypeController extends BaseController {
         return ResponseEntity.success(getDataTable(list));
     }
 
+    /**
+     * 字典类型新增
+     *
+     * @param cbaySysDictType
+     * @return
+     */
     @PostMapping("/add")
     public ResponseEntity add(@RequestBody @Valid CbaySysDictType cbaySysDictType) {
         CbaySysDictType sysDictType = iCbaySysDictTypeService.getById(cbaySysDictType.getDictTypeCd());
         Assert.isNull(sysDictType, "该字典类型已存在，不可重复添加！");
         if (iCbaySysDictTypeService.save(cbaySysDictType)) {
-            return   ResponseEntity.success("新增成功");
+            return ResponseEntity.success("新增成功");
         }
         return ResponseEntity.error("新增失败");
     }
 
-    @DeleteMapping("/delete/{dictCodes}")
-    public ResponseEntity delete(@PathVariable String[] dictCodes){
-        logger.error("dictCodes:{}",dictCodes.length);
+    /**
+     * 字典类型删除
+     *
+     * @param dictCds
+     * @return
+     */
+    @DeleteMapping("/delete/{dictCds}")
+    public ResponseEntity deleteByDictTypeCd(@PathVariable String[] dictCds) {
+        logger.error("dictCds:{}", dictCds.length);
+        iCbaySysDictTypeService.deleteByDictTypeCd(dictCds);
         return ResponseEntity.success("删除成功");
     }
 }

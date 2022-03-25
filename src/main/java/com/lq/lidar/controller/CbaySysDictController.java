@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 字典数据前端控制器
  * </p>
  *
  * @author LQ
@@ -26,6 +26,12 @@ public class CbaySysDictController extends BaseController {
     ICbaySysDictService iCbaySysDictService;
 
 
+    /**
+     * 字典数据分页条件查询
+     *
+     * @param cbaySysDict 查询条件
+     * @return
+     */
     @GetMapping("/list")
     public ResponseEntity list(CbaySysDict cbaySysDict) {
         startPage();
@@ -33,6 +39,12 @@ public class CbaySysDictController extends BaseController {
         return ResponseEntity.success(getDataTable(list));
     }
 
+    /**
+     * 根据字典类型id获取字典数据
+     *
+     * @param dictTypeCd 字典类型id
+     * @return
+     */
     @GetMapping("/getByDictTypeCd/{dictTypeCd}")
     public ResponseEntity getByDictTypeCd(@PathVariable String dictTypeCd) {
         List<CbaySysDict> list = iCbaySysDictService.getByDictTypeCd(dictTypeCd);

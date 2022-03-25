@@ -26,6 +26,7 @@ public interface ICbaySysDictService extends IService<CbaySysDict> {
 
     /**
      * 根据字典类型id获取字典数据
+     *
      * @param dictTypeCd 字典类型id
      * @return
      */
