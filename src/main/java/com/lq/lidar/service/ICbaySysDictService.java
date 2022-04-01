@@ -16,6 +16,20 @@ import java.util.List;
  */
 public interface ICbaySysDictService extends IService<CbaySysDict> {
 
+    /**
+     * 查询字典数据
+     *
+     * @param sysDict 查询条件
+     * @return
+     */
     List<CbaySysDict> list(CbaySysDict sysDict);
+
+    /**
+     * 根据字典类型id获取字典数据
+     *
+     * @param dictTypeCd 字典类型id
+     * @return
+     */
+    List<CbaySysDict> getByDictTypeCd(String dictTypeCd);
 
 }
