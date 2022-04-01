@@ -1,12 +1,22 @@
 package com.lq.lidar.controller;
 
 
+import com.google.common.base.Function;
+import com.lq.lidar.common.core.controller.BaseController;
+import com.lq.lidar.common.utils.DataConvert;
+import com.lq.lidar.entity.CbaySysOffice;
+import com.lq.lidar.service.ICbaySysOfficeService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author LQ
@@ -14,7 +24,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/system/cbaySysOffice")
-public class CbaySysOfficeController {
+public class CbaySysOfficeController extends BaseController {
+    @Resource
+    ICbaySysOfficeService cbaySysOfficeService;
 
+    @GetMapping("/getByOfcTypeCd/{ofcTypeCd}")
+    public List getByOfcTypeCd(@PathVariable String ofcTypeCd) {
+        List<CbaySysOffice> cbaySysOffices = cbaySysOfficeService.lambdaQuery().eq(CbaySysOffice::getOfcTypeCd, ofcTypeCd).list();
+        Function<CbaySysOffice, String> ofcNm = CbaySysOffice::getOfcNm;
+        List list = DataConvert.ListToMap(cbaySysOffices,CbaySysOffice::getOfcNm);
+        return list;
+    }
 }
 
