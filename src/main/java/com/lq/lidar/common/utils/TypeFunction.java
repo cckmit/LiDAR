@@ -7,12 +7,15 @@ import java.lang.reflect.Method;
 import java.util.function.Function;
 
 /**
- * @author 1234
+ * 方法引用类型转换
+ *
+ * @author LQ
  */
 @FunctionalInterface
 public interface TypeFunction<T, R> extends Serializable, Function<T, R> {
     /**
      * 获取列名称
+     *
      * @param lambda
      * @return String
      */

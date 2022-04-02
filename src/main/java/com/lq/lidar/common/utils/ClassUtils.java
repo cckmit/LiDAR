@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
  */
 public class ClassUtils {
     /**
-     * 根据指定属性名称获取该类的属性值
+     * 根据指定属性名称获取属性值
      *
      * @param fieldName 属性名称
      * @param o         操作类
