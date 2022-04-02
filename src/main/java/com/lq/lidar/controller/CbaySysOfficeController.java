@@ -1,7 +1,6 @@
 package com.lq.lidar.controller;
 
 
-import com.google.common.base.Function;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.utils.DataConvert;
 import com.lq.lidar.entity.CbaySysOffice;
@@ -31,8 +30,7 @@ public class CbaySysOfficeController extends BaseController {
     @GetMapping("/getByOfcTypeCd/{ofcTypeCd}")
     public List getByOfcTypeCd(@PathVariable String ofcTypeCd) {
         List<CbaySysOffice> cbaySysOffices = cbaySysOfficeService.lambdaQuery().eq(CbaySysOffice::getOfcTypeCd, ofcTypeCd).list();
-        Function<CbaySysOffice, String> ofcNm = CbaySysOffice::getOfcNm;
-        List list = DataConvert.ListToMap(cbaySysOffices,CbaySysOffice::getOfcNm);
+        List list = DataConvert.ListToLV(cbaySysOffices,CbaySysOffice::getOfcNm,CbaySysOffice::getOfcId);
         return list;
     }
 }
