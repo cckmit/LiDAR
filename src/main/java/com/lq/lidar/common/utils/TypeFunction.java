@@ -32,4 +32,6 @@ public interface TypeFunction<T, R> extends Serializable, Function<T, R> {
         }
     }
 
+
+
 }
