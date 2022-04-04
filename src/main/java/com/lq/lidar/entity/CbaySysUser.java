@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- *
+ * 用户信息表
  * </p>
  *
  * @author LQ
@@ -27,7 +27,7 @@ public class CbaySysUser implements Serializable {
     @TableId("\"USER_ID\"")
     private String userId;
     /**
-     *归属公司
+     * 归属公司
      */
     @TableField("\"OFC_ID\"")
     private String ofcId;
@@ -42,7 +42,6 @@ public class CbaySysUser implements Serializable {
 
     @TableField(exist = false)
     private CbaySysOffice dep;
-
 
 
     /**

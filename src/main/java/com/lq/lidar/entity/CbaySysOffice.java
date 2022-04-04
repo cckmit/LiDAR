@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 /**
  * <p>
- * 
+ *机构管理
  * </p>
  *
  * @author LQ
@@ -379,38 +379,6 @@ public class CbaySysOffice implements Serializable {
 
     @Override
     public String toString() {
-        return "CbaySysOffice{" +
-        "ofcId=" + ofcId +
-        ", cntrCd=" + cntrCd +
-        ", stateCd=" + stateCd +
-        ", cityCd=" + cityCd +
-        ", acctStdId=" + acctStdId +
-        ", ofcPrtId=" + ofcPrtId +
-        ", ofcPrtIds=" + ofcPrtIds +
-        ", ofcCode=" + ofcCode +
-        ", ofcNm=" + ofcNm +
-        ", sortLvl=" + sortLvl +
-        ", ofcTypeCd=" + ofcTypeCd +
-        ", ofcGrdCd=" + ofcGrdCd +
-        ", ofcAddr=" + ofcAddr +
-        ", ofcZip=" + ofcZip +
-        ", ofcSpvsId=" + ofcSpvsId +
-        ", ofcTel=" + ofcTel +
-        ", ofcFax=" + ofcFax +
-        ", ofcEmail=" + ofcEmail +
-        ", fstCntctPersId=" + fstCntctPersId +
-        ", secCntctPersId=" + secCntctPersId +
-        ", acctOfcId=" + acctOfcId +
-        ", validInd=" + validInd +
-        ", cmsOfcId=" + cmsOfcId +
-        ", crcyCd=" + crcyCd +
-        ", divisionId=" + divisionId +
-        ", deptCenterUserid=" + deptCenterUserid +
-        ", riskPresident=" + riskPresident +
-        ", ofcOaNm=" + ofcOaNm +
-        ", inBorderInd=" + inBorderInd +
-        ", deptBusinessLeader=" + deptBusinessLeader +
-        ", whetherRetail=" + whetherRetail +
-        "}";
+        return "CbaySysOffice{" + "ofcId=" + ofcId + ", cntrCd=" + cntrCd + ", stateCd=" + stateCd + ", cityCd=" + cityCd + ", acctStdId=" + acctStdId + ", ofcPrtId=" + ofcPrtId + ", ofcPrtIds=" + ofcPrtIds + ", ofcCode=" + ofcCode + ", ofcNm=" + ofcNm + ", sortLvl=" + sortLvl + ", ofcTypeCd=" + ofcTypeCd + ", ofcGrdCd=" + ofcGrdCd + ", ofcAddr=" + ofcAddr + ", ofcZip=" + ofcZip + ", ofcSpvsId=" + ofcSpvsId + ", ofcTel=" + ofcTel + ", ofcFax=" + ofcFax + ", ofcEmail=" + ofcEmail + ", fstCntctPersId=" + fstCntctPersId + ", secCntctPersId=" + secCntctPersId + ", acctOfcId=" + acctOfcId + ", validInd=" + validInd + ", cmsOfcId=" + cmsOfcId + ", crcyCd=" + crcyCd + ", divisionId=" + divisionId + ", deptCenterUserid=" + deptCenterUserid + ", riskPresident=" + riskPresident + ", ofcOaNm=" + ofcOaNm + ", inBorderInd=" + inBorderInd + ", deptBusinessLeader=" + deptBusinessLeader + ", whetherRetail=" + whetherRetail + "}";
     }
 }
