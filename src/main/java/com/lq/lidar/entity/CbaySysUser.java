@@ -27,11 +27,14 @@ public class CbaySysUser implements Serializable {
     @TableId("\"USER_ID\"")
     private String userId;
     /**
-     * 归属公司
+     * 归属公司id
      */
     @TableField("\"OFC_ID\"")
     private String ofcId;
 
+    /**
+     *
+     */
     @TableField(exist = false)
     private CbaySysOffice ofc;
     /**
@@ -42,7 +45,6 @@ public class CbaySysUser implements Serializable {
 
     @TableField(exist = false)
     private CbaySysOffice dep;
-
 
     /**
      * 登录名
