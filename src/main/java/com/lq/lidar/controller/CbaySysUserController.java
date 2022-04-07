@@ -4,18 +4,12 @@ package com.lq.lidar.controller;
 import com.github.pagehelper.PageInfo;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.common.core.page.TableDataInfo;
-import com.lq.lidar.entity.CbaySysDict;
 import com.lq.lidar.entity.CbaySysUser;
 import com.lq.lidar.service.ICbaySysUserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * <p>
@@ -39,5 +33,38 @@ public class CbaySysUserController extends BaseController {
         PageInfo<CbaySysUser> pageInfo = iCbaySysUserService.list(sysUser);
         return ResponseEntity.success(getDataTable(pageInfo));
     }
+    /**
+     * 添加用户
+     *
+     * @param sysUser 用户
+     */
+    @PostMapping("/add")
+    public ResponseEntity add(@RequestBody @Validated CbaySysUser sysUser) {
+        boolean save = iCbaySysUserService.save(sysUser);
+        if (save){
+            return ResponseEntity.success("添加成功");
+        }
+        return ResponseEntity.error("添加失败");
+    }
+
+    /**
+     * 通过userId获取用户信息
+     * @param userId
+     * @return
+     */
+    @GetMapping("/getByUserId/{userId}")
+    public ResponseEntity getByUserId(@PathVariable("userId") String userId) {
+        return ResponseEntity.success(iCbaySysUserService.getById(userId));
+    }
+    // 用户启用禁用
+    @PostMapping("/updateStatus")
+    public ResponseEntity updateStatus(@RequestBody CbaySysUser sysUser) {
+        boolean update = iCbaySysUserService.updateById(sysUser);
+        if (update){
+            return ResponseEntity.success("操作成功");
+        }
+        return ResponseEntity.error("操作失败");
+    }
+
 }
 

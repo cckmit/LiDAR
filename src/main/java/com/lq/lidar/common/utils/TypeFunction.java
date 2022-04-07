@@ -14,7 +14,7 @@ import java.util.function.Function;
 @FunctionalInterface
 public interface TypeFunction<T, R> extends Serializable, Function<T, R> {
     /**
-     * 获取列名称
+     * 通过方法引用获取列名称
      *
      * @param lambda
      * @return String

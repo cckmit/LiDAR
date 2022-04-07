@@ -3,7 +3,9 @@ package com.lq.lidar.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
+import com.lq.lidar.common.annotation.Mobile;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -59,7 +61,7 @@ public class CbaySysUser implements Serializable {
     private String password;
 
     /**
-     * 编号
+     * 工号
      */
     @TableField("\"USER_NBR\"")
     private String userNbr;
@@ -68,12 +70,14 @@ public class CbaySysUser implements Serializable {
      * 用户名
      */
     @TableField("\"USER_NM\"")
+    @NotBlank(message = "用户名不能为空")
     private String userNm;
 
     /**
      * 邮箱
      */
     @TableField("\"USER_EMAIL\"")
+    @Email(message = "邮箱格式不正确")
     private String userEmail;
 
     /**
@@ -86,6 +90,8 @@ public class CbaySysUser implements Serializable {
      * 手机
      */
     @TableField("\"USER_MOBILE\"")
+    @Mobile
+    @NotBlank(message = "手机号不能为空")
     private String userMobile;
 
     @TableField("\"USER_TYPE_CD\"")
@@ -104,7 +110,7 @@ public class CbaySysUser implements Serializable {
     private String loginInd;
 
     /**
-     * 状态
+     * 状态 0 禁用 1启用
      */
     @TableField("\"VALID_IND\"")
     private String validInd;
