@@ -6,7 +6,8 @@ import com.baomidou.mybatisplus.generator.config.OutputFile;
 import java.util.Collections;
 
 public class MybatisPlusAndGeneratorNew {
-    static String url = "jdbc:postgresql://localhost:5432/cms?currentSchema=ry-vue";
+//    static String url = "jdbc:postgresql://localhost:5432/cms?currentSchema=ry-vue";
+    static String url = "jdbc:postgresql://localhost:5432/cms";
     static String username = "postgres";
     static String password = "123456";
 
@@ -24,7 +25,7 @@ public class MybatisPlusAndGeneratorNew {
                             .moduleName("system") // 设置父包模块名
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, projectPath + "/src/test/java")); // 设置mapperXml生成路径
                 }).strategyConfig(builder -> {
-                    builder.addInclude("cbay_sys_office") // 设置需要生成的表名
+                    builder.addInclude("ol_rental_contract") // 设置需要生成的表名
                             .addTablePrefix("t_", "c_")// 设置过滤表前缀
                             .entityBuilder()// Entity 策略配置
                             .enableTableFieldAnnotation() // 开启生成实体时生成字段注解

@@ -18,6 +18,5 @@ import java.util.List;
  * @since 2022-02-28
  */
 public interface ICbaySysUserService extends IService<CbaySysUser> {
-
     PageInfo<CbaySysUser> list(CbaySysUser sysUser);
 }
