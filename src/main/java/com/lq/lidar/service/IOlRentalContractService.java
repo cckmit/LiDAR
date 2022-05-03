@@ -2,6 +2,8 @@ package com.lq.lidar.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.lq.lidar.entity.CbaySysUser;
 import com.lq.lidar.entity.OlRentalContract;
 
 /**
@@ -13,5 +15,7 @@ import com.lq.lidar.entity.OlRentalContract;
  * @since 2022-04-19
  */
 public interface IOlRentalContractService extends IService<OlRentalContract> {
+    PageInfo<OlRentalContract> list(OlRentalContract rentalContract);
+
 
 }

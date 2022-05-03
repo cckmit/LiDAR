@@ -1,16 +1,14 @@
 package com.lq.lidar.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.entity.CbaySysDict;
 import com.lq.lidar.entity.OlRentalContract;
 import com.lq.lidar.service.IOlRentalContractService;
 import com.lq.lidar.service.impl.OlRentalContractServiceImpl;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,9 +35,9 @@ public class OlRentalContractController extends BaseController {
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity list() {
+    public ResponseEntity list(OlRentalContract olRentalContract) {
         startPage();
-        List<OlRentalContract> list = olRentalContractService.list();
+        PageInfo<OlRentalContract> list = olRentalContractService.list(olRentalContract);
         return ResponseEntity.success(getDataTable(list));
     }
 }

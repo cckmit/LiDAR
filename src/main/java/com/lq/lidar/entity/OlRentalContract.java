@@ -3,6 +3,7 @@ package com.lq.lidar.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -28,13 +29,13 @@ public class OlRentalContract implements Serializable {
     private String seqno;
 
     /**
-     * 租赁合同中的编号，手工录入
+     * 外部合同编号
      */
     @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
     /**
-     * 自动生成规则
+     * 项目名称
      */
     @TableField("\"PROJECT_NAME\"")
     private String projectName;
@@ -64,13 +65,14 @@ public class OlRentalContract implements Serializable {
     private String sectionName;
 
     /**
-     * 日期录入框，默认系统日期
+     * 起租日期
      */
     @TableField("\"START_DATE\"")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private LocalDateTime startDate;
 
     /**
-     * 产品大类下拉框
+     * 产品大类
      */
     @TableField("\"PRODUCT_CATEGORY\"")
     private String productCategory;
@@ -87,26 +89,39 @@ public class OlRentalContract implements Serializable {
     @TableField("\"PRODUCT_SUB_CATEGORY_DESC\"")
     private String productSubCategoryDesc;
 
+    /**
+     * 主办客户经理ID
+     */
     @TableField("\"MAIN_MANAGER_ID\"")
     private String mainManagerId;
 
+    /**
+     * 主办客户经理名称
+     */
     @TableField("\"MAIN_MANAGER_NAME\"")
     private String mainManagerName;
 
+    /**
+     * 协办客户经理ID
+     */
     @TableField("\"CO_MANAGER_ID\"")
     private String coManagerId;
 
+    /**
+     * 协办客户经理名称
+     */
     @TableField("\"CO_MANAGER_NAME\"")
     private String coManagerName;
 
     /**
      * SPV下拉框
+     * 出租人ID
      */
     @TableField("\"LEASER_ID\"")
     private String leaserId;
 
     /**
-     * 根据所选的spv自动填写
+     * 出租人
      */
     @TableField("\"LEASER_NAME\"")
     private String leaserName;
@@ -119,11 +134,14 @@ public class OlRentalContract implements Serializable {
     private String isOversea;
 
     /**
-     * 承租人下拉框
+     * 承租人ID
      */
     @TableField("\"LESSEE_ID\"")
     private String lesseeId;
 
+    /**
+     * 承租人
+     */
     @TableField("\"LESSEE_NAME\"")
     private String lesseeName;
 
@@ -135,25 +153,17 @@ public class OlRentalContract implements Serializable {
     private String projectCategory;
 
     /**
-     * 拉框：	光租
-     * 期租
-     * 直租
-     * 资产包
-     * 根据部门不同有不同选项（飞机、船舶、公用）
+     * 租赁类型
      */
     @TableField("\"LEASE_CATEGORY\"")
     private String leaseCategory;
 
     /**
-     * 下拉框：
-     * 直线法/平均年限法/
      */
     @TableField("\"INCOME_MTHD_CD\"")
     private String incomeMthdCd;
 
     /**
-     * 下拉框：
-     * 是/否
      */
     @TableField("\"IS_BUY_BACK\"")
     private String isBuyBack;
@@ -185,7 +195,11 @@ public class OlRentalContract implements Serializable {
     @TableField("\"ACT_DELIVERY_DATE\"")
     private LocalDateTime actDeliveryDate;
 
+    /**
+     * 退租日期
+     */
     @TableField("\"CONTRACT_OVER_DATE\"")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private LocalDateTime contractOverDate;
 
     @TableField("\"ACT_OVER_DATE\"")
@@ -220,7 +234,7 @@ public class OlRentalContract implements Serializable {
     private LocalDateTime lastUpdateTime;
 
     /**
-     * 草稿/已生效/完结
+     * 合同状态
      */
     @TableField("\"CONTRACT_STATUS\"")
     private String contractStatus;
@@ -241,7 +255,7 @@ public class OlRentalContract implements Serializable {
     private String isEarlyTermination;
 
     /**
-     * 币种下拉框
+     * 币种
      */
     @TableField("\"CURRENCY_CDE\"")
     private String currencyCde;
