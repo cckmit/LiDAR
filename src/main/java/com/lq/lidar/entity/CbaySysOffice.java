@@ -20,66 +20,123 @@ public class CbaySysOffice implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 机构ID
+     */
     @TableId("\"OFC_ID\"")
     private String ofcId;
 
+    /**
+     * 国家代码
+     */
     @TableField("\"CNTR_CD\"")
     private String cntrCd;
 
+    /**
+     * 州省代码
+     */
     @TableField("\"STATE_CD\"")
     private String stateCd;
 
+    /**
+     * 城市代码
+     */
     @TableField("\"CITY_CD\"")
     private String cityCd;
 
+    /**
+     * 会计核算准则
+     */
     @TableField("\"ACCT_STD_ID\"")
     private String acctStdId;
 
+    /**
+     *上级机构
+     */
     @TableField("\"OFC_PRT_ID\"")
     private String ofcPrtId;
 
     @TableField("\"OFC_PRT_IDS\"")
     private String ofcPrtIds;
 
+    /**
+     * 机构编码
+     */
     @TableField("\"OFC_CODE\"")
     private String ofcCode;
 
+    /**
+     * 机构名称
+     */
     @TableField("\"OFC_NM\"")
     private String ofcNm;
 
     @TableField("\"SORT_LVL\"")
     private BigDecimal sortLvl;
 
+    /**
+     * 机构类型
+     */
     @TableField("\"OFC_TYPE_CD\"")
     private String ofcTypeCd;
 
+    /**
+     * 机构级别
+     */
     @TableField("\"OFC_GRD_CD\"")
     private String ofcGrdCd;
 
+    /**
+     * 联系地址
+     */
     @TableField("\"OFC_ADDR\"")
     private String ofcAddr;
 
+    /**
+     * 邮政编码
+     */
     @TableField("\"OFC_ZIP\"")
     private String ofcZip;
 
+    /**
+     * 负责人
+     */
     @TableField("\"OFC_SPVS_ID\"")
     private String ofcSpvsId;
 
+    /**
+     * 电话
+     */
     @TableField("\"OFC_TEL\"")
     private String ofcTel;
 
+    /**
+     * 传真
+     */
     @TableField("\"OFC_FAX\"")
     private String ofcFax;
 
+    /**
+     * 邮箱
+     */
     @TableField("\"OFC_EMAIL\"")
     private String ofcEmail;
 
+    /**
+     * 主负责人
+     */
     @TableField("\"FST_CNTCT_PERS_ID\"")
     private String fstCntctPersId;
 
+    /**
+     * 副负责人
+     */
     @TableField("\"SEC_CNTCT_PERS_ID\"")
     private String secCntctPersId;
 
+    /**
+     * 记账机构
+     */
     @TableField("\"ACCT_OFC_ID\"")
     private String acctOfcId;
 

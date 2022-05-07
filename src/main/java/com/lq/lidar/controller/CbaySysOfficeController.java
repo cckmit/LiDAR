@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * <p>
- * 前端控制器
+ * 机构前端控制器
  * </p>
  *
  * @author LQ
@@ -26,9 +26,38 @@ public class CbaySysOfficeController extends BaseController {
     @Resource
     ICbaySysOfficeService cbaySysOfficeService;
 
+    /**
+     *
+     * @param ofcTypeCd
+     * @return
+     */
     @GetMapping("/getByOfcTypeCd/{ofcTypeCd}")
     public ResponseEntity getByOfcTypeCd(@PathVariable String ofcTypeCd) {
         List<CbaySysOffice> cbaySysOffices = cbaySysOfficeService.lambdaQuery().eq(CbaySysOffice::getOfcTypeCd, ofcTypeCd).list();
+        List list = DataConvert.ListToLV(cbaySysOffices,CbaySysOffice::getOfcNm,CbaySysOffice::getOfcId);
+        return ResponseEntity.success(list);
+    }
+
+    /**
+     * 根据机构级别查询机构信息
+     * @param ofcGrdCd 机构级别
+     * @return
+     */
+    @GetMapping("/getByOfcGrdCd/{ofcGrdCd}")
+    public ResponseEntity getByOfcGrdCd(@PathVariable String ofcGrdCd) {
+        List<CbaySysOffice> cbaySysOffices = cbaySysOfficeService.lambdaQuery().eq(CbaySysOffice::getOfcGrdCd, ofcGrdCd).list();
+        List list = DataConvert.ListToLV(cbaySysOffices,CbaySysOffice::getOfcNm,CbaySysOffice::getOfcId);
+        return ResponseEntity.success(list);
+    }
+
+    /**
+     * 通过部门查询中心名称
+     * @param ofcId
+     * @return
+     */
+    @GetMapping("/getByOfcTypeCd/{ofcId}")
+    public ResponseEntity getByOfcId(@PathVariable String ofcId) {
+        List<CbaySysOffice> cbaySysOffices = cbaySysOfficeService.lambdaQuery().eq(CbaySysOffice::getOfcPrtId, ofcId).list();
         List list = DataConvert.ListToLV(cbaySysOffices,CbaySysOffice::getOfcNm,CbaySysOffice::getOfcId);
         return ResponseEntity.success(list);
     }
