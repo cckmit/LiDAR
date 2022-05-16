@@ -40,7 +40,7 @@ public class CbaySysUserServiceImpl extends ServiceImpl<CbaySysUserMapper, CbayS
         lambdaQuery.eq(StringUtils.isNotBlank(sysUser.getValidInd()),CbaySysUser::getValidInd,sysUser.getValidInd());
         PageInfo<CbaySysUser> pageInfo = new PageInfo<>(lambdaQuery.list());
 
-        List<CbaySysUser> collect = pageInfo.getList().stream().parallel().map(cbaySysUser -> {
+        List<CbaySysUser> collect = pageInfo.getList().stream().map(cbaySysUser -> {
             CbaySysOffice ofc = sysOfficeMapper.selectById(cbaySysUser.getOfcId());
             CbaySysOffice dep = sysOfficeMapper.selectById(cbaySysUser.getDepId());
             cbaySysUser.setOfc(ofc);

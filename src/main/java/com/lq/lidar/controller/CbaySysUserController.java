@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  用户管理前端控制器
+ * 用户管理前端控制器
  * </p>
  *
  * @author LQ
@@ -27,28 +27,36 @@ public class CbaySysUserController extends BaseController {
     @Resource
     ICbaySysUserService iCbaySysUserService;
 
+    /**
+     * 用户管理列表
+     *
+     * @param sysUser
+     * @return
+     */
     @GetMapping("/list")
     public ResponseEntity list(CbaySysUser sysUser) {
         startPage();
         PageInfo<CbaySysUser> pageInfo = iCbaySysUserService.list(sysUser);
         return ResponseEntity.success(getDataTable(pageInfo));
     }
+
     /**
      * 添加用户
      *
      * @param sysUser 用户
      */
-    @PostMapping("/add")
-    public ResponseEntity add(@RequestBody @Validated CbaySysUser sysUser) {
-        boolean save = iCbaySysUserService.save(sysUser);
-        if (save){
-            return ResponseEntity.success("添加成功");
+    @PostMapping("/saveOrUpdate")
+    public ResponseEntity saveOrUpdate(@RequestBody @Validated CbaySysUser sysUser) {
+        boolean save = iCbaySysUserService.saveOrUpdate(sysUser);
+        if (save) {
+            return ResponseEntity.success("操作成功");
         }
-        return ResponseEntity.error("添加失败");
+        return ResponseEntity.error("操作失败");
     }
 
     /**
      * 通过userId获取用户信息
+     *
      * @param userId
      * @return
      */
@@ -56,14 +64,29 @@ public class CbaySysUserController extends BaseController {
     public ResponseEntity getByUserId(@PathVariable("userId") String userId) {
         return ResponseEntity.success(iCbaySysUserService.getById(userId));
     }
-    // 用户启用禁用
+
+    /**
+     * 用户启用禁用
+     *
+     * @param sysUser
+     * @return
+     */
     @PostMapping("/updateStatus")
     public ResponseEntity updateStatus(@RequestBody CbaySysUser sysUser) {
         boolean update = iCbaySysUserService.updateById(sysUser);
-        if (update){
+        if (update) {
             return ResponseEntity.success("操作成功");
         }
         return ResponseEntity.error("操作失败");
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity delete(@PathVariable String userId) {
+        boolean update = iCbaySysUserService.removeById(userId);
+        if (update) {
+            return ResponseEntity.success("删除成功");
+        }
+        return ResponseEntity.error("删除失败");
     }
 
 }

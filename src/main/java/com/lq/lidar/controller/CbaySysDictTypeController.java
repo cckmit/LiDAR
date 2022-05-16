@@ -64,7 +64,7 @@ public class CbaySysDictTypeController extends BaseController {
      */
     @DeleteMapping("/delete/{dictCds}")
     public ResponseEntity deleteByDictTypeCd(@PathVariable String[] dictCds) {
-        logger.error("dictCds:{}", dictCds.length);
+        logger.info("dictCds:{}", dictCds.length);
         iCbaySysDictTypeService.deleteByDictTypeCd(dictCds);
         return ResponseEntity.success("删除成功");
     }
