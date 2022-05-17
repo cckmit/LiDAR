@@ -5,9 +5,12 @@ import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.entity.CbaySysDict;
 import com.lq.lidar.service.ICbaySysDictService;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,6 +28,37 @@ public class CbaySysDictController extends BaseController {
     @Resource
     ICbaySysDictService iCbaySysDictService;
 
+
+    /**
+     * 字典新增
+     *
+     * @param cbaySysDict
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseEntity add(@RequestBody @Valid CbaySysDict cbaySysDict) {
+        CbaySysDict sysDict = iCbaySysDictService.getById(cbaySysDict.getDictId());
+        Assert.isNull(sysDict, "该字典值已存在，不可重复添加！");
+        cbaySysDict.setDictCd(cbaySysDict.getDictId());
+        if (iCbaySysDictService.save(cbaySysDict)) {
+            return ResponseEntity.success("新增成功");
+        }
+        return ResponseEntity.error("新增失败");
+    }
+
+    @PutMapping("/edit")
+    public ResponseEntity edit(@RequestBody @Valid CbaySysDict cbaySysDict) {
+        if (iCbaySysDictService.updateById(cbaySysDict)) {
+            return ResponseEntity.success("修改成功");
+        }
+        return ResponseEntity.error("修改失败");
+    }
+
+    @GetMapping("/getByDictId/{dictId}")
+    public ResponseEntity getByDictId(@PathVariable String dictId) {
+        CbaySysDict sysDict = iCbaySysDictService.getById(dictId);
+        return ResponseEntity.success(sysDict);
+    }
 
     /**
      * 字典数据分页条件查询
@@ -49,6 +83,18 @@ public class CbaySysDictController extends BaseController {
     public ResponseEntity getByDictTypeCd(@PathVariable String dictTypeCd) {
         List<CbaySysDict> list = iCbaySysDictService.getByDictTypeCd(dictTypeCd);
         return ResponseEntity.success(list);
+    }
+    /**
+     * 字典值删除
+     *
+     * @param dictIds
+     * @return
+     */
+    @DeleteMapping("/deleteByDictId/{dictIds}")
+    public ResponseEntity deleteByDictId(@PathVariable String[] dictIds) {
+        logger.info("dictIds:{}", dictIds.length);
+        iCbaySysDictService.removeBatchByIds(Arrays.asList(dictIds));
+        return ResponseEntity.success("删除成功");
     }
 }
 
