@@ -5,6 +5,7 @@ import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.entity.CbaySysDict;
 import com.lq.lidar.service.ICbaySysDictService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,15 +38,34 @@ public class CbaySysDictController extends BaseController {
      */
     @PostMapping("/add")
     public ResponseEntity add(@RequestBody @Valid CbaySysDict cbaySysDict) {
-        CbaySysDict sysDict = iCbaySysDictService.getById(cbaySysDict.getDictId());
-        Assert.isNull(sysDict, "该字典值已存在，不可重复添加！");
-        cbaySysDict.setDictCd(cbaySysDict.getDictId());
-        if (iCbaySysDictService.save(cbaySysDict)) {
-            return ResponseEntity.success("新增成功");
+        // 重复添加判断
+        // 更新
+        if (StringUtils.isNotBlank(cbaySysDict.getDictId())) {
+            CbaySysDict sysDictO = iCbaySysDictService.getById(cbaySysDict.getDictId());
+            if (!sysDictO.getDictCd().equals(cbaySysDict.getDictCd())) {
+                CbaySysDict sysDict = iCbaySysDictService.getDictTypeCdAndDictCd(cbaySysDict);
+                Assert.isNull(sysDict, "该字典值已存在，请更换字典值重试！");
+            }
+            if (iCbaySysDictService.updateById(cbaySysDict)) {
+                return ResponseEntity.success("修改成功");
+            }
+            return ResponseEntity.error("修改失败");
         }
-        return ResponseEntity.error("新增失败");
+        // 添加
+        CbaySysDict sysDict = iCbaySysDictService.getDictTypeCdAndDictCd(cbaySysDict);
+        Assert.isNull(sysDict, "该字典值已存在，不可重复添加！");
+        if (iCbaySysDictService.save(cbaySysDict)) {
+            return ResponseEntity.success("操作成功");
+        }
+        return ResponseEntity.error("操作失败");
     }
 
+    /**
+     * 字典修改
+     *
+     * @param cbaySysDict
+     * @return
+     */
     @PutMapping("/edit")
     public ResponseEntity edit(@RequestBody @Valid CbaySysDict cbaySysDict) {
         if (iCbaySysDictService.updateById(cbaySysDict)) {
@@ -54,6 +74,12 @@ public class CbaySysDictController extends BaseController {
         return ResponseEntity.error("修改失败");
     }
 
+    /**
+     * 根据字典值获取字典信息
+     *
+     * @param dictId
+     * @return
+     */
     @GetMapping("/getByDictId/{dictId}")
     public ResponseEntity getByDictId(@PathVariable String dictId) {
         CbaySysDict sysDict = iCbaySysDictService.getById(dictId);
@@ -84,6 +110,7 @@ public class CbaySysDictController extends BaseController {
         List<CbaySysDict> list = iCbaySysDictService.getByDictTypeCd(dictTypeCd);
         return ResponseEntity.success(list);
     }
+
     /**
      * 字典值删除
      *

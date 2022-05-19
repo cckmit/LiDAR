@@ -24,7 +24,7 @@ public class CbaySysDict implements Serializable {
      * 主键同字典值
      */
     @TableId("\"DICT_ID\"")
-    @NotBlank(message = "字典值不能为空")
+//    @NotBlank(message = "字典值不能为空")
     private String dictId;
 
     /**

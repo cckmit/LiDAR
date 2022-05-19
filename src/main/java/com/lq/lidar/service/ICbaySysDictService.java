@@ -32,4 +32,6 @@ public interface ICbaySysDictService extends IService<CbaySysDict> {
      */
     List<CbaySysDict> getByDictTypeCd(String dictTypeCd);
 
+
+    CbaySysDict getDictTypeCdAndDictCd(CbaySysDict sysDict);
 }

@@ -46,7 +46,7 @@ public class CbaySysDictServiceImpl extends ServiceImpl<CbaySysDictMapper, CbayS
     @Override
     public List<CbaySysDict> getByDictTypeCd(String dictTypeCd) {
         try {
-            Boolean hasKey= redisUtils.hasKey(Constants.SYS_DICT_KEY + dictTypeCd);
+            Boolean hasKey = redisUtils.hasKey(Constants.SYS_DICT_KEY + dictTypeCd);
             if (hasKey) {
                 log.debug("从redis中获取字典数据，谢谢");
                 return redisUtils.getCacheObject(Constants.SYS_DICT_KEY + dictTypeCd);
@@ -66,4 +66,13 @@ public class CbaySysDictServiceImpl extends ServiceImpl<CbaySysDictMapper, CbayS
         }
         return null;
     }
+
+    public CbaySysDict getDictTypeCdAndDictCd(CbaySysDict cbaySysDict) {
+        CbaySysDict sysDict = this.lambdaQuery()
+                .eq(CbaySysDict::getDictTypeCd, cbaySysDict.getDictTypeCd())
+                .eq(CbaySysDict::getDictCd, cbaySysDict.getDictCd())
+                .one();
+        return sysDict;
+    }
+
 }
