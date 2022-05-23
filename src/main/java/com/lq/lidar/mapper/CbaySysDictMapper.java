@@ -1,7 +1,7 @@
 package com.lq.lidar.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lq.lidar.entity.CbaySysDict;
+import com.lq.lidar.domain.entity.CbaySysDict;
 
 /**
  * <p>

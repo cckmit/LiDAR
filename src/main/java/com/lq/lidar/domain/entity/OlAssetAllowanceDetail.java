@@ -1,4 +1,4 @@
-package com.lq.lidar.entity;
+package com.lq.lidar.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,73 +24,73 @@ public class OlAssetAllowanceDetail implements Serializable {
     /**
      * 主键
      */
-    @TableId("SEQNO")
+    @TableId("\"SEQNO\"")
     private String seqno;
 
     /**
      * 租赁物信息主键
      */
-    @TableId("ASSET_ADD_SEQNO")
+    @TableField("\"ASSET_ADD_SEQNO\"")
     private String assetAddSeqno;
 
     /**
      * 租赁物编号
      */
-    @TableId("ASSET_NO")
+    @TableField("\"ASSET_NO\"")
     private String assetNo;
 
     /**
      * 租赁物名称
      */
-    @TableField("ASSET_NAME")
+    @TableField("\"ASSET_NAME\"")
     private String assetName;
 
     /**
      * 计提日期
      */
-    @TableId("COUNT_DATE")
+    @TableField("\"COUNT_DATE\"")
     private LocalDateTime countDate;
 
     /**
      * 原币币种
      */
-    @TableField("CURRENCY")
+    @TableField("\"CURRENCY\"")
     private String currency;
 
     /**
      * 计提金额-原币
      */
-    @TableField("ALLOWANCE_AMT")
+    @TableField("\"ALLOWANCE_AMT\"")
     private BigDecimal allowanceAmt;
 
     /**
      * 计提金额-人民币
      */
-    @TableId("ALLOWANCE_AMT_RMB")
+    @TableField("\"ALLOWANCE_AMT_RMB\"")
     private BigDecimal allowanceAmtRmb;
 
     /**
      * 备注
      */
-    @TableField("MEMO")
+    @TableField("\"MEMO\"")
     private String memo;
 
     /**
      * 折人民币汇率
      */
-    @TableField("EXCH_RATE_RMB")
+    @TableField("\"EXCH_RATE_RMB\"")
     private BigDecimal exchRateRmb;
 
-    @TableId("VOUCHER_ID")
+    @TableField("\"VOUCHER_ID\"")
     private String voucherId;
 
-    @TableField("VOUCHER_STATUS")
+    @TableField("\"VOUCHER_STATUS\"")
     private String voucherStatus;
 
-    @TableField("APPROVE_STATUS")
+    @TableField("\"APPROVE_STATUS\"")
     private String approveStatus;
 
-    @TableField("ALLOWANCE_DESC")
+    @TableField("\"ALLOWANCE_DESC\"")
     private String allowanceDesc;
 
 

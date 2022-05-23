@@ -3,7 +3,7 @@ package com.lq.lidar.controller;
 
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.common.utils.DataConvert;
-import com.lq.lidar.entity.OlSysCategory;
+import com.lq.lidar.domain.entity.OlSysCategory;
 import com.lq.lidar.service.IOlSysCategoryService;
 import org.springframework.web.bind.annotation.*;
 

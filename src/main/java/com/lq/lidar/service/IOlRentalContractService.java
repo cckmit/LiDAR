@@ -3,8 +3,7 @@ package com.lq.lidar.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
-import com.lq.lidar.entity.CbaySysUser;
-import com.lq.lidar.entity.OlRentalContract;
+import com.lq.lidar.domain.entity.OlRentalContract;
 
 /**
  * <p>

@@ -4,14 +4,11 @@ package com.lq.lidar.controller;
 import com.github.pagehelper.PageInfo;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.entity.CbaySysDict;
-import com.lq.lidar.entity.OlRentalContract;
+import com.lq.lidar.domain.entity.OlRentalContract;
 import com.lq.lidar.service.IOlRentalContractService;
-import com.lq.lidar.service.impl.OlRentalContractServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * <p>

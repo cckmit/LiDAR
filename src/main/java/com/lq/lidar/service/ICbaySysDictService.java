@@ -2,7 +2,7 @@ package com.lq.lidar.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lq.lidar.entity.CbaySysDict;
+import com.lq.lidar.domain.entity.CbaySysDict;
 
 import java.util.List;
 

@@ -3,11 +3,7 @@ package com.lq.lidar.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
-import com.lq.lidar.common.core.page.PageDomain;
-import com.lq.lidar.common.core.page.TableDataInfo;
-import com.lq.lidar.entity.CbaySysUser;
-
-import java.util.List;
+import com.lq.lidar.domain.entity.CbaySysUser;
 
 /**
  * <p>

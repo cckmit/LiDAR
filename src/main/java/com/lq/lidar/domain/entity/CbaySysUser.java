@@ -1,4 +1,4 @@
-package com.lq.lidar.entity;
+package com.lq.lidar.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

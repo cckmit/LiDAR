@@ -1,21 +1,41 @@
 package com.lq.lidar.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.lq.lidar.common.core.controller.BaseController;
+import com.lq.lidar.common.core.domain.ResponseEntity;
+import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
+import com.lq.lidar.service.IOlAssetAllowanceDetailService;
+import com.lq.lidar.service.IOlAssetDepreciationDetailService;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 资产折旧前端控制器
  * </p>
  *
  * @author LQ
  * @since 2022-05-22
  */
 @RestController
-@RequestMapping("/system/olAssetDepreciationDetail")
-public class OlAssetDepreciationDetailController {
+@RequestMapping("/asset/olAssetDepreciationDetail")
+@CrossOrigin
+public class OlAssetDepreciationDetailController extends BaseController {
+    @Resource
+    IOlAssetDepreciationDetailService assetDepreciationDetailService;
 
+    /**
+     * 根据租赁物主键获取折旧明细
+     *
+     * @param assetAddSeqno
+     * @return
+     */
+    @GetMapping("/getAssetDepreciationDetailByAssetAddSeqno/{assetAddSeqno}")
+    public ResponseEntity getAssetDepreciationDetailByAssetAddSeqno(@PathVariable String assetAddSeqno) {
+        List<OlAssetDepreciationDetail> list = assetDepreciationDetailService.getAssetDepreciationDetailByAssetAddSeqno(assetAddSeqno);
+        return ResponseEntity.success(getDataTable(list));
+    }
 }
 

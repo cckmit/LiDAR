@@ -1,6 +1,6 @@
 package com.lq.lidar.mapper;
 
-import com.lq.lidar.entity.OlAssetInfoAdd;
+import com.lq.lidar.domain.entity.OlAssetInfoAdd;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

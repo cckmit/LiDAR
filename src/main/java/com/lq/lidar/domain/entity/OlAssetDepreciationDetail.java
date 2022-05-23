@@ -1,4 +1,4 @@
-package com.lq.lidar.entity;
+package com.lq.lidar.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,61 +24,61 @@ public class OlAssetDepreciationDetail implements Serializable {
     /**
      * 主键
      */
-    @TableId("SEQNO")
+    @TableId("\"SEQNO\"")
     private String seqno;
 
     /**
      * 租赁物编号
      */
-    @TableId("ASSET_NO")
+    @TableField("\"ASSET_NO\"")
     private String assetNo;
 
     /**
      * 租赁物名称
      */
-    @TableId("ASSET_NAME")
+    @TableField("\"ASSET_NAME\"")
     private String assetName;
 
     /**
      * 租赁物附属信息主键
      */
-    @TableField("ASSET_ADD_SEQNO")
+    @TableField("\"ASSET_ADD_SEQNO\"")
     private String assetAddSeqno;
 
     /**
      * 折旧日期
      */
-    @TableId("DEPRECIATION_DATE")
+    @TableField("\"DEPRECIATION_DATE\"")
     private LocalDateTime depreciationDate;
 
     /**
      * 原币币种
      */
-    @TableField("CURRENCY")
+    @TableField("\"CURRENCY\"")
     private String currency;
 
     /**
      * 折旧金额-原币
      */
-    @TableField("DEPRECIATION_AMT")
+    @TableField("\"DEPRECIATION_AMT\"")
     private BigDecimal depreciationAmt;
 
     /**
      * 折旧金额-人民币
      */
-    @TableId("DEPRECIATION_AMT_RMB")
+    @TableField("\"DEPRECIATION_AMT_RMB\"")
     private BigDecimal depreciationAmtRmb;
 
     /**
      * 备注
      */
-    @TableField("MEMO")
+    @TableField("\"MEMO\"")
     private String memo;
 
     /**
      * 折人民币汇率
      */
-    @TableField("EXCH_RATE_RMB")
+    @TableField("\"EXCH_RATE_RMB\"")
     private BigDecimal exchRateRmb;
 
 

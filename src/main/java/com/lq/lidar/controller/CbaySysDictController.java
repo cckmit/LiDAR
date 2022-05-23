@@ -3,7 +3,7 @@ package com.lq.lidar.controller;
 
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.entity.CbaySysDict;
+import com.lq.lidar.domain.entity.CbaySysDict;
 import com.lq.lidar.service.ICbaySysDictService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapp
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lq.lidar.common.constant.Constants;
 import com.lq.lidar.common.utils.RedisUtils;
-import com.lq.lidar.entity.CbaySysDict;
+import com.lq.lidar.domain.entity.CbaySysDict;
 import com.lq.lidar.mapper.CbaySysDictMapper;
 import com.lq.lidar.service.ICbaySysDictService;
 import org.apache.commons.lang3.StringUtils;

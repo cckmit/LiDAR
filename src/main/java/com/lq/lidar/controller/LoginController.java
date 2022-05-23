@@ -3,14 +3,9 @@ package com.lq.lidar.controller;
 
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.common.core.page.TableDataInfo;
-import com.lq.lidar.entity.CbaySysUser;
-import com.lq.lidar.service.ICbaySysUserService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * <p>

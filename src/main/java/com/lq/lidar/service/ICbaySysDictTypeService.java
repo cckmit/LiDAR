@@ -1,6 +1,6 @@
 package com.lq.lidar.service;
 
-import com.lq.lidar.entity.CbaySysDictType;
+import com.lq.lidar.domain.entity.CbaySysDictType;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

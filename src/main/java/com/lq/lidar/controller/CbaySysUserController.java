@@ -4,7 +4,7 @@ package com.lq.lidar.controller;
 import com.github.pagehelper.PageInfo;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.entity.CbaySysUser;
+import com.lq.lidar.domain.entity.CbaySysUser;
 import com.lq.lidar.service.ICbaySysUserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

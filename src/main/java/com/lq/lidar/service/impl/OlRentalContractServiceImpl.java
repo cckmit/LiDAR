@@ -4,16 +4,11 @@ package com.lq.lidar.service.impl;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageInfo;
-import com.lq.lidar.entity.CbaySysOffice;
-import com.lq.lidar.entity.CbaySysUser;
-import com.lq.lidar.entity.OlRentalContract;
+import com.lq.lidar.domain.entity.OlRentalContract;
 import com.lq.lidar.mapper.OlRentalContractMapper;
 import com.lq.lidar.service.IOlRentalContractService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>

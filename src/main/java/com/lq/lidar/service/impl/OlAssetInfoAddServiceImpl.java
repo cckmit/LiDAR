@@ -1,6 +1,6 @@
 package com.lq.lidar.service.impl;
 
-import com.lq.lidar.entity.OlAssetInfoAdd;
+import com.lq.lidar.domain.entity.OlAssetInfoAdd;
 import com.lq.lidar.mapper.OlAssetInfoAddMapper;
 import com.lq.lidar.service.IOlAssetInfoAddService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

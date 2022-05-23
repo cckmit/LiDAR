@@ -1,7 +1,7 @@
 package com.lq.lidar.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lq.lidar.entity.CbaySysOffice;
+import com.lq.lidar.domain.entity.CbaySysOffice;
 
 /**
  * <p>

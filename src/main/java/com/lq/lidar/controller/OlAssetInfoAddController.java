@@ -3,15 +3,15 @@ package com.lq.lidar.controller;
 
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.entity.CbaySysDictType;
-import com.lq.lidar.entity.OlAssetInfoAdd;
+import com.lq.lidar.domain.dto.AssetAllowanceAndDeprecationDTO;
+import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
+import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
+import com.lq.lidar.domain.entity.OlAssetInfoAdd;
+import com.lq.lidar.service.IOlAssetAllowanceDetailService;
+import com.lq.lidar.service.IOlAssetDepreciationDetailService;
 import com.lq.lidar.service.IOlAssetInfoAddService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -31,6 +31,10 @@ public class OlAssetInfoAddController extends BaseController {
 
     @Resource
     IOlAssetInfoAddService assetInfoAddService;
+    @Resource
+    IOlAssetAllowanceDetailService assetAllowanceDetailService;
+    @Resource
+    IOlAssetDepreciationDetailService assetDepreciationDetailService;
 
     /**
      * 租赁物信息分页列表查询
@@ -40,8 +44,19 @@ public class OlAssetInfoAddController extends BaseController {
     @GetMapping("/list")
     public ResponseEntity list(OlAssetInfoAdd assetInfoAdd) {
         startPage();
-        List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery().like(StringUtils.isNotBlank(assetInfoAdd.getAssetNo()),OlAssetInfoAdd::getAssetNo, assetInfoAdd.getAssetNo()).list();
+        List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery().like(StringUtils.isNotBlank(assetInfoAdd.getAssetNo()), OlAssetInfoAdd::getAssetNo, assetInfoAdd.getAssetNo()).list();
         return ResponseEntity.success(getDataTable(list));
+    }
+
+    @GetMapping("/getAllowanceAndDeprecationByAssetAddSeqno/{assetAddSeqno}")
+    public ResponseEntity getAllowanceAndDeprecationByAssetAddSeqno(@PathVariable String assetAddSeqno) {
+        List<OlAssetAllowanceDetail> assetAllowanceDetails = assetAllowanceDetailService.getOlAssetAllowanceDetailByAssetAddSeqno(assetAddSeqno);
+        List<OlAssetDepreciationDetail> olAssetDepreciationDetails = assetDepreciationDetailService.getAssetDepreciationDetailByAssetAddSeqno(assetAddSeqno);
+        AssetAllowanceAndDeprecationDTO assetAllowanceAndDeprecationDTO = new AssetAllowanceAndDeprecationDTO();
+        assetAllowanceAndDeprecationDTO.setOlAssetAllowanceDetails(assetAllowanceDetails);
+        assetAllowanceAndDeprecationDTO.setOlAssetDepreciationDetails(olAssetDepreciationDetails);
+        return ResponseEntity.success(assetAllowanceAndDeprecationDTO);
+
     }
 
 }

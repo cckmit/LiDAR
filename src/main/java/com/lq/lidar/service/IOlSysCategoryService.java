@@ -1,6 +1,6 @@
 package com.lq.lidar.service;
 
-import com.lq.lidar.entity.OlSysCategory;
+import com.lq.lidar.domain.entity.OlSysCategory;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

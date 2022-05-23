@@ -2,11 +2,14 @@ package com.lq.lidar.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lq.lidar.entity.OlAssetDepreciationDetail;
+import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
+import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
 import com.lq.lidar.mapper.OlAssetDepreciationDetailMapper;
 import com.lq.lidar.service.IOlAssetDepreciationDetailService;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -19,4 +22,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class OlAssetDepreciationDetailServiceImpl extends ServiceImpl<OlAssetDepreciationDetailMapper, OlAssetDepreciationDetail> implements IOlAssetDepreciationDetailService {
 
+    @Override
+    public List<OlAssetDepreciationDetail> getAssetDepreciationDetailByAssetAddSeqno(String assetAddSeqno) {
+        List<OlAssetDepreciationDetail> list = this.lambdaQuery().eq(OlAssetDepreciationDetail::getAssetAddSeqno, assetAddSeqno).list();
+        return list;
+    }
 }

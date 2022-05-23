@@ -4,7 +4,7 @@ package com.lq.lidar.controller;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.common.utils.DataConvert;
-import com.lq.lidar.entity.CbaySysOffice;
+import com.lq.lidar.domain.entity.CbaySysOffice;
 import com.lq.lidar.service.ICbaySysOfficeService;
 import org.springframework.web.bind.annotation.*;
 

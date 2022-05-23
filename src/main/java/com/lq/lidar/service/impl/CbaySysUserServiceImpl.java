@@ -2,9 +2,8 @@ package com.lq.lidar.service.impl;
 
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.github.pagehelper.PageInfo;
-import com.lq.lidar.common.core.page.TableDataInfo;
-import com.lq.lidar.entity.CbaySysOffice;
-import com.lq.lidar.entity.CbaySysUser;
+import com.lq.lidar.domain.entity.CbaySysOffice;
+import com.lq.lidar.domain.entity.CbaySysUser;
 import com.lq.lidar.mapper.CbaySysOfficeMapper;
 import com.lq.lidar.mapper.CbaySysUserMapper;
 import com.lq.lidar.service.ICbaySysUserService;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -3,7 +3,7 @@ package com.lq.lidar.controller;
 
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
-import com.lq.lidar.entity.CbaySysDictType;
+import com.lq.lidar.domain.entity.CbaySysDictType;
 import com.lq.lidar.service.ICbaySysDictTypeService;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;

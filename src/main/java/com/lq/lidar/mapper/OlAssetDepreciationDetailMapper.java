@@ -2,7 +2,7 @@ package com.lq.lidar.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lq.lidar.entity.OlAssetDepreciationDetail;
+import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
 
 /**
  * <p>
