@@ -3,7 +3,9 @@ package com.lq.lidar.domain.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -43,12 +45,14 @@ public class OlAssetDepreciationDetail implements Serializable {
      * 租赁物附属信息主键
      */
     @TableField("\"ASSET_ADD_SEQNO\"")
+    @NotBlank(message = "租赁物信息主键不能为空")
     private String assetAddSeqno;
 
     /**
      * 折旧日期
      */
     @TableField("\"DEPRECIATION_DATE\"")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private LocalDateTime depreciationDate;
 
     /**

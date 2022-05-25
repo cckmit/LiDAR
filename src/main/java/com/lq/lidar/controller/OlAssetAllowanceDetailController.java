@@ -1,10 +1,10 @@
 package com.lq.lidar.controller;
 
 
+import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
-import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
 import com.lq.lidar.service.IOlAssetAllowanceDetailService;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +33,7 @@ public class OlAssetAllowanceDetailController extends BaseController {
      * @return
      */
     @GetMapping("/getAssetAllowanceDetailByAssetAddSeqno/{assetAddSeqno}")
+    @TaskTime
     public ResponseEntity getAssetAllowanceDetailByAssetAddSeqno(@PathVariable String assetAddSeqno) {
         List<OlAssetAllowanceDetail> list = assetAllowanceDetailService.getOlAssetAllowanceDetailByAssetAddSeqno(assetAddSeqno);
         return ResponseEntity.success(getDataTable(list));

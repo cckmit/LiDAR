@@ -3,6 +3,8 @@ package com.lq.lidar.domain.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -129,12 +131,14 @@ public class OlAssetInfoAdd implements Serializable {
      * 转固日期
      */
     @TableField("\"FIX_ASSET_DATE\"")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private LocalDateTime fixAssetDate;
 
     /**
      * 上次从EAS资产卡片同步日期
      */
     @TableField("\"LAST_EAS_SYCH_DATE\"")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private LocalDateTime lastEasSychDate;
 
     /**

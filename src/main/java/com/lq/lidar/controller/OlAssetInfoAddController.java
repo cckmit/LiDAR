@@ -1,16 +1,19 @@
 package com.lq.lidar.controller;
 
 
+import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.domain.dto.AssetAllowanceAndDeprecationDTO;
 import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
 import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
 import com.lq.lidar.domain.entity.OlAssetInfoAdd;
+import com.lq.lidar.domain.vo.OlAssetInfoAddVO;
 import com.lq.lidar.service.IOlAssetAllowanceDetailService;
 import com.lq.lidar.service.IOlAssetDepreciationDetailService;
 import com.lq.lidar.service.IOlAssetInfoAddService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -42,6 +45,7 @@ public class OlAssetInfoAddController extends BaseController {
      * @return
      */
     @GetMapping("/list")
+    @TaskTime
     public ResponseEntity list(OlAssetInfoAdd assetInfoAdd) {
         startPage();
         List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery().like(StringUtils.isNotBlank(assetInfoAdd.getAssetNo()), OlAssetInfoAdd::getAssetNo, assetInfoAdd.getAssetNo()).list();
@@ -57,6 +61,15 @@ public class OlAssetInfoAddController extends BaseController {
         assetAllowanceAndDeprecationDTO.setOlAssetDepreciationDetails(olAssetDepreciationDetails);
         return ResponseEntity.success(assetAllowanceAndDeprecationDTO);
 
+    }
+
+    @TaskTime
+    @GetMapping("/getOlAssetInfoAddBySeqno/{seqno}")
+    public ResponseEntity getOlAssetInfoAddBySeqno(@PathVariable String seqno) {
+        OlAssetInfoAdd assetInfoAdd = assetInfoAddService.getById(seqno);
+        OlAssetInfoAddVO olAssetInfoAddVO = new OlAssetInfoAddVO();
+        BeanUtils.copyProperties(assetInfoAdd,olAssetInfoAddVO);
+        return ResponseEntity.success(olAssetInfoAddVO);
     }
 
 }
