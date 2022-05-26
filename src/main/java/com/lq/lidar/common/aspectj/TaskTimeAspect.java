@@ -2,6 +2,7 @@ package com.lq.lidar.common.aspectj;
 
 import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.utils.ServletUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,24 +12,32 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
+/**
+ * @author LQ
+ */
 @Aspect
 @Component
 public class TaskTimeAspect {
     private static final Logger log = LoggerFactory.getLogger(TaskTimeAspect.class);
 
-    StopWatch stopWatch ;
-
+    private ThreadLocal<StopWatch> stopWatch=new ThreadLocal<>();
     @Before("@annotation(controllerTaskTime)")
     public void doBefore(JoinPoint joinPoint, TaskTime controllerTaskTime) throws Throwable {
 //        startTime.set(System.currentTimeMillis());
-        stopWatch= new StopWatch();
-        stopWatch.start();
+        stopWatch.set(new StopWatch());
+        stopWatch.get().start();
         //接收到请求，记录请求内容
 //        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 //        HttpServletRequest request = attributes.getRequest();
         //记录请求的内容
 //        log.info("请求URL:" + request.getRequestURL().toString());
 //        log.info("请求METHOD:" + request.getMethod());
+        log.info("请求URL:{}", ServletUtils.getRequest().getRequestURI());
+        log.info("请求METHOD:{}", ServletUtils.getRequest().getMethod());
+        String className = joinPoint.getTarget().getClass().getName();
+        String methodName = joinPoint.getSignature().getName();
+        log.info("请求CLASSNAME:{}", className);
+        log.info("请求METHODNAME:{}", methodName);
     }
 
 
@@ -40,18 +49,21 @@ public class TaskTimeAspect {
     @AfterReturning(pointcut = "@annotation(controllerTaskTime)", returning = "jsonResult")
     public void doAfterReturning(JoinPoint joinPoint, TaskTime controllerTaskTime, Object jsonResult) {
 //        handleLog(joinPoint, controllerLog, null, jsonResult);
-        stopWatch.stop();
-        String className = joinPoint.getTarget().getClass().getName();
-        String methodName = joinPoint.getSignature().getName();
-        StringBuilder message = new StringBuilder();
-        message.append(stopWatch.getTotalTimeMillis() / 1000.0);
+        try {
+            stopWatch.get().stop();
+
+            StringBuilder message = new StringBuilder();
+            message.append(stopWatch.get().getTotalTimeMillis() / 1000.0);
 //        message.append("getTotalTimeMillis"+stopWatch.getTotalTimeMillis() / 1000.0);
-        message.append(" seconds");
-        log.info("请求URL:{}", ServletUtils.getRequest().getRequestURI());
-        log.info("请求METHOD:{}", ServletUtils.getRequest().getMethod());
-        log.info("请求CLASSNAME:{}", className);
-        log.info("请求METHODNAME:{}", methodName);
-        log.info("方法执行耗时:{}", message);
+            message.append(" seconds");
+
+            log.info("方法执行耗时:{}", message);
+            stopWatch.remove();
+        } catch (Exception e) {
+            log.error("方法执行耗时打印异常:{}", ExceptionUtils.getStackTrace(e));
+
+        }
+
     }
 
 }
