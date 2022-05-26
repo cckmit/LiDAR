@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -31,6 +33,7 @@ public class OlAssetAllowanceDetail implements Serializable {
      * 租赁物信息主键
      */
     @TableField("\"ASSET_ADD_SEQNO\"")
+    @NotBlank(message = "租赁物信息主键不能为空")
     private String assetAddSeqno;
 
     /**
@@ -49,7 +52,7 @@ public class OlAssetAllowanceDetail implements Serializable {
      * 计提日期
      */
     @TableField("\"COUNT_DATE\"")
-    private LocalDateTime countDate;
+    private LocalDate countDate;
 
     /**
      * 原币币种
@@ -126,11 +129,11 @@ public class OlAssetAllowanceDetail implements Serializable {
         this.assetName = assetName;
     }
 
-    public LocalDateTime getCountDate() {
+    public LocalDate getCountDate() {
         return countDate;
     }
 
-    public void setCountDate(LocalDateTime countDate) {
+    public void setCountDate(LocalDate countDate) {
         this.countDate = countDate;
     }
 
@@ -209,20 +212,20 @@ public class OlAssetAllowanceDetail implements Serializable {
     @Override
     public String toString() {
         return "OlAssetAllowanceDetail{" +
-        "seqno=" + seqno +
-        ", assetAddSeqno=" + assetAddSeqno +
-        ", assetNo=" + assetNo +
-        ", assetName=" + assetName +
-        ", countDate=" + countDate +
-        ", currency=" + currency +
-        ", allowanceAmt=" + allowanceAmt +
-        ", allowanceAmtRmb=" + allowanceAmtRmb +
-        ", memo=" + memo +
-        ", exchRateRmb=" + exchRateRmb +
-        ", voucherId=" + voucherId +
-        ", voucherStatus=" + voucherStatus +
-        ", approveStatus=" + approveStatus +
-        ", allowanceDesc=" + allowanceDesc +
-        "}";
+                "seqno=" + seqno +
+                ", assetAddSeqno=" + assetAddSeqno +
+                ", assetNo=" + assetNo +
+                ", assetName=" + assetName +
+                ", countDate=" + countDate +
+                ", currency=" + currency +
+                ", allowanceAmt=" + allowanceAmt +
+                ", allowanceAmtRmb=" + allowanceAmtRmb +
+                ", memo=" + memo +
+                ", exchRateRmb=" + exchRateRmb +
+                ", voucherId=" + voucherId +
+                ", voucherStatus=" + voucherStatus +
+                ", approveStatus=" + approveStatus +
+                ", allowanceDesc=" + allowanceDesc +
+                "}";
     }
 }

@@ -2,11 +2,9 @@ package com.lq.lidar.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
 import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
 import com.lq.lidar.mapper.OlAssetDepreciationDetailMapper;
 import com.lq.lidar.service.IOlAssetDepreciationDetailService;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;

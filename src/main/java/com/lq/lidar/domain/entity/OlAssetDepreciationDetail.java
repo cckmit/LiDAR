@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * <p>
@@ -53,7 +53,7 @@ public class OlAssetDepreciationDetail implements Serializable {
      */
     @TableField("\"DEPRECIATION_DATE\"")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
-    private LocalDateTime depreciationDate;
+    private LocalDate depreciationDate;
 
     /**
      * 原币币种
@@ -118,11 +118,11 @@ public class OlAssetDepreciationDetail implements Serializable {
         this.assetAddSeqno = assetAddSeqno;
     }
 
-    public LocalDateTime getDepreciationDate() {
+    public LocalDate getDepreciationDate() {
         return depreciationDate;
     }
 
-    public void setDepreciationDate(LocalDateTime depreciationDate) {
+    public void setDepreciationDate(LocalDate depreciationDate) {
         this.depreciationDate = depreciationDate;
     }
 
