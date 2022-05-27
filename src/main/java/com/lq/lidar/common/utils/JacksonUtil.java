@@ -29,7 +29,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class JacksonUtil {
-    protected final static Logger log = LoggerFactory.getLogger(JsonUtils.class);
+    protected final static Logger log = LoggerFactory.getLogger(JacksonUtil.class);
 
     private static ObjectMapper mapper;
 
