@@ -22,7 +22,8 @@ public class OlAssetDepreciationDetailServiceImpl extends ServiceImpl<OlAssetDep
 
     @Override
     public List<OlAssetDepreciationDetail> getAssetDepreciationDetailByAssetAddSeqno(String assetAddSeqno) {
-        List<OlAssetDepreciationDetail> list = this.lambdaQuery().eq(OlAssetDepreciationDetail::getAssetAddSeqno, assetAddSeqno).list();
+        List<OlAssetDepreciationDetail> list = this.lambdaQuery().eq(OlAssetDepreciationDetail::getAssetAddSeqno, assetAddSeqno)
+                .orderByDesc(OlAssetDepreciationDetail::getDepreciationDate).list();
         return list;
     }
 }
