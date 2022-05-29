@@ -71,6 +71,7 @@ public class CbaySysDictServiceImpl extends ServiceImpl<CbaySysDictMapper, CbayS
             try {
 //                redisUtils.setCacheObject(Constants.SYS_DICT_KEY + dictTypeCd, list);
                 redisJson.getClient().jsonSetWithEscape(Constants.SYS_DICT_KEY+ dictTypeCd,list);
+                redisJson.getClient().expire(Constants.SYS_DICT_KEY+ dictTypeCd,300L);
             } catch (Exception e) {
                 log.error("redis字典数据缓存失败:{}", ExceptionUtils.getStackTrace(e));
             }
