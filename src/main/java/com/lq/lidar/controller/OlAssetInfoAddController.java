@@ -63,12 +63,18 @@ public class OlAssetInfoAddController extends BaseController {
 
     }
 
+    /**
+     * 根据主键获取租赁物信息
+     *
+     * @param seqno
+     * @return
+     */
     @TaskTime
     @GetMapping("/getOlAssetInfoAddBySeqno/{seqno}")
     public ResponseEntity getOlAssetInfoAddBySeqno(@PathVariable String seqno) {
         OlAssetInfoAdd assetInfoAdd = assetInfoAddService.getById(seqno);
         OlAssetInfoAddVO olAssetInfoAddVO = new OlAssetInfoAddVO();
-        BeanUtils.copyProperties(assetInfoAdd,olAssetInfoAddVO);
+        BeanUtils.copyProperties(assetInfoAdd, olAssetInfoAddVO);
         return ResponseEntity.success(olAssetInfoAddVO);
     }
 
