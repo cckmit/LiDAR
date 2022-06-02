@@ -2,14 +2,18 @@ package com.lq.lidar.controller;
 
 
 import com.github.pagehelper.PageInfo;
+import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
+import com.lq.lidar.common.enums.StatusCode;
+import com.lq.lidar.common.utils.DataConvert;
 import com.lq.lidar.domain.entity.CbaySysUser;
 import com.lq.lidar.service.ICbaySysUserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -80,6 +84,12 @@ public class CbaySysUserController extends BaseController {
         return ResponseEntity.error("操作失败");
     }
 
+    /**
+     * 删除用户
+     *
+     * @param userId
+     * @return
+     */
     @DeleteMapping("/delete/{userId}")
     public ResponseEntity delete(@PathVariable String userId) {
         boolean update = iCbaySysUserService.removeById(userId);
@@ -87,6 +97,15 @@ public class CbaySysUserController extends BaseController {
             return ResponseEntity.success("删除成功");
         }
         return ResponseEntity.error("删除失败");
+    }
+
+    @GetMapping("/getUsers")
+    @TaskTime
+    public ResponseEntity getUsers() {
+        List<CbaySysUser> sysUsers = iCbaySysUserService.lambdaQuery().eq(CbaySysUser::getValidInd, StatusCode.VALID_IND_YES.getCode()).list();
+        List list = DataConvert.ListToLV(sysUsers, CbaySysUser::getUserNm, CbaySysUser::getUserId);
+        return ResponseEntity.success(list);
+
     }
 
 }
