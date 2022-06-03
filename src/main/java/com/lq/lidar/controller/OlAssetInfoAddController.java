@@ -73,9 +73,9 @@ public class OlAssetInfoAddController extends BaseController {
     @GetMapping("/getOlAssetInfoAddBySeqno/{seqno}")
     public ResponseEntity getOlAssetInfoAddBySeqno(@PathVariable String seqno) {
         OlAssetInfoAdd assetInfoAdd = assetInfoAddService.getById(seqno);
-        OlAssetInfoAddVO olAssetInfoAddVO = new OlAssetInfoAddVO();
-        BeanUtils.copyProperties(assetInfoAdd, olAssetInfoAddVO);
-        return ResponseEntity.success(olAssetInfoAddVO);
+//        OlAssetInfoAddVO olAssetInfoAddVO = new OlAssetInfoAddVO();
+//        BeanUtils.copyProperties(assetInfoAdd, olAssetInfoAddVO);
+        return ResponseEntity.success(assetInfoAdd);
     }
 
 }
