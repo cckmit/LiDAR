@@ -38,6 +38,7 @@ public class CbaySysUserController extends BaseController {
      * @return
      */
     @GetMapping("/list")
+    @TaskTime
     public ResponseEntity list(CbaySysUser sysUser) {
         startPage();
         PageInfo<CbaySysUser> pageInfo = iCbaySysUserService.list(sysUser);

@@ -13,6 +13,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import static com.lq.lidar.common.utils.PageUtils.startPage;
@@ -35,17 +38,26 @@ public class CbaySysUserServiceImpl extends ServiceImpl<CbaySysUserMapper, CbayS
     public PageInfo<CbaySysUser> list(CbaySysUser sysUser) {
         LambdaQueryChainWrapper<CbaySysUser> lambdaQuery = this.lambdaQuery();
         lambdaQuery.like(StringUtils.isNotBlank(sysUser.getUserNm()), CbaySysUser::getUserNm, sysUser.getUserNm());
-        lambdaQuery.eq(StringUtils.isNotBlank(sysUser.getValidInd()),CbaySysUser::getValidInd,sysUser.getValidInd());
+        lambdaQuery.eq(StringUtils.isNotBlank(sysUser.getValidInd()), CbaySysUser::getValidInd, sysUser.getValidInd());
         PageInfo<CbaySysUser> pageInfo = new PageInfo<>(lambdaQuery.list());
 
-        List<CbaySysUser> collect = pageInfo.getList().stream().map(cbaySysUser -> {
+//        List<CbaySysUser> collect = pageInfo.getList().stream().map(cbaySysUser -> {
+//            CbaySysOffice ofc = sysOfficeMapper.selectById(cbaySysUser.getOfcId());
+//            CbaySysOffice dep = sysOfficeMapper.selectById(cbaySysUser.getDepId());
+//            cbaySysUser.setOfc(ofc);
+//            cbaySysUser.setDep(dep);
+//            return cbaySysUser;
+//        }).collect(Collectors.toList());
+
+        List<CbaySysUser> collect = pageInfo.getList().stream().map(cbaySysUser -> CompletableFuture.supplyAsync(() -> {
             CbaySysOffice ofc = sysOfficeMapper.selectById(cbaySysUser.getOfcId());
             CbaySysOffice dep = sysOfficeMapper.selectById(cbaySysUser.getDepId());
             cbaySysUser.setOfc(ofc);
             cbaySysUser.setDep(dep);
             return cbaySysUser;
-        }).collect(Collectors.toList());
+        })).collect(Collectors.toList()).stream().map(CompletableFuture::join).collect(Collectors.toList());
         pageInfo.setList(collect);
+
         return pageInfo;
     }
 }
