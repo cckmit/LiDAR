@@ -20,11 +20,11 @@ import org.springframework.util.StopWatch;
 public class TaskTimeAspect {
     private static final Logger log = LoggerFactory.getLogger(TaskTimeAspect.class);
 
-    private ThreadLocal<StopWatch> stopWatch=new ThreadLocal<>();
+    private ThreadLocal<StopWatch> stopWatch=ThreadLocal.withInitial(StopWatch::new);
     @Before("@annotation(controllerTaskTime)")
     public void doBefore(JoinPoint joinPoint, TaskTime controllerTaskTime) throws Throwable {
 //        startTime.set(System.currentTimeMillis());
-        stopWatch.set(new StopWatch());
+        //stopWatch.set(new StopWatch());
         stopWatch.get().start();
         //接收到请求，记录请求内容
 //        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -58,10 +58,10 @@ public class TaskTimeAspect {
             message.append(" seconds");
 
             log.info("方法执行耗时:{}", message);
-            stopWatch.remove();
         } catch (Exception e) {
             log.error("方法执行耗时打印异常:{}", ExceptionUtils.getStackTrace(e));
-
+        }finally {
+            stopWatch.remove();
         }
 
     }
