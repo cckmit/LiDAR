@@ -1,7 +1,7 @@
 package com.lq.lidar.service;
 
-import com.lq.lidar.domain.entity.OlAssetInfoAdd;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lq.lidar.domain.entity.OlAssetInfoAdd;
 
 /**
  * <p>
@@ -13,4 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IOlAssetInfoAddService extends IService<OlAssetInfoAdd> {
 
+    OlAssetInfoAdd getByAssetNo(String assetNo);
+
+    void checkSaveOrUpdate(OlAssetInfoAdd olAssetInfoAddDTO);
 }
