@@ -8,16 +8,17 @@ import com.lq.lidar.domain.dto.AssetAllowanceAndDeprecationDTO;
 import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
 import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
 import com.lq.lidar.domain.entity.OlAssetInfoAdd;
-import com.lq.lidar.domain.vo.OlAssetInfoAddVO;
 import com.lq.lidar.service.IOlAssetAllowanceDetailService;
 import com.lq.lidar.service.IOlAssetDepreciationDetailService;
 import com.lq.lidar.service.IOlAssetInfoAddService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.BeanUtils;
+import org.springframework.util.Assert;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -51,7 +52,6 @@ public class OlAssetInfoAddController extends BaseController {
         List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery().like(StringUtils.isNotBlank(assetInfoAdd.getAssetNo()), OlAssetInfoAdd::getAssetNo, assetInfoAdd.getAssetNo()).list();
         return ResponseEntity.success(getDataTable(list));
     }
-
     @GetMapping("/getAllowanceAndDeprecationByAssetAddSeqno/{assetAddSeqno}")
     public ResponseEntity getAllowanceAndDeprecationByAssetAddSeqno(@PathVariable String assetAddSeqno) {
         List<OlAssetAllowanceDetail> assetAllowanceDetails = assetAllowanceDetailService.getOlAssetAllowanceDetailByAssetAddSeqno(assetAddSeqno);
@@ -73,10 +73,42 @@ public class OlAssetInfoAddController extends BaseController {
     @GetMapping("/getOlAssetInfoAddBySeqno/{seqno}")
     public ResponseEntity getOlAssetInfoAddBySeqno(@PathVariable String seqno) {
         OlAssetInfoAdd assetInfoAdd = assetInfoAddService.getById(seqno);
-//        OlAssetInfoAddVO olAssetInfoAddVO = new OlAssetInfoAddVO();
-//        BeanUtils.copyProperties(assetInfoAdd, olAssetInfoAddVO);
         return ResponseEntity.success(assetInfoAdd);
     }
+
+    /**
+     * 保存更新租赁物
+     *
+     * @param olAssetInfoAddDTO
+     * @return
+     */
+    @PostMapping("/saveOrUpdate")
+    @TaskTime
+    public ResponseEntity saveOrUpdate(@RequestBody @Validated OlAssetInfoAdd olAssetInfoAddDTO) {
+        assetInfoAddService.checkSaveOrUpdate(olAssetInfoAddDTO);
+        // 重复添加判断
+        // 更新
+        if (StringUtils.isNotBlank(olAssetInfoAddDTO.getSeqno())) {
+            OlAssetInfoAdd assetInfoAdd = assetInfoAddService.getById(olAssetInfoAddDTO.getSeqno());
+            if (!Objects.equals(assetInfoAdd.getAssetNo(), olAssetInfoAddDTO.getAssetNo())) {
+                OlAssetInfoAdd olAssetInfoAdd = assetInfoAddService.getByAssetNo(olAssetInfoAddDTO.getAssetNo());
+                Assert.isNull(olAssetInfoAdd, "该租赁物编号已存在，请更换租赁物编号重试！");
+            }
+            if (assetInfoAddService.updateById(olAssetInfoAddDTO)) {
+                return ResponseEntity.success("修改成功");
+            }
+            return ResponseEntity.error("修改失败");
+        }
+        // 添加
+        OlAssetInfoAdd assetInfoAdd = assetInfoAddService.getByAssetNo(olAssetInfoAddDTO.getAssetNo());
+        Assert.isNull(assetInfoAdd, "该租赁物已存在，不可重复添加！");
+        if (assetInfoAddService.save(olAssetInfoAddDTO)) {
+            return ResponseEntity.success("新增成功");
+        }
+        return ResponseEntity.error("新增失败");
+    }
+
+
 
 }
 
