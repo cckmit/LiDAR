@@ -49,7 +49,11 @@ public class OlAssetInfoAddController extends BaseController {
     @TaskTime
     public ResponseEntity list(OlAssetInfoAdd assetInfoAdd) {
         startPage();
-        List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery().like(StringUtils.isNotBlank(assetInfoAdd.getAssetNo()), OlAssetInfoAdd::getAssetNo, assetInfoAdd.getAssetNo()).list();
+        List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery()
+                .like(StringUtils.isNotBlank(assetInfoAdd.getAssetNo()), OlAssetInfoAdd::getAssetNo, assetInfoAdd.getAssetNo())
+                .like(StringUtils.isNotBlank(assetInfoAdd.getAssetName()), OlAssetInfoAdd::getAssetName, assetInfoAdd.getAssetName())
+                .eq(StringUtils.isNotBlank(assetInfoAdd.getCurrency()), OlAssetInfoAdd::getCurrency, assetInfoAdd.getCurrency())
+                .list();
         return ResponseEntity.success(getDataTable(list));
     }
     @GetMapping("/getAllowanceAndDeprecationByAssetAddSeqno/{assetAddSeqno}")
@@ -108,6 +112,20 @@ public class OlAssetInfoAddController extends BaseController {
         return ResponseEntity.error("新增失败");
     }
 
+    /**
+     * 删除租赁物
+     *
+     * @param seqno
+     * @return
+     */
+    @DeleteMapping("/delete/{seqno}")
+    public ResponseEntity delete(@PathVariable String seqno) {
+        boolean update = assetInfoAddService.removeById(seqno);
+        if (update) {
+            return ResponseEntity.success("删除成功");
+        }
+        return ResponseEntity.error("删除失败");
+    }
 
 
 }
