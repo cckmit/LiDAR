@@ -52,7 +52,12 @@ public class OlAssetInfoAddController extends BaseController {
         List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery()
                 .like(StringUtils.isNotBlank(assetInfoAdd.getAssetNo()), OlAssetInfoAdd::getAssetNo, assetInfoAdd.getAssetNo())
                 .like(StringUtils.isNotBlank(assetInfoAdd.getAssetName()), OlAssetInfoAdd::getAssetName, assetInfoAdd.getAssetName())
+                .like(StringUtils.isNotBlank(assetInfoAdd.getProjectName()), OlAssetInfoAdd::getProjectName, assetInfoAdd.getProjectName())
                 .eq(StringUtils.isNotBlank(assetInfoAdd.getCurrency()), OlAssetInfoAdd::getCurrency, assetInfoAdd.getCurrency())
+                .eq(StringUtils.isNotBlank(assetInfoAdd.getOwnerSpvId()), OlAssetInfoAdd::getOwnerSpvId, assetInfoAdd.getOwnerSpvId())
+                .eq(StringUtils.isNotBlank(assetInfoAdd.getOwnerDepartmentCde()), OlAssetInfoAdd::getOwnerDepartmentCde, assetInfoAdd.getOwnerDepartmentCde())
+                .eq(StringUtils.isNotBlank(assetInfoAdd.getProductCategory()), OlAssetInfoAdd::getProductCategory, assetInfoAdd.getProductCategory())
+                .eq(StringUtils.isNotBlank(assetInfoAdd.getProductSubCategory()), OlAssetInfoAdd::getProductSubCategory, assetInfoAdd.getProductSubCategory())
                 .list();
         return ResponseEntity.success(getDataTable(list));
     }
