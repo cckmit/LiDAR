@@ -5,11 +5,8 @@ import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.domain.dto.OlPurchPaymentApprovalDTO;
 import com.lq.lidar.domain.entity.OlPurchPaymentApproval;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -32,16 +29,19 @@ public class OlPurchPaymentApprovalController extends BaseController {
     private String uploadPath;
 
     @PostMapping("/save")
-    public void save(OlPurchPaymentApprovalDTO olPurchPaymentApproval, MultipartFile files){
+    public void save(@RequestPart OlPurchPaymentApprovalDTO olPurchPaymentApproval, MultipartFile files){
         logger.info("11111111");
         String uuid = UUID.randomUUID().toString();
-        String filepath = uploadPath + files.getOriginalFilename();
-        File file = new File(filepath);
-        try {
-            files.transferTo(file);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (null!=files){
+            String filepath = uploadPath + files.getOriginalFilename();
+            File file = new File(filepath);
+            try {
+//                files.transferTo(file);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
 
 }
