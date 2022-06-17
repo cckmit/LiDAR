@@ -53,11 +53,13 @@ public class GlobalExceptionHandler
      * 业务异常
      */
     @ExceptionHandler(ServiceException.class)
-    public ResponseEntity handleServiceException(ServiceException e, HttpServletRequest request)
+    public org.springframework.http.ResponseEntity handleServiceException(ServiceException e, HttpServletRequest request)
     {
         log.error(e.getMessage(), e);
         Integer code = e.getCode();
-        return StringUtils.isNotNull(code) ? ResponseEntity.error(code, e.getMessage()) : ResponseEntity.error(e.getMessage());
+//        return StringUtils.isNotNull(code) ? ResponseEntity.error(code, e.getMessage()) : ResponseEntity.error(e.getMessage());
+        return org.springframework.http.ResponseEntity.badRequest().body(ResponseEntity.error(e.getMessage()));
+
     }
 
     /**
@@ -68,7 +70,8 @@ public class GlobalExceptionHandler
     {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生未知异常.", requestURI, e);
-        return org.springframework.http.ResponseEntity.internalServerError().build();
+//        return org.springframework.http.ResponseEntity.internalServerError().build();
+        return org.springframework.http.ResponseEntity.badRequest().body(ResponseEntity.error(e.getMessage()));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
