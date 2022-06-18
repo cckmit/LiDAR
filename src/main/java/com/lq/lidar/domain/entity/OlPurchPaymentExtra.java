@@ -1,13 +1,13 @@
 package com.lq.lidar.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * <p>
@@ -22,70 +22,78 @@ public class OlPurchPaymentExtra implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("SEQNO")
+    @TableId("\"SEQNO\"")
     private String seqno;
 
-    @TableField("CONTRACT_ID")
+    @TableField("\"CONTRACT_ID\"")
     private String contractId;
 
-    @TableField("EXTERNAL_CONTRACT_NBR")
+    @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
-    @TableField("CONTRACT_SEQNO")
+    @TableField("\"CONTRACT_SEQNO\"")
     private String contractSeqno;
 
-    @TableField("APPLY_SEQNO")
+    @TableField("\"APPLY_SEQNO\"")
     private String applySeqno;
 
-    @TableField("TRANS_SEQNO")
+    @TableField("\"TRANS_SEQNO\"")
     private String transSeqno;
 
-    @TableField("PAYMENT_TRANS_SEQNO")
+    @TableField("\"PAYMENT_TRANS_SEQNO\"")
     private String paymentTransSeqno;
 
     /**
      * 收/付
      */
-    @TableField("RECEIVE_PAY_DIR")
+    @TableField("\"RECEIVE_PAY_DIR\"")
     private String receivePayDir;
 
-    @TableField("RECEIVE_PAY_DESC")
+    @TableField("\"RECEIVE_PAY_DESC\"")
     private String receivePayDesc;
 
     /**
      * 合并至投放款/合并至费用支出/合并至租金收入
      */
-    @TableField("VOUCHER_PROCESS")
+    @TableField("\"VOUCHER_PROCESS\"")
     private String voucherProcess;
 
-    @TableField("AMT")
+    @TableField("\"AMT\"")
     private BigDecimal amt;
 
-    @TableField("CURRENCY_CDE")
+    @TableField("\"CURRENCY_CDE\"")
     private String currencyCde;
 
-    @TableField("MEMO")
+    @TableField("\"MEMO\"")
     private String memo;
 
-    @TableField("PAYMENT_ON_CREDIT_SEQNO")
+    @TableField("\"PAYMENT_ON_CREDIT_SEQNO\"")
     private String paymentOnCreditSeqno;
 
-    @TableField("VAT_AMT")
+    @TableField("\"VAT_AMT\"")
     private BigDecimal vatAmt;
 
-    @TableField("VAT_RATE")
+    @TableField("\"VAT_RATE\"")
     private String vatRate;
 
-    @TableField("IS_ACCRUED")
+    @TableField("\"IS_ACCRUED\"")
     private String isAccrued;
 
-    @TableField("ACCRUED_START_DATE")
-    private LocalDateTime accruedStartDate;
+    /**
+     * 摊销起始日
+     */
+    @TableField("\"ACCRUED_START_DATE\"")
+    @DateTimeFormat(pattern = "yyyy-MM-dd\"")
+    private LocalDate accruedStartDate;
 
-    @TableField("ACCRUED_END_DATE")
-    private LocalDateTime accruedEndDate;
+    /**
+     * 摊销结束日
+     */
+    @TableField("\"ACCRUED_END_DATE\"")
+    @DateTimeFormat(pattern = "yyyy-MM-dd\"")
+    private LocalDate accruedEndDate;
 
-    @TableField("ASSET_INFO_ADD_SEQNO")
+    @TableField("\"ASSET_INFO_ADD_SEQNO\"")
     private String assetInfoAddSeqno;
 
 
@@ -225,19 +233,19 @@ public class OlPurchPaymentExtra implements Serializable {
         this.isAccrued = isAccrued;
     }
 
-    public LocalDateTime getAccruedStartDate() {
+    public LocalDate getAccruedStartDate() {
         return accruedStartDate;
     }
 
-    public void setAccruedStartDate(LocalDateTime accruedStartDate) {
+    public void setAccruedStartDate(LocalDate accruedStartDate) {
         this.accruedStartDate = accruedStartDate;
     }
 
-    public LocalDateTime getAccruedEndDate() {
+    public LocalDate getAccruedEndDate() {
         return accruedEndDate;
     }
 
-    public void setAccruedEndDate(LocalDateTime accruedEndDate) {
+    public void setAccruedEndDate(LocalDate accruedEndDate) {
         this.accruedEndDate = accruedEndDate;
     }
 
@@ -252,26 +260,26 @@ public class OlPurchPaymentExtra implements Serializable {
     @Override
     public String toString() {
         return "OlPurchPaymentExtra{" +
-        "seqno=" + seqno +
-        ", contractId=" + contractId +
-        ", externalContractNbr=" + externalContractNbr +
-        ", contractSeqno=" + contractSeqno +
-        ", applySeqno=" + applySeqno +
-        ", transSeqno=" + transSeqno +
-        ", paymentTransSeqno=" + paymentTransSeqno +
-        ", receivePayDir=" + receivePayDir +
-        ", receivePayDesc=" + receivePayDesc +
-        ", voucherProcess=" + voucherProcess +
-        ", amt=" + amt +
-        ", currencyCde=" + currencyCde +
-        ", memo=" + memo +
-        ", paymentOnCreditSeqno=" + paymentOnCreditSeqno +
-        ", vatAmt=" + vatAmt +
-        ", vatRate=" + vatRate +
-        ", isAccrued=" + isAccrued +
-        ", accruedStartDate=" + accruedStartDate +
-        ", accruedEndDate=" + accruedEndDate +
-        ", assetInfoAddSeqno=" + assetInfoAddSeqno +
-        "}";
+                "seqno=" + seqno +
+                ", contractId=" + contractId +
+                ", externalContractNbr=" + externalContractNbr +
+                ", contractSeqno=" + contractSeqno +
+                ", applySeqno=" + applySeqno +
+                ", transSeqno=" + transSeqno +
+                ", paymentTransSeqno=" + paymentTransSeqno +
+                ", receivePayDir=" + receivePayDir +
+                ", receivePayDesc=" + receivePayDesc +
+                ", voucherProcess=" + voucherProcess +
+                ", amt=" + amt +
+                ", currencyCde=" + currencyCde +
+                ", memo=" + memo +
+                ", paymentOnCreditSeqno=" + paymentOnCreditSeqno +
+                ", vatAmt=" + vatAmt +
+                ", vatRate=" + vatRate +
+                ", isAccrued=" + isAccrued +
+                ", accruedStartDate=" + accruedStartDate +
+                ", accruedEndDate=" + accruedEndDate +
+                ", assetInfoAddSeqno=" + assetInfoAddSeqno +
+                "}";
     }
 }

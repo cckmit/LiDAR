@@ -9,7 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDate;
 
 /**
  * <p>
@@ -24,327 +23,327 @@ public class OlPurchPaymentApproval implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("SEQNO")
+    @TableId("\"SEQNO\"")
     private String seqno;
 
-    @TableField("CONTRACT_SEQNO")
+    @TableField("\"CONTRACT_SEQNO\"")
     private String contractSeqno;
 
-    @TableField("CONTRACT_ID")
+    @TableField("\"CONTRACT_ID\"")
     private String contractId;
 
-    @TableField("EXTERNAL_CONTRACT_NBR")
+    @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
-    @TableField("APPLY_SECTION_NAME")
+    @TableField("\"APPLY_SECTION_NAME\"")
     private String applySectionName;
 
-//    @TableField("APPLY_LOAN_DATE")
-//    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
-    @DateTimeFormat(pattern ="yyyy-MM-dd")
+    @TableField("\"APPLY_LOAN_DATE\"")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern ="yyyy-MM-dd\"")
     private LocalDate applyLoanDate;
 
-    @TableField("PROJECT_NAME")
+    @TableField("\"PROJECT_NAME\"")
     private String projectName;
 
-    @TableField("APPLY_CONTRACT_AMT")
+    @TableField("\"APPLY_CONTRACT_AMT\"")
     private BigDecimal applyContractAmt;
 
-    @TableField("APPLY_FEE_AMT")
+    @TableField("\"APPLY_FEE_AMT\"")
     private BigDecimal applyFeeAmt;
 
-    @TableField("LOAN_DESC")
+    @TableField("\"LOAN_DESC\"")
     private String loanDesc;
 
-    @TableField("LOAN_TOTAL_NUM")
+    @TableField("\"LOAN_TOTAL_NUM\"")
     private BigDecimal loanTotalNum;
 
-    @TableField("THIS_NUM")
+    @TableField("\"THIS_NUM\"")
     private BigDecimal thisNum;
 
-    @TableField("CURRENCY_CDE")
+    @TableField("\"CURRENCY_CDE\"")
     private String currencyCde;
 
-    @TableField("LOAN_TOTAL_AMT")
+    @TableField("\"LOAN_TOTAL_AMT\"")
     private BigDecimal loanTotalAmt;
 
-    @TableField("CURRENCY_CDE_LATER")
+    @TableField("\"CURRENCY_CDE_LATER\"")
     private String currencyCdeLater;
 
-    @TableField("LOAN_AMT_LATER")
+    @TableField("\"LOAN_AMT_LATER\"")
     private BigDecimal loanAmtLater;
 
-    @TableField("RECV_ACCT_NAME")
+    @TableField("\"RECV_ACCT_NAME\"")
     private String recvAcctName;
 
-    @TableField("RECV_ACCT_BANK")
+    @TableField("\"RECV_ACCT_BANK\"")
     private String recvAcctBank;
 
-    @TableField("RECV_ACCT_NO")
+    @TableField("\"RECV_ACCT_NO\"")
     private String recvAcctNo;
 
-    @TableField("PAY_WAY")
+    @TableField("\"PAY_WAY\"")
     private String payWay;
 
-    @TableField("APPLYER_ID")
+    @TableField("\"APPLYER_ID\"")
     private String applyerId;
 
-    @TableField("APPLYER_NAME")
+    @TableField("\"APPLYER_NAME\"")
     private String applyerName;
 
-    @TableField("APPLY_DATE")
+    @TableField("\"APPLY_DATE\"")
     private LocalDate applyDate;
 
-    @TableField("APPLY_LEADER_ID")
+    @TableField("\"APPLY_LEADER_ID\"")
     private String applyLeaderId;
 
-    @TableField("APPLY_LEADER_NAME")
+    @TableField("\"APPLY_LEADER_NAME\"")
     private String applyLeaderName;
 
-    @TableField("APPLY_LEADER_APPROVE_DATE")
+    @TableField("\"APPLY_LEADER_APPROVE_DATE\"")
     private LocalDate applyLeaderApproveDate;
 
-    @TableField("APPLY_SECTION_OPINION")
+    @TableField("\"APPLY_SECTION_OPINION\"")
     private String applySectionOpinion;
 
-    @TableField("MANAGER_ID")
+    @TableField("\"MANAGER_ID\"")
     private String managerId;
 
-    @TableField("MANAGER_NAME")
+    @TableField("\"MANAGER_NAME\"")
     private String managerName;
 
-    @TableField("MANAGER_APPROVE_DATE")
+    @TableField("\"MANAGER_APPROVE_DATE\"")
     private LocalDate managerApproveDate;
 
-    @TableField("MANAGE_LEADER_ID")
+    @TableField("\"MANAGE_LEADER_ID\"")
     private String manageLeaderId;
 
-    @TableField("MANAGE_LEADER_NAME")
+    @TableField("\"MANAGE_LEADER_NAME\"")
     private String manageLeaderName;
 
-    @TableField("MANAGE_LEADER_APPROVE_DATE")
+    @TableField("\"MANAGE_LEADER_APPROVE_DATE\"")
     private LocalDate manageLeaderApproveDate;
 
-    @TableField("MANAGE_APPROVE_OPINION")
+    @TableField("\"MANAGE_APPROVE_OPINION\"")
     private String manageApproveOpinion;
 
-    @TableField("LEADER_ID")
+    @TableField("\"LEADER_ID\"")
     private String leaderId;
 
-    @TableField("LEADER_NAME")
+    @TableField("\"LEADER_NAME\"")
     private String leaderName;
 
-    @TableField("LEADER_APPROVE_DATE")
+    @TableField("\"LEADER_APPROVE_DATE\"")
     private LocalDate leaderApproveDate;
 
-    @TableField("LEADER_OPINION")
+    @TableField("\"LEADER_OPINION\"")
     private String leaderOpinion;
 
-    @TableField("RIGHT_LEADER_ID")
+    @TableField("\"RIGHT_LEADER_ID\"")
     private String rightLeaderId;
 
-    @TableField("RIGHT_LEADER_NAME")
+    @TableField("\"RIGHT_LEADER_NAME\"")
     private String rightLeaderName;
 
-    @TableField("RIGHT_LEADER_APPROVE_DATE")
+    @TableField("\"RIGHT_LEADER_APPROVE_DATE\"")
     private LocalDate rightLeaderApproveDate;
 
-    @TableField("RIGHT_LEADER_OPINION")
+    @TableField("\"RIGHT_LEADER_OPINION\"")
     private String rightLeaderOpinion;
 
-    @TableField("MEMO")
+    @TableField("\"MEMO\"")
     private String memo;
 
-    @TableField("PAY_ACCT_NO")
+    @TableField("\"PAY_ACCT_NO\"")
     private String payAcctNo;
 
-    @TableField("APPROVE_STATUS")
+    @TableField("\"APPROVE_STATUS\"")
     private String approveStatus;
 
-    @TableField("CREATER_ID")
+    @TableField("\"CREATER_ID\"")
     private String createrId;
 
-    @TableField("CREATER_NAME")
+    @TableField("\"CREATER_NAME\"")
     private String createrName;
 
-    @TableField("LAST_UPDATE_TIME")
+    @TableField("\"LAST_UPDATE_TIME\"")
     private LocalDate lastUpdateTime;
 
-    @TableField("VER")
+    @TableField("\"VER\"")
     private BigDecimal ver;
 
-    @TableField("CONFIRM_ID")
+    @TableField("\"CONFIRM_ID\"")
     private String confirmId;
 
-    @TableField("CONFIRM_NAME")
+    @TableField("\"CONFIRM_NAME\"")
     private String confirmName;
 
     /**
      * 是否其他机构代付
      */
-    @TableField("IS_AGENT_PAY")
+    @TableField("\"IS_AGENT_PAY\"")
     private String isAgentPay;
 
     /**
      * 代付SPV ID
      */
-    @TableField("AGENT_SPV_ID")
+    @TableField("\"AGENT_SPV_ID\"")
     private String agentSpvId;
 
     /**
      * 代付spv名称
      */
-    @TableField("AGENT_SPV_NAME")
+    @TableField("\"AGENT_SPV_NAME\"")
     private String agentSpvName;
 
     /**
      * 实际付款日期
      */
-    @TableField("ACT_PAY_DATE")
+    @TableField("\"ACT_PAY_DATE\"")
     private LocalDate actPayDate;
 
-    @TableField("PAY_ADD_INFO")
+    @TableField("\"PAY_ADD_INFO\"")
     private String payAddInfo;
 
-    @TableField("RECV_BANK_SWIFT_CODE")
+    @TableField("\"RECV_BANK_SWIFT_CODE\"")
     private String recvBankSwiftCode;
 
-    @TableField("RECV_TRANSFER_BANK")
+    @TableField("\"RECV_TRANSFER_BANK\"")
     private String recvTransferBank;
 
-    @TableField("RECV_TRANSFER_BANK_SWIFT_CODE")
+    @TableField("\"RECV_TRANSFER_BANK_SWIFT_CODE\"")
     private String recvTransferBankSwiftCode;
 
-    @TableField("IS_DIRECT_PAY")
+    @TableField("\"IS_DIRECT_PAY\"")
     private String isDirectPay;
 
-    @TableField("SPV_ID")
+    @TableField("\"SPV_ID\"")
     private String spvId;
 
-    @TableField("SPV_NAME")
+    @TableField("\"SPV_NAME\"")
     private String spvName;
 
-    @TableField("PAY_TYPE")
+    @TableField("\"PAY_TYPE\"")
     private String payType;
 
-    @TableField("RENTAL_CONTRACT_SEQNO")
+    @TableField("\"RENTAL_CONTRACT_SEQNO\"")
     private String rentalContractSeqno;
 
-    @TableField("RENTAL_TRANS_DETAIL_SEQNO")
+    @TableField("\"RENTAL_TRANS_DETAIL_SEQNO\"")
     private String rentalTransDetailSeqno;
 
-    @TableField("SUBLEASE_RENT_SEQNO")
+    @TableField("\"SUBLEASE_RENT_SEQNO\"")
     private String subleaseRentSeqno;
 
-    @TableField("VAT_RATE")
+    @TableField("\"VAT_RATE\"")
     private String vatRate;
 
-    @TableField("DEPARTMENT_CDE")
+    @TableField("\"DEPARTMENT_CDE\"")
     private String departmentCde;
 
-    @TableField("DEPARTMENT_NAME")
+    @TableField("\"DEPARTMENT_NAME\"")
     private String departmentName;
 
-    @TableField("OA_WORKFLOW_ID")
+    @TableField("\"OA_WORKFLOW_ID\"")
     private String oaWorkflowId;
 
-    @TableField("BANK_CHARGE_CURRENCY")
+    @TableField("\"BANK_CHARGE_CURRENCY\"")
     private String bankChargeCurrency;
 
-    @TableField("BANK_CHARGE_AMT")
+    @TableField("\"BANK_CHARGE_AMT\"")
     private BigDecimal bankChargeAmt;
 
-    @TableField("EAS_EXCH_RATE")
+    @TableField("\"EAS_EXCH_RATE\"")
     private BigDecimal easExchRate;
 
-    @TableField("EAS_AMT")
+    @TableField("\"EAS_AMT\"")
     private BigDecimal easAmt;
 
-    @TableField("EAS_CURRENCY")
+    @TableField("\"EAS_CURRENCY\"")
     private String easCurrency;
 
-    @TableField("IS_DIRECT_FIX_ASSET")
+    @TableField("\"IS_DIRECT_FIX_ASSET\"")
     private String isDirectFixAsset;
 
-    @TableField("MAIN_MANAGER_ID")
+    @TableField("\"MAIN_MANAGER_ID\"")
     private String mainManagerId;
 
-    @TableField("MAIN_MANAGER_NAME")
+    @TableField("\"MAIN_MANAGER_NAME\"")
     private String mainManagerName;
 
-    @TableField("CO_MANAGER_ID")
+    @TableField("\"CO_MANAGER_ID\"")
     private String coManagerId;
 
-    @TableField("CO_MANAGER_NAME")
+    @TableField("\"CO_MANAGER_NAME\"")
     private String coManagerName;
 
-    @TableField("ASSET_INFO_ADD_SEQNO")
+    @TableField("\"ASSET_INFO_ADD_SEQNO\"")
     private String assetInfoAddSeqno;
 
-    @TableField("ASSET_NAME")
+    @TableField("\"ASSET_NAME\"")
     private String assetName;
 
-    @TableField("BUSI_PROJECT_NAME")
+    @TableField("\"BUSI_PROJECT_NAME\"")
     private String busiProjectName;
 
-    @TableField("PAY_STYLE")
+    @TableField("\"PAY_STYLE\"")
     private String payStyle;
 
-    @TableField("PAY_ACCT_DESC")
+    @TableField("\"PAY_ACCT_DESC\"")
     private String payAcctDesc;
 
-    @TableField("IS_PAYED")
+    @TableField("\"IS_PAYED\"")
     private String isPayed;
 
-    @TableField("ORG_LEADER_ID")
+    @TableField("\"ORG_LEADER_ID\"")
     private String orgLeaderId;
 
-    @TableField("ORG_LEADER_NAME")
+    @TableField("\"ORG_LEADER_NAME\"")
     private String orgLeaderName;
 
-    @TableField("ORG_LEADER_APPROVE_DATE")
+    @TableField("\"ORG_LEADER_APPROVE_DATE\"")
     private LocalDate orgLeaderApproveDate;
 
-    @TableField("ORG_LEADER_OPINION")
+    @TableField("\"ORG_LEADER_OPINION\"")
     private String orgLeaderOpinion;
 
-    @TableField("PREMIUM_AMT")
+    @TableField("\"PREMIUM_AMT\"")
     private BigDecimal premiumAmt;
 
-    @TableField("TECHNICAL_SIGN_ID")
+    @TableField("\"TECHNICAL_SIGN_ID\"")
     private String technicalSignId;
 
-    @TableField("TECHNICAL_SIGN_NAME")
+    @TableField("\"TECHNICAL_SIGN_NAME\"")
     private String technicalSignName;
 
-    @TableField("LAW_SIGN_ID")
+    @TableField("\"LAW_SIGN_ID\"")
     private String lawSignId;
 
-    @TableField("LAW_SIGN_NAME")
+    @TableField("\"LAW_SIGN_NAME\"")
     private String lawSignName;
 
-    @TableField("SECTION_LEADER_ID")
+    @TableField("\"SECTION_LEADER_ID\"")
     private String sectionLeaderId;
 
-    @TableField("SECTION_LEADER_NAME")
+    @TableField("\"SECTION_LEADER_NAME\"")
     private String sectionLeaderName;
 
-    @TableField("ORG_GROUP_LEADER_NAME")
+    @TableField("\"ORG_GROUP_LEADER_NAME\"")
     private String orgGroupLeaderName;
 
-    @TableField("ORG_GROUP_LEADER_ID")
+    @TableField("\"ORG_GROUP_LEADER_ID\"")
     private String orgGroupLeaderId;
 
-    @TableField("CRO_ID")
+    @TableField("\"CRO_ID\"")
     private String croId;
 
-    @TableField("CRO_NAME")
+    @TableField("\"CRO_NAME\"")
     private String croName;
 
-    @TableField("RISK_CENTER_LEADER_ID")
+    @TableField("\"RISK_CENTER_LEADER_ID\"")
     private String riskCenterLeaderId;
 
-    @TableField("RISK_CENTER_LEADER_NAME")
+    @TableField("\"RISK_CENTER_LEADER_NAME\"")
     private String riskCenterLeaderName;
 
 
