@@ -1,17 +1,19 @@
 package com.lq.lidar.controller;
 
 
+import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
+import com.lq.lidar.common.core.domain.ResponseEntity;
+import com.lq.lidar.common.utils.JacksonUtil;
 import com.lq.lidar.domain.dto.OlPurchPaymentApprovalDTO;
 import com.lq.lidar.domain.entity.OlPurchPaymentApproval;
-import org.springframework.beans.factory.annotation.Value;
+import com.lq.lidar.service.IOlPurchPaymentApprovalService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -25,22 +27,41 @@ import java.util.UUID;
 @CrossOrigin
 @RequestMapping("/purch/olPurchPaymentApproval")
 public class OlPurchPaymentApprovalController extends BaseController {
-    @Value("${upload.path}")
-    private String uploadPath;
 
+
+    @Resource
+    private IOlPurchPaymentApprovalService olPurchPaymentApprovalService;
+
+    @GetMapping("/list")
+    @TaskTime
+    public ResponseEntity list(OlPurchPaymentApproval olPurchPaymentApproval) {
+        String userId = "admin";
+        startPage();
+        List<OlPurchPaymentApproval> list = olPurchPaymentApprovalService.lambdaQuery()
+                .and(w -> w.eq(StringUtils.isNotBlank(userId), OlPurchPaymentApproval::getMainManagerId, userId)
+                        .or()
+                        .eq(StringUtils.isNotBlank(userId), OlPurchPaymentApproval::getCoManagerId, userId)
+                        .or()
+                        .eq(StringUtils.isNotBlank(userId), OlPurchPaymentApproval::getCreaterId, userId)
+                )
+
+
+                .like(StringUtils.isNotBlank(olPurchPaymentApproval.getContractId()), OlPurchPaymentApproval::getContractId, olPurchPaymentApproval.getContractId())
+                .like(StringUtils.isNotBlank(olPurchPaymentApproval.getExternalContractNbr()), OlPurchPaymentApproval::getExternalContractNbr, olPurchPaymentApproval.getExternalContractNbr())
+                .like(StringUtils.isNotBlank(olPurchPaymentApproval.getProjectName()), OlPurchPaymentApproval::getProjectName, olPurchPaymentApproval.getProjectName())
+                .eq(StringUtils.isNotBlank(olPurchPaymentApproval.getCurrencyCde()), OlPurchPaymentApproval::getCurrencyCde, olPurchPaymentApproval.getCurrencyCde())
+                .eq(StringUtils.isNotBlank(olPurchPaymentApproval.getApproveStatus()), OlPurchPaymentApproval::getApproveStatus, olPurchPaymentApproval.getApproveStatus())
+                .list();
+        return ResponseEntity.success(getDataTable(list));
+    }
+
+    @TaskTime
     @PostMapping("/save")
-    public void save(@RequestPart OlPurchPaymentApprovalDTO olPurchPaymentApproval, MultipartFile files){
-        logger.info("11111111");
-        String uuid = UUID.randomUUID().toString();
-        if (null!=files){
-            String filepath = uploadPath + files.getOriginalFilename();
-            File file = new File(filepath);
-            try {
-//                files.transferTo(file);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public ResponseEntity save(@RequestPart OlPurchPaymentApprovalDTO olPurchPaymentApproval, @RequestPart(required = false) List<MultipartFile> files) {
+        String to = JacksonUtil.to(olPurchPaymentApproval);
+        logger.info("req:{}", to);
+        olPurchPaymentApprovalService.saveOlPurchPaymentApproval(olPurchPaymentApproval, files);
+        return ResponseEntity.success("提交成功");
 
     }
 

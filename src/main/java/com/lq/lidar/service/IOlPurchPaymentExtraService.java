@@ -6,7 +6,7 @@ import com.lq.lidar.domain.entity.OlPurchPaymentExtra;
 
 /**
  * <p>
- *  服务类
+ *  采购款附加明细服务类
  * </p>
  *
  * @author LQ

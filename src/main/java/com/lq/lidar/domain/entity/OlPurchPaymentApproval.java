@@ -29,9 +29,15 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"CONTRACT_SEQNO\"")
     private String contractSeqno;
 
+    /**
+     * 合同ID
+     */
     @TableField("\"CONTRACT_ID\"")
     private String contractId;
 
+    /**
+     * 外部合同号
+     */
     @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
@@ -157,6 +163,9 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"PAY_ACCT_NO\"")
     private String payAcctNo;
 
+    /**
+     * 审批状态
+     */
     @TableField("\"APPROVE_STATUS\"")
     private String approveStatus;
 
