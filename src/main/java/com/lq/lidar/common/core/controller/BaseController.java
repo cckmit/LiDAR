@@ -9,7 +9,9 @@ import com.lq.lidar.common.core.page.TableDataInfo;
 import com.lq.lidar.common.core.page.TableSupport;
 import com.lq.lidar.common.utils.DateUtils;
 import com.lq.lidar.common.utils.PageUtils;
+import com.lq.lidar.common.utils.SecurityUtils;
 import com.lq.lidar.common.utils.StringUtils;
+import com.lq.lidar.domain.dto.LoginUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import java.beans.PropertyEditorSupport;
 import java.util.Date;
 import java.util.List;
+
+import static com.lq.lidar.common.utils.SecurityUtils.getLoginUser;
 
 /**
  * web层通用数据处理
@@ -157,32 +161,33 @@ public class BaseController
     /**
      * 获取用户缓存信息
      */
-//    public LoginUser getLoginUser()
-//    {
-//        return SecurityUtils.getLoginUser();
-//    }
+    public LoginUser getLoginUser()
+    {
+        return SecurityUtils.getLoginUser();
+    }
 
     /**
      * 获取登录用户id
      */
-//    public Long getUserId()
-//    {
+    public String getUserId()
+    {
 //        return getLoginUser().getUserId();
-//    }
+        return "admin";
+    }
 
     /**
      * 获取登录部门id
      */
-//    public Long getDeptId()
-//    {
-//        return getLoginUser().getDeptId();
-//    }
+    public Long getDeptId()
+    {
+        return getLoginUser().getDeptId();
+    }
 
     /**
      * 获取登录用户名
      */
-//    public String getUsername()
-//    {
-//        return getLoginUser().getUsername();
-//    }
+    public String getUsername()
+    {
+        return getLoginUser().getUsername();
+    }
 }
