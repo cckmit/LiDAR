@@ -4,8 +4,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lq.lidar.common.annotation.Mobile;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -23,9 +26,15 @@ public class OlPurchPaymentApproval implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 主键
+     */
     @TableId("\"SEQNO\"")
     private String seqno;
 
+    /**
+     * 采购合同表主键
+     */
     @TableField("\"CONTRACT_SEQNO\"")
     private String contractSeqno;
 
@@ -41,65 +50,128 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
+    /**
+     * 申请中心名称
+     */
     @TableField("\"APPLY_SECTION_NAME\"")
     private String applySectionName;
 
+    /**
+     * 申请放款时间
+     */
+    @NotNull(message = "申请放款时间不能为空")
     @TableField("\"APPLY_LOAN_DATE\"")
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
-    @DateTimeFormat(pattern ="yyyy-MM-dd\"")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd\"")
     private LocalDate applyLoanDate;
 
+    /**
+     * 项目名称
+     */
     @TableField("\"PROJECT_NAME\"")
     private String projectName;
 
+    /**
+     * 审批金额-合同款
+     */
     @TableField("\"APPLY_CONTRACT_AMT\"")
     private BigDecimal applyContractAmt;
 
+    /**
+     * 审批金额-合同款
+     */
     @TableField("\"APPLY_FEE_AMT\"")
     private BigDecimal applyFeeAmt;
 
+    /**
+     * 付款说明
+     */
     @TableField("\"LOAN_DESC\"")
+    @NotBlank(message = "付款说明不能为空")
     private String loanDesc;
 
+    /**
+     * 放款总次数
+     */
     @TableField("\"LOAN_TOTAL_NUM\"")
     private BigDecimal loanTotalNum;
 
+    /**
+     * 本次次数
+     */
     @TableField("\"THIS_NUM\"")
     private BigDecimal thisNum;
 
+    /**
+     * 本次付款币种
+     */
     @TableField("\"CURRENCY_CDE\"")
+    @NotBlank(message = "币种不能为空")
     private String currencyCde;
 
+    /**
+     * 本次付款总额
+     */
     @TableField("\"LOAN_TOTAL_AMT\"")
     private BigDecimal loanTotalAmt;
 
+    /**
+     * 后续付款币种
+     */
     @TableField("\"CURRENCY_CDE_LATER\"")
     private String currencyCdeLater;
 
+    /**
+     * 后续还需付金额
+     */
     @TableField("\"LOAN_AMT_LATER\"")
     private BigDecimal loanAmtLater;
 
+    /**
+     * 收款人账户名称
+     */
     @TableField("\"RECV_ACCT_NAME\"")
     private String recvAcctName;
 
+    /**
+     * 收款人开户银行
+     */
     @TableField("\"RECV_ACCT_BANK\"")
     private String recvAcctBank;
 
+    /**
+     * 收款人银行账号
+     */
     @TableField("\"RECV_ACCT_NO\"")
     private String recvAcctNo;
 
+    /**
+     * 支付方式
+     */
     @TableField("\"PAY_WAY\"")
     private String payWay;
 
+    /**
+     * 申请中心客户经理ID
+     */
     @TableField("\"APPLYER_ID\"")
     private String applyerId;
 
+    /**
+     * 申请中心客户经理名字
+     */
     @TableField("\"APPLYER_NAME\"")
     private String applyerName;
 
+    /**
+     * 申请中心客户经理申请日期
+     */
     @TableField("\"APPLY_DATE\"")
     private LocalDate applyDate;
 
+    /**
+     * 申请中心负责人ID
+     */
     @TableField("\"APPLY_LEADER_ID\"")
     private String applyLeaderId;
 
@@ -160,6 +232,9 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"MEMO\"")
     private String memo;
 
+    /**
+     * 付款账号
+     */
     @TableField("\"PAY_ACCT_NO\"")
     private String payAcctNo;
 
@@ -169,12 +244,21 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"APPROVE_STATUS\"")
     private String approveStatus;
 
+    /**
+     * 创建人ID
+     */
     @TableField("\"CREATER_ID\"")
     private String createrId;
 
+    /**
+     * 创建人名字
+     */
     @TableField("\"CREATER_NAME\"")
     private String createrName;
 
+    /**
+     * 最后修改时间
+     */
     @TableField("\"LAST_UPDATE_TIME\"")
     private LocalDate lastUpdateTime;
 
@@ -211,6 +295,9 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"ACT_PAY_DATE\"")
     private LocalDate actPayDate;
 
+    /**
+     * 采购附加信息说明
+     */
     @TableField("\"PAY_ADD_INFO\"")
     private String payAddInfo;
 
@@ -226,11 +313,18 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"IS_DIRECT_PAY\"")
     private String isDirectPay;
 
+    /**
+     * 项目归属SPV代码
+     */
     @TableField("\"SPV_ID\"")
     private String spvId;
 
+    /**
+     * 项目归属SPV名称
+     */
     @TableField("\"SPV_NAME\"")
     private String spvName;
+
 
     @TableField("\"PAY_TYPE\"")
     private String payType;
@@ -286,19 +380,36 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"CO_MANAGER_NAME\"")
     private String coManagerName;
 
+    /**
+     * 租赁物附加信息表主键
+     */
     @TableField("\"ASSET_INFO_ADD_SEQNO\"")
     private String assetInfoAddSeqno;
 
+    /**
+     * 资产名称
+     */
     @TableField("\"ASSET_NAME\"")
     private String assetName;
 
+    /**
+     * 业务项目名称
+     */
+    @NotBlank(message = "业务项目名称不能为空")
     @TableField("\"BUSI_PROJECT_NAME\"")
     private String busiProjectName;
 
+    /**
+     * 支付类型
+     */
     @TableField("\"PAY_STYLE\"")
     private String payStyle;
 
+    /**
+     * 付款账户说明
+     */
     @TableField("\"PAY_ACCT_DESC\"")
+    @NotBlank(message = "付款账户说明不能为空")
     private String payAcctDesc;
 
     @TableField("\"IS_PAYED\"")
