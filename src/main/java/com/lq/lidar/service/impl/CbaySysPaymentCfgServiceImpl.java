@@ -1,6 +1,8 @@
 package com.lq.lidar.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.lq.lidar.common.utils.DictConvert;
 import com.lq.lidar.domain.entity.CbayBpBizPtnrBase;
 import com.lq.lidar.domain.entity.CbaySysPaymentCfg;
@@ -34,7 +36,7 @@ public class CbaySysPaymentCfgServiceImpl extends ServiceImpl<CbaySysPaymentCfgM
     @Override
     public List<Map<String, String>> findAllRecvAccounts() {
         List<CbaySysPaymentCfg> list = this.list();
-        List<Map<String, String>> accountNumberList = new ArrayList<>();
+        List<Map<String, String>> accountNumberList = Lists.newArrayListWithCapacity(list.size());
         for (CbaySysPaymentCfg sysPaymentCfg : list) {
             sysPaymentCfg.setCrcyCd(dictConvert.DictValueToLabel(sysPaymentCfg.getCrcyCd()));
             CbayBpBizPtnrBase cbayBpBizPtnrBase = cbayBpBizPtnrBaseMapper.selectById(sysPaymentCfg.getBankId());
@@ -42,7 +44,7 @@ public class CbaySysPaymentCfgServiceImpl extends ServiceImpl<CbaySysPaymentCfgM
             if (cbayBpBizPtnrBase != null) {
                 recvBankCde = cbayBpBizPtnrBase.getBpNm();
             }
-            Map<String, String> map = new HashMap<>();
+            Map<String, String> map = Maps.newHashMapWithExpectedSize(2);
             StringBuilder label = new StringBuilder(sysPaymentCfg.getAccNbr() + "-" + sysPaymentCfg.getAccountNm());
             if (recvBankCde == null && sysPaymentCfg.getAlias() == null) {
                 map.put("label", label
