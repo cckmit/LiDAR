@@ -2,6 +2,7 @@ package com.lq.lidar.common.utils;
 
 import com.google.common.collect.Maps;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,10 @@ public class DataConvert {
      * @param <T>
      * @return
      */
-    public static <T, R> List ListToLV(List<T> list, TypeFunction<R, String> label,TypeFunction<R, String> value) {
+    public static <T, R> List ListToLV(List<T> list, TypeFunction<R, String> label, TypeFunction<R, String> value) {
+        if (CollectionUtils.isEmpty(list)) {
+            return null;
+        }
         List<HashMap<Object, Object>> maps = list.stream().map(data -> {
             HashMap<Object, Object> map = Maps.newHashMapWithExpectedSize(2);
             try {

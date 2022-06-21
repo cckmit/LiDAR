@@ -9,6 +9,7 @@ import com.lq.lidar.domain.dto.OlPurchPaymentApprovalDTO;
 import com.lq.lidar.domain.entity.OlPurchPaymentApproval;
 import com.lq.lidar.service.IOlPurchPaymentApprovalService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,7 +36,7 @@ public class OlPurchPaymentApprovalController extends BaseController {
     @GetMapping("/list")
     @TaskTime
     public ResponseEntity list(OlPurchPaymentApproval olPurchPaymentApproval) {
-        String userId = "admin";
+        String userId = getUserId();
         startPage();
         List<OlPurchPaymentApproval> list = olPurchPaymentApprovalService.lambdaQuery()
                 .and(w -> w.eq(StringUtils.isNotBlank(userId), OlPurchPaymentApproval::getMainManagerId, userId)
@@ -44,8 +45,6 @@ public class OlPurchPaymentApprovalController extends BaseController {
                         .or()
                         .eq(StringUtils.isNotBlank(userId), OlPurchPaymentApproval::getCreaterId, userId)
                 )
-
-
                 .like(StringUtils.isNotBlank(olPurchPaymentApproval.getContractId()), OlPurchPaymentApproval::getContractId, olPurchPaymentApproval.getContractId())
                 .like(StringUtils.isNotBlank(olPurchPaymentApproval.getExternalContractNbr()), OlPurchPaymentApproval::getExternalContractNbr, olPurchPaymentApproval.getExternalContractNbr())
                 .like(StringUtils.isNotBlank(olPurchPaymentApproval.getProjectName()), OlPurchPaymentApproval::getProjectName, olPurchPaymentApproval.getProjectName())
@@ -57,9 +56,7 @@ public class OlPurchPaymentApprovalController extends BaseController {
 
     @TaskTime
     @PostMapping("/save")
-    public ResponseEntity save(@RequestPart OlPurchPaymentApprovalDTO olPurchPaymentApproval, @RequestPart(required = false) List<MultipartFile> files) {
-        String to = JacksonUtil.to(olPurchPaymentApproval);
-        logger.info("req:{}", to);
+    public ResponseEntity save(@RequestPart @Validated OlPurchPaymentApprovalDTO olPurchPaymentApproval, @RequestPart(required = false) List<MultipartFile> files) {
         olPurchPaymentApprovalService.saveOlPurchPaymentApproval(olPurchPaymentApproval, files);
         return ResponseEntity.success("提交成功");
 

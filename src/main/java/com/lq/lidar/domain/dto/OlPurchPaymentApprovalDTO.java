@@ -3,12 +3,14 @@ package com.lq.lidar.domain.dto;
 import com.lq.lidar.domain.entity.OlPurchPaymentApproval;
 import com.lq.lidar.domain.entity.OlPurchPaymentExtra;
 
+import javax.validation.Valid;
 import java.util.List;
 
 public class OlPurchPaymentApprovalDTO {
     /**
      * 申请单
      */
+    @Valid
     private OlPurchPaymentApproval olPurchPaymentApproval;
     /**
      * 采购明细

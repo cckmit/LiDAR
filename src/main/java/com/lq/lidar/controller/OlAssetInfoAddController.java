@@ -4,6 +4,7 @@ package com.lq.lidar.controller;
 import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
+import com.lq.lidar.common.utils.DataConvert;
 import com.lq.lidar.domain.dto.AssetAllowanceAndDeprecationDTO;
 import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
 import com.lq.lidar.domain.entity.OlAssetDepreciationDetail;
@@ -61,6 +62,7 @@ public class OlAssetInfoAddController extends BaseController {
                 .list();
         return ResponseEntity.success(getDataTable(list));
     }
+
     @GetMapping("/getAllowanceAndDeprecationByAssetAddSeqno/{assetAddSeqno}")
     public ResponseEntity getAllowanceAndDeprecationByAssetAddSeqno(@PathVariable String assetAddSeqno) {
         List<OlAssetAllowanceDetail> assetAllowanceDetails = assetAllowanceDetailService.getOlAssetAllowanceDetailByAssetAddSeqno(assetAddSeqno);
@@ -132,6 +134,17 @@ public class OlAssetInfoAddController extends BaseController {
         return ResponseEntity.error("删除失败");
     }
 
+    /**
+     * 根据资产所属SPV获取资产
+     *
+     * @param spvId
+     * @return
+     */
+    @GetMapping({"/getOlAssetInfoAddBySpvId/{spvId}","/getOlAssetInfoAddBySpvId"})
+    public ResponseEntity getOlAssetInfoAddBySpvId(@PathVariable(required = false) String spvId) {
+        List<OlAssetInfoAdd> list = assetInfoAddService.lambdaQuery().eq(StringUtils.isNotBlank(spvId),OlAssetInfoAdd::getOwnerSpvId, spvId).list();
+        List listToLV = DataConvert.ListToLV(list, OlAssetInfoAdd::getAssetName, OlAssetInfoAdd::getSeqno);
+        return ResponseEntity.success(listToLV);
+    }
 
 }
-
