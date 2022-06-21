@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * <p>
@@ -387,6 +388,11 @@ public class OlPurchPaymentApproval implements Serializable {
     private String assetInfoAddSeqno;
 
     /**
+     * 其他相关资产
+     */
+    @TableField(exist = false)
+    private List otherAssetInfoAddSeqno;
+    /**
      * 资产名称
      */
     @TableField("\"ASSET_NAME\"")
@@ -412,24 +418,45 @@ public class OlPurchPaymentApproval implements Serializable {
     @NotBlank(message = "付款账户说明不能为空")
     private String payAcctDesc;
 
+    /**
+     * 是否已付款
+     */
     @TableField("\"IS_PAYED\"")
     private String isPayed;
 
+    /**
+     * 事业部总裁ID
+     */
     @TableField("\"ORG_LEADER_ID\"")
     private String orgLeaderId;
 
+    /**
+     * 事业部总裁名字
+     */
     @TableField("\"ORG_LEADER_NAME\"")
     private String orgLeaderName;
 
+    /**
+     * 事业部总裁审批日期
+     */
     @TableField("\"ORG_LEADER_APPROVE_DATE\"")
     private LocalDate orgLeaderApproveDate;
 
+    /**
+     *事业部总裁意见
+     */
     @TableField("\"ORG_LEADER_OPINION\"")
     private String orgLeaderOpinion;
 
+    /**
+     *溢价金额
+     */
     @TableField("\"PREMIUM_AMT\"")
     private BigDecimal premiumAmt;
 
+    /**
+     * 技术会签人id
+     */
     @TableField("\"TECHNICAL_SIGN_ID\"")
     private String technicalSignId;
 
@@ -454,15 +481,27 @@ public class OlPurchPaymentApproval implements Serializable {
     @TableField("\"ORG_GROUP_LEADER_ID\"")
     private String orgGroupLeaderId;
 
+    /**
+     * 首席风险官ID
+     */
     @TableField("\"CRO_ID\"")
     private String croId;
 
+    /**
+     * 首席风险官名字
+     */
     @TableField("\"CRO_NAME\"")
     private String croName;
 
+    /**
+     * 风险中心负责人ID
+     */
     @TableField("\"RISK_CENTER_LEADER_ID\"")
     private String riskCenterLeaderId;
 
+    /**
+     * 风险中心负责人名字
+     */
     @TableField("\"RISK_CENTER_LEADER_NAME\"")
     private String riskCenterLeaderName;
 
@@ -1291,112 +1330,120 @@ public class OlPurchPaymentApproval implements Serializable {
         this.riskCenterLeaderName = riskCenterLeaderName;
     }
 
+    public List getOtherAssetInfoAddSeqno() {
+        return otherAssetInfoAddSeqno;
+    }
+
+    public void setOtherAssetInfoAddSeqno(List otherAssetInfoAddSeqno) {
+        this.otherAssetInfoAddSeqno = otherAssetInfoAddSeqno;
+    }
+
     @Override
     public String toString() {
         return "OlPurchPaymentApproval{" +
-        "seqno=" + seqno +
-        ", contractSeqno=" + contractSeqno +
-        ", contractId=" + contractId +
-        ", externalContractNbr=" + externalContractNbr +
-        ", applySectionName=" + applySectionName +
-        ", applyLoanDate=" + applyLoanDate +
-        ", projectName=" + projectName +
-        ", applyContractAmt=" + applyContractAmt +
-        ", applyFeeAmt=" + applyFeeAmt +
-        ", loanDesc=" + loanDesc +
-        ", loanTotalNum=" + loanTotalNum +
-        ", thisNum=" + thisNum +
-        ", currencyCde=" + currencyCde +
-        ", loanTotalAmt=" + loanTotalAmt +
-        ", currencyCdeLater=" + currencyCdeLater +
-        ", loanAmtLater=" + loanAmtLater +
-        ", recvAcctName=" + recvAcctName +
-        ", recvAcctBank=" + recvAcctBank +
-        ", recvAcctNo=" + recvAcctNo +
-        ", payWay=" + payWay +
-        ", applyerId=" + applyerId +
-        ", applyerName=" + applyerName +
-        ", applyDate=" + applyDate +
-        ", applyLeaderId=" + applyLeaderId +
-        ", applyLeaderName=" + applyLeaderName +
-        ", applyLeaderApproveDate=" + applyLeaderApproveDate +
-        ", applySectionOpinion=" + applySectionOpinion +
-        ", managerId=" + managerId +
-        ", managerName=" + managerName +
-        ", managerApproveDate=" + managerApproveDate +
-        ", manageLeaderId=" + manageLeaderId +
-        ", manageLeaderName=" + manageLeaderName +
-        ", manageLeaderApproveDate=" + manageLeaderApproveDate +
-        ", manageApproveOpinion=" + manageApproveOpinion +
-        ", leaderId=" + leaderId +
-        ", leaderName=" + leaderName +
-        ", leaderApproveDate=" + leaderApproveDate +
-        ", leaderOpinion=" + leaderOpinion +
-        ", rightLeaderId=" + rightLeaderId +
-        ", rightLeaderName=" + rightLeaderName +
-        ", rightLeaderApproveDate=" + rightLeaderApproveDate +
-        ", rightLeaderOpinion=" + rightLeaderOpinion +
-        ", memo=" + memo +
-        ", payAcctNo=" + payAcctNo +
-        ", approveStatus=" + approveStatus +
-        ", createrId=" + createrId +
-        ", createrName=" + createrName +
-        ", lastUpdateTime=" + lastUpdateTime +
-        ", ver=" + ver +
-        ", confirmId=" + confirmId +
-        ", confirmName=" + confirmName +
-        ", isAgentPay=" + isAgentPay +
-        ", agentSpvId=" + agentSpvId +
-        ", agentSpvName=" + agentSpvName +
-        ", actPayDate=" + actPayDate +
-        ", payAddInfo=" + payAddInfo +
-        ", recvBankSwiftCode=" + recvBankSwiftCode +
-        ", recvTransferBank=" + recvTransferBank +
-        ", recvTransferBankSwiftCode=" + recvTransferBankSwiftCode +
-        ", isDirectPay=" + isDirectPay +
-        ", spvId=" + spvId +
-        ", spvName=" + spvName +
-        ", payType=" + payType +
-        ", rentalContractSeqno=" + rentalContractSeqno +
-        ", rentalTransDetailSeqno=" + rentalTransDetailSeqno +
-        ", subleaseRentSeqno=" + subleaseRentSeqno +
-        ", vatRate=" + vatRate +
-        ", departmentCde=" + departmentCde +
-        ", departmentName=" + departmentName +
-        ", oaWorkflowId=" + oaWorkflowId +
-        ", bankChargeCurrency=" + bankChargeCurrency +
-        ", bankChargeAmt=" + bankChargeAmt +
-        ", easExchRate=" + easExchRate +
-        ", easAmt=" + easAmt +
-        ", easCurrency=" + easCurrency +
-        ", isDirectFixAsset=" + isDirectFixAsset +
-        ", mainManagerId=" + mainManagerId +
-        ", mainManagerName=" + mainManagerName +
-        ", coManagerId=" + coManagerId +
-        ", coManagerName=" + coManagerName +
-        ", assetInfoAddSeqno=" + assetInfoAddSeqno +
-        ", assetName=" + assetName +
-        ", busiProjectName=" + busiProjectName +
-        ", payStyle=" + payStyle +
-        ", payAcctDesc=" + payAcctDesc +
-        ", isPayed=" + isPayed +
-        ", orgLeaderId=" + orgLeaderId +
-        ", orgLeaderName=" + orgLeaderName +
-        ", orgLeaderApproveDate=" + orgLeaderApproveDate +
-        ", orgLeaderOpinion=" + orgLeaderOpinion +
-        ", premiumAmt=" + premiumAmt +
-        ", technicalSignId=" + technicalSignId +
-        ", technicalSignName=" + technicalSignName +
-        ", lawSignId=" + lawSignId +
-        ", lawSignName=" + lawSignName +
-        ", sectionLeaderId=" + sectionLeaderId +
-        ", sectionLeaderName=" + sectionLeaderName +
-        ", orgGroupLeaderName=" + orgGroupLeaderName +
-        ", orgGroupLeaderId=" + orgGroupLeaderId +
-        ", croId=" + croId +
-        ", croName=" + croName +
-        ", riskCenterLeaderId=" + riskCenterLeaderId +
-        ", riskCenterLeaderName=" + riskCenterLeaderName +
-        "}";
+                "seqno=" + seqno +
+                ", contractSeqno=" + contractSeqno +
+                ", contractId=" + contractId +
+                ", externalContractNbr=" + externalContractNbr +
+                ", applySectionName=" + applySectionName +
+                ", applyLoanDate=" + applyLoanDate +
+                ", projectName=" + projectName +
+                ", applyContractAmt=" + applyContractAmt +
+                ", applyFeeAmt=" + applyFeeAmt +
+                ", loanDesc=" + loanDesc +
+                ", loanTotalNum=" + loanTotalNum +
+                ", thisNum=" + thisNum +
+                ", currencyCde=" + currencyCde +
+                ", loanTotalAmt=" + loanTotalAmt +
+                ", currencyCdeLater=" + currencyCdeLater +
+                ", loanAmtLater=" + loanAmtLater +
+                ", recvAcctName=" + recvAcctName +
+                ", recvAcctBank=" + recvAcctBank +
+                ", recvAcctNo=" + recvAcctNo +
+                ", payWay=" + payWay +
+                ", applyerId=" + applyerId +
+                ", applyerName=" + applyerName +
+                ", applyDate=" + applyDate +
+                ", applyLeaderId=" + applyLeaderId +
+                ", applyLeaderName=" + applyLeaderName +
+                ", applyLeaderApproveDate=" + applyLeaderApproveDate +
+                ", applySectionOpinion=" + applySectionOpinion +
+                ", managerId=" + managerId +
+                ", managerName=" + managerName +
+                ", managerApproveDate=" + managerApproveDate +
+                ", manageLeaderId=" + manageLeaderId +
+                ", manageLeaderName=" + manageLeaderName +
+                ", manageLeaderApproveDate=" + manageLeaderApproveDate +
+                ", manageApproveOpinion=" + manageApproveOpinion +
+                ", leaderId=" + leaderId +
+                ", leaderName=" + leaderName +
+                ", leaderApproveDate=" + leaderApproveDate +
+                ", leaderOpinion=" + leaderOpinion +
+                ", rightLeaderId=" + rightLeaderId +
+                ", rightLeaderName=" + rightLeaderName +
+                ", rightLeaderApproveDate=" + rightLeaderApproveDate +
+                ", rightLeaderOpinion=" + rightLeaderOpinion +
+                ", memo=" + memo +
+                ", payAcctNo=" + payAcctNo +
+                ", approveStatus=" + approveStatus +
+                ", createrId=" + createrId +
+                ", createrName=" + createrName +
+                ", lastUpdateTime=" + lastUpdateTime +
+                ", ver=" + ver +
+                ", confirmId=" + confirmId +
+                ", confirmName=" + confirmName +
+                ", isAgentPay=" + isAgentPay +
+                ", agentSpvId=" + agentSpvId +
+                ", agentSpvName=" + agentSpvName +
+                ", actPayDate=" + actPayDate +
+                ", payAddInfo=" + payAddInfo +
+                ", recvBankSwiftCode=" + recvBankSwiftCode +
+                ", recvTransferBank=" + recvTransferBank +
+                ", recvTransferBankSwiftCode=" + recvTransferBankSwiftCode +
+                ", isDirectPay=" + isDirectPay +
+                ", spvId=" + spvId +
+                ", spvName=" + spvName +
+                ", payType=" + payType +
+                ", rentalContractSeqno=" + rentalContractSeqno +
+                ", rentalTransDetailSeqno=" + rentalTransDetailSeqno +
+                ", subleaseRentSeqno=" + subleaseRentSeqno +
+                ", vatRate=" + vatRate +
+                ", departmentCde=" + departmentCde +
+                ", departmentName=" + departmentName +
+                ", oaWorkflowId=" + oaWorkflowId +
+                ", bankChargeCurrency=" + bankChargeCurrency +
+                ", bankChargeAmt=" + bankChargeAmt +
+                ", easExchRate=" + easExchRate +
+                ", easAmt=" + easAmt +
+                ", easCurrency=" + easCurrency +
+                ", isDirectFixAsset=" + isDirectFixAsset +
+                ", mainManagerId=" + mainManagerId +
+                ", mainManagerName=" + mainManagerName +
+                ", coManagerId=" + coManagerId +
+                ", coManagerName=" + coManagerName +
+                ", assetInfoAddSeqno=" + assetInfoAddSeqno +
+                ", assetName=" + assetName +
+                ", busiProjectName=" + busiProjectName +
+                ", payStyle=" + payStyle +
+                ", payAcctDesc=" + payAcctDesc +
+                ", isPayed=" + isPayed +
+                ", orgLeaderId=" + orgLeaderId +
+                ", orgLeaderName=" + orgLeaderName +
+                ", orgLeaderApproveDate=" + orgLeaderApproveDate +
+                ", orgLeaderOpinion=" + orgLeaderOpinion +
+                ", premiumAmt=" + premiumAmt +
+                ", technicalSignId=" + technicalSignId +
+                ", technicalSignName=" + technicalSignName +
+                ", lawSignId=" + lawSignId +
+                ", lawSignName=" + lawSignName +
+                ", sectionLeaderId=" + sectionLeaderId +
+                ", sectionLeaderName=" + sectionLeaderName +
+                ", orgGroupLeaderName=" + orgGroupLeaderName +
+                ", orgGroupLeaderId=" + orgGroupLeaderId +
+                ", croId=" + croId +
+                ", croName=" + croName +
+                ", riskCenterLeaderId=" + riskCenterLeaderId +
+                ", riskCenterLeaderName=" + riskCenterLeaderName +
+                "}";
     }
 }

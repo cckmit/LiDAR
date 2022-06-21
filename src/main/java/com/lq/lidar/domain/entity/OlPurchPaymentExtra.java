@@ -22,60 +22,105 @@ public class OlPurchPaymentExtra implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 主键
+     */
     @TableId("\"SEQNO\"")
     private String seqno;
 
+    /**
+     * 合同ID
+     */
     @TableField("\"CONTRACT_ID\"")
     private String contractId;
 
+    /**
+     * 外部合同编号
+     */
     @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
+    /**
+     * 合同主键
+     */
     @TableField("\"CONTRACT_SEQNO\"")
     private String contractSeqno;
 
+    /**
+     * 付款审批表主键
+     */
     @TableField("\"APPLY_SEQNO\"")
     private String applySeqno;
 
+    /**
+     * 交易明细主键
+     */
     @TableField("\"TRANS_SEQNO\"")
     private String transSeqno;
 
+    /**
+     * 放款记录主键
+     */
     @TableField("\"PAYMENT_TRANS_SEQNO\"")
     private String paymentTransSeqno;
 
     /**
-     * 收/付
+     * 收付方向 收/付
      */
     @TableField("\"RECEIVE_PAY_DIR\"")
     private String receivePayDir;
 
+    /**
+     * 收付说明
+     */
     @TableField("\"RECEIVE_PAY_DESC\"")
     private String receivePayDesc;
 
     /**
-     * 合并至投放款/合并至费用支出/合并至租金收入
+     *财务处理方式  合并至投放款/合并至费用支出/合并至租金收入
      */
     @TableField("\"VOUCHER_PROCESS\"")
     private String voucherProcess;
 
+    /**
+     * 金额(含税)
+     */
     @TableField("\"AMT\"")
     private BigDecimal amt;
 
+    /**
+     * 币种
+     */
     @TableField("\"CURRENCY_CDE\"")
     private String currencyCde;
 
+    /**
+     * 备注
+     */
     @TableField("\"MEMO\"")
     private String memo;
 
+    /**
+     *应收款挂账主键
+     */
     @TableField("\"PAYMENT_ON_CREDIT_SEQNO\"")
     private String paymentOnCreditSeqno;
 
+    /**
+     * 增值税金额
+     */
     @TableField("\"VAT_AMT\"")
     private BigDecimal vatAmt;
 
+    /**
+     * 增值税率
+     */
     @TableField("\"VAT_RATE\"")
     private String vatRate;
 
+    /**
+     * 是否摊销
+     */
     @TableField("\"IS_ACCRUED\"")
     private String isAccrued;
 
@@ -93,6 +138,9 @@ public class OlPurchPaymentExtra implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd\"")
     private LocalDate accruedEndDate;
 
+    /**
+     * 租赁物附加信息表主键
+     */
     @TableField("\"ASSET_INFO_ADD_SEQNO\"")
     private String assetInfoAddSeqno;
 
