@@ -3,16 +3,12 @@ package com.lq.lidar.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.lq.lidar.common.utils.DataConvert;
 import com.lq.lidar.domain.entity.CbayBpBizPtnrAcctInfo;
 import com.lq.lidar.mapper.CbayBpBizPtnrAcctInfoMapper;
 import com.lq.lidar.service.ICbayBpBizPtnrAcctInfoService;
 import org.apache.commons.lang3.StringUtils;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +41,7 @@ public class CbayBpBizPtnrAcctInfoServiceImpl extends ServiceImpl<CbayBpBizPtnrA
                 }
                 label.append(cbayBpBizPtnrAcctInfo.getBankAcctNbr());
                 hashMap.put("label",label.toString());
-                hashMap.put("value",cbayBpBizPtnrAcctInfo.getBankAcctNbr());
+                hashMap.put("value",cbayBpBizPtnrAcctInfo.getBpId());
                 bpBizPtnrAcctInfos.add(hashMap);
             }
         });

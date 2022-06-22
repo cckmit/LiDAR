@@ -19,69 +19,135 @@ public class CbayBpBizPtnrAcctInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 合作伙伴账户信息ID
+     */
     @TableId("\"BP_BANK_ACCT_ID\"")
     private String bpBankAcctId;
 
+    /**
+     * 合作伙伴ID
+     */
     @TableField("\"BP_ID\"")
     private String bpId;
 
+    /**
+     *银行代码
+     */
     @TableField("\"BANK_CD\"")
     private String bankCd;
 
+    /**
+     *开户行名称
+     */
     @TableField("\"BANK_NM\"")
     private String bankNm;
 
+    /**
+     *开户行分支行名称
+     */
     @TableField("\"BANK_BRCH_NM\"")
     private String bankBrchNm;
 
+    /**
+     *银行账户类别
+     */
     @TableField("\"BANK_ACCT_TYPE_CD\"")
     private String bankAcctTypeCd;
 
+    /**
+     * 银行账户户名
+     */
     @TableField("\"BANK_ACCT_NM\"")
     private String bankAcctNm;
 
+    /**
+     *银行账户账号
+     */
     @TableField("\"BANK_ACCT_NBR\"")
     private String bankAcctNbr;
 
+    /**
+     *银行账户状态
+     */
     @TableField("\"BANK_ACCT_STAT_CD\"")
     private String bankAcctStatCd;
 
+    /**
+     *银行账户用途
+     */
     @TableField("\"BANK_ACCT_PRPS_CD\"")
     private String bankAcctPrpsCd;
 
+    /**
+     * 放款缺省账户标识
+     */
     @TableField("\"TRANCHE_ACCT_IND\"")
     private String trancheAcctInd;
 
+    /**
+     *扣款缺省账户标识
+     */
     @TableField("\"DRAW_ACCT_IND\"")
     private String drawAcctInd;
 
+    /**
+     *备注
+     */
     @TableField("\"REMARK\"")
     private String remark;
 
+    /**
+     *创建时间
+     */
     @TableField("\"CREAT_TIME\"")
     private LocalDateTime creatTime;
 
+    /**
+     *贷款银行
+     */
     @TableField("\"LOAN_BANK\"")
     private String loanBank;
 
+    /**
+     *授信银行
+     */
     @TableField("\"CREDIT_BANK\"")
     private String creditBank;
 
+    /**
+     * 是否自动划扣账户
+     */
     @TableField("\"AUTO_DEDUCTION_IND\"")
     private String autoDeductionInd;
 
+    /**
+     * 验证状态
+     */
     @TableField("\"VERIFY_STATE_CD\"")
     private String verifyStateCd;
 
+    /**
+     * 最新申请批次号
+     */
     @TableField("\"APPL_NBR\"")
     private String applNbr;
 
+    /**
+     * 默认划扣账户
+     */
     @TableField("\"DEF_ACCT_IND\"")
     private String defAcctInd;
 
+    /**
+     * 授权起始日（自动核销）
+     */
     @TableField("\"AUTH_START_DATE\"")
     private LocalDateTime authStartDate;
 
+    /**
+     * 授权截止日（自动核销）
+     */
     @TableField("\"AUTH_END_DATE\"")
     private LocalDateTime authEndDate;
 
