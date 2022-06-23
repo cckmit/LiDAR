@@ -1,6 +1,7 @@
 package com.lq.lidar.common.annotation;
 
-
+import com.lq.lidar.common.enums.BusinessType;
+import com.lq.lidar.common.enums.OperatorType;
 
 import java.lang.annotation.*;
 
@@ -23,12 +24,12 @@ public @interface Log
     /**
      * 功能
      */
-    //public BusinessType businessType() default BusinessType.OTHER;
+    public BusinessType businessType() default BusinessType.OTHER;
 
     /**
      * 操作人类别
      */
-    //public OperatorType operatorType() default OperatorType.MANAGE;
+    public OperatorType operatorType() default OperatorType.MANAGE;
 
     /**
      * 是否保存请求的参数
@@ -39,5 +40,4 @@ public @interface Log
      * 是否保存响应的参数
      */
     public boolean isSaveResponseData() default true;
-    public boolean isPrintTaskTime() default true;
 }

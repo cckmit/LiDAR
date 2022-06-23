@@ -2,9 +2,11 @@ package com.lq.lidar.controller;
 
 
 import com.github.pagehelper.PageInfo;
+import com.lq.lidar.common.annotation.Log;
 import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
+import com.lq.lidar.common.enums.BusinessType;
 import com.lq.lidar.common.enums.StatusCode;
 import com.lq.lidar.common.utils.DataConvert;
 import com.lq.lidar.domain.entity.CbaySysUser;
@@ -51,6 +53,7 @@ public class CbaySysUserController extends BaseController {
      * @param sysUser 用户
      */
     @PostMapping("/saveOrUpdate")
+    @Log(title = "用户管理",businessType = BusinessType.INSERT)
     public ResponseEntity saveOrUpdate(@RequestBody @Validated CbaySysUser sysUser) {
         boolean save = iCbaySysUserService.saveOrUpdate(sysUser);
         if (save) {
