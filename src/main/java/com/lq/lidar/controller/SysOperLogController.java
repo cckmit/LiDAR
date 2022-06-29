@@ -5,11 +5,7 @@ import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.domain.entity.SysOperLog;
 import com.lq.lidar.service.ISysOperLogService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -39,10 +35,20 @@ public class SysOperLogController extends BaseController {
     @GetMapping("/list")
     public ResponseEntity list(SysOperLog sysOperLog) {
         startPage();
-        List<SysOperLog> list = sysOperLogService.lambdaQuery()
-                .eq(null!=sysOperLog.getBusinessType(),SysOperLog::getBusinessType,sysOperLog.getBusinessType())
-                .list();
+        List<SysOperLog> list = sysOperLogService.lambdaQuery().eq(null != sysOperLog.getBusinessType(), SysOperLog::getBusinessType, sysOperLog.getBusinessType()).list();
         return ResponseEntity.success(getDataTable(list));
+    }
+
+    /**
+     * 获取日志详情
+     *
+     * @param operId
+     * @return
+     */
+    @GetMapping("/get/{operId}")
+    public ResponseEntity get(@PathVariable String operId) {
+        SysOperLog sysOperLog = sysOperLogService.getById(operId);
+        return ResponseEntity.success(sysOperLog);
     }
 
 }
