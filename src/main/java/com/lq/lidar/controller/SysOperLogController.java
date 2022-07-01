@@ -51,5 +51,13 @@ public class SysOperLogController extends BaseController {
         return ResponseEntity.success(sysOperLog);
     }
 
+    @DeleteMapping("/delete/{operId}")
+    public ResponseEntity del(@PathVariable String operId) {
+        sysOperLogService.removeById(operId);
+        return ResponseEntity.success("删除成功");
+    }
+
+
+
 }
 
