@@ -123,5 +123,7 @@ public class CbaySysDictController extends BaseController {
         iCbaySysDictService.removeBatchByIds(Arrays.asList(dictIds));
         return ResponseEntity.success("删除成功");
     }
+
+
 }
 
