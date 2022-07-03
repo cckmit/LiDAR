@@ -20,7 +20,7 @@ import java.util.List;
  * @author LQ
  * @since 2022-02-28
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/system/cbaySysDictType")
 public class CbaySysDictTypeController extends BaseController {

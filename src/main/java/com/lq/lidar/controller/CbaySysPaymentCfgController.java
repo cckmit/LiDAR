@@ -23,7 +23,6 @@ import java.util.Map;
  * @since 2022-06-21
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/system/cbaySysPaymentCfg")
 public class CbaySysPaymentCfgController {
     @Resource

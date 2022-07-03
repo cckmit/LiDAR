@@ -19,7 +19,6 @@ import java.util.List;
  * @since 2022-06-23
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/system/sysOperLog")
 public class SysOperLogController extends BaseController {
 

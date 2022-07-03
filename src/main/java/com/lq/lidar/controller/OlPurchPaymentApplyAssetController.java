@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-06-21
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/system/olPurchPaymentApplyAsset")
 public class OlPurchPaymentApplyAssetController extends BaseController {
 

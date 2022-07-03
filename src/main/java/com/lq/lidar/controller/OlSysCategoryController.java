@@ -20,7 +20,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/system/olSysCategory")
-@CrossOrigin
 public class OlSysCategoryController {
     @Resource
     IOlSysCategoryService olSysCategoryService;

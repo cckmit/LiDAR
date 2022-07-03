@@ -20,7 +20,6 @@ import java.util.List;
  * @since 2022-03-16
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/system/cbaySysOffice")
 public class CbaySysOfficeController extends BaseController {
     @Resource

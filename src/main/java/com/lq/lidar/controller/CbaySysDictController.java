@@ -24,7 +24,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/system/cbaySysDict")
-@CrossOrigin
 public class CbaySysDictController extends BaseController {
     @Resource
     ICbaySysDictService iCbaySysDictService;

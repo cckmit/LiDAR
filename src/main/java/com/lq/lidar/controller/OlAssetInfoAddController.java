@@ -31,7 +31,6 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/asset/olAssetInfoAdd")
-@CrossOrigin
 public class OlAssetInfoAddController extends BaseController {
 
     @Resource

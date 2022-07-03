@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author LQ
  * @since 2022-06-21
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/system/cbayBpBizPtnrBase")
 public class CbayBpBizPtnrBaseController {
 

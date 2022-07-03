@@ -20,7 +20,6 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/contract/olRentalContract")
-@CrossOrigin
 public class OlRentalContractController extends BaseController {
 
     @Resource

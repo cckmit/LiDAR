@@ -17,7 +17,6 @@ import java.util.HashMap;
  */
 @RestController
 @RequestMapping
-@CrossOrigin
 public class LoginController extends BaseController {
 
     @GetMapping("/admin_info")

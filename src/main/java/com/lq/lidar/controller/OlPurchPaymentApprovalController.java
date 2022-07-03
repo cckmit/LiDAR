@@ -25,7 +25,6 @@ import java.util.List;
  * @since 2022-06-13
  */
 @RestController
-@CrossOrigin
 @RequestMapping("/purch/olPurchPaymentApproval")
 public class OlPurchPaymentApprovalController extends BaseController {
 

@@ -23,7 +23,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/asset/olAssetDepreciationDetail")
-@CrossOrigin
 public class OlAssetDepreciationDetailController extends BaseController {
     @Resource
     IOlAssetDepreciationDetailService assetDepreciationDetailService;

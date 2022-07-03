@@ -27,7 +27,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/system/cbaySysUser")
-@CrossOrigin
 public class CbaySysUserController extends BaseController {
 
     @Resource
