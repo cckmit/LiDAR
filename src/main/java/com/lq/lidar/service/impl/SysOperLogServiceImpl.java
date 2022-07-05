@@ -6,6 +6,8 @@ import com.lq.lidar.mapper.SysOperLogMapper;
 import com.lq.lidar.service.ISysOperLogService;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -18,4 +20,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysOperLogServiceImpl extends ServiceImpl<SysOperLogMapper, SysOperLog> implements ISysOperLogService {
 
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void saveBySysOperLog(SysOperLog sysOperLog) {
+        this.save(sysOperLog);
+    }
 }

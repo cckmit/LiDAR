@@ -12,5 +12,5 @@ import com.lq.lidar.domain.entity.SysOperLog;
  * @since 2022-06-23
  */
 public interface ISysOperLogService extends IService<SysOperLog> {
-
+   public void saveBySysOperLog(SysOperLog sysOperLog);
 }

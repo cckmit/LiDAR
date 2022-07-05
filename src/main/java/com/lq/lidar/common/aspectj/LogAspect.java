@@ -97,7 +97,7 @@ public class LogAspect {
             getControllerMethodDescription(joinPoint, controllerLog, operLog, jsonResult);
             // 保存数据库
 //            AsyncManager.me().execute(AsyncFactory.recordOper(operLog));
-            sysOperLogService.save(operLog);
+            sysOperLogService.saveBySysOperLog(operLog);
         } catch (Exception exp) {
             // 记录本地异常日志
             log.error("==前置通知异常==");
