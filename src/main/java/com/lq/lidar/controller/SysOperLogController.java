@@ -8,6 +8,7 @@ import com.lq.lidar.service.ISysOperLogService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -50,9 +51,14 @@ public class SysOperLogController extends BaseController {
         return ResponseEntity.success(sysOperLog);
     }
 
+    /**
+     * 删除操作日志记录
+     * @param operId
+     * @return
+     */
     @DeleteMapping("/delete/{operId}")
-    public ResponseEntity del(@PathVariable String operId) {
-        sysOperLogService.removeById(operId);
+    public ResponseEntity delete(@PathVariable String[] operId) {
+        sysOperLogService.removeBatchByIds(Arrays.asList(operId));
         return ResponseEntity.success("删除成功");
     }
 
