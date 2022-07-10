@@ -1,9 +1,11 @@
 package com.lq.lidar.controller;
 
 
+import com.lq.lidar.common.annotation.Log;
 import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
+import com.lq.lidar.common.enums.BusinessType;
 import com.lq.lidar.domain.entity.OlAssetAllowanceDetail;
 import com.lq.lidar.service.IOlAssetAllowanceDetailService;
 import org.springframework.validation.annotation.Validated;
@@ -47,6 +49,7 @@ public class OlAssetAllowanceDetailController extends BaseController {
      */
     @PostMapping("/saveOrUpdate")
     @TaskTime
+    @Log(title = "资产减值明细",businessType = BusinessType.INSERT)
     public ResponseEntity saveOrUpdate(@RequestBody @Validated OlAssetAllowanceDetail assetAllowanceDetail) {
         boolean save = assetAllowanceDetailService.saveOrUpdate(assetAllowanceDetail);
         if (save) {
@@ -74,6 +77,7 @@ public class OlAssetAllowanceDetailController extends BaseController {
      */
     @DeleteMapping("/delete/{seqno}")
     @TaskTime
+    @Log(title = "资产减值明细",businessType = BusinessType.DELETE)
     public ResponseEntity delete(@PathVariable String[] seqno) {
         boolean update = assetAllowanceDetailService.removeBatchByIds(Arrays.asList(seqno));
         if (update) {

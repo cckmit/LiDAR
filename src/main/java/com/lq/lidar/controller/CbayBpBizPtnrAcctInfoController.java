@@ -1,14 +1,19 @@
 package com.lq.lidar.controller;
 
 
+import com.lq.lidar.common.annotation.Log;
+import com.lq.lidar.common.annotation.TaskTime;
 import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
+import com.lq.lidar.common.enums.BusinessType;
 import com.lq.lidar.domain.entity.CbayBpBizPtnrAcctInfo;
 import com.lq.lidar.service.ICbayBpBizPtnrAcctInfoService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -34,12 +39,32 @@ public class CbayBpBizPtnrAcctInfoController extends BaseController {
                 .like(StringUtils.isNotBlank(cbayBpBizPtnrAcctInfo.getBankNm()), CbayBpBizPtnrAcctInfo::getBankNm, cbayBpBizPtnrAcctInfo.getBankNm())
                 .eq(StringUtils.isNotBlank(cbayBpBizPtnrAcctInfo.getBankAcctTypeCd()), CbayBpBizPtnrAcctInfo::getBankAcctTypeCd, cbayBpBizPtnrAcctInfo.getBankAcctTypeCd())
                 .like(StringUtils.isNotBlank(cbayBpBizPtnrAcctInfo.getBankAcctNm()), CbayBpBizPtnrAcctInfo::getBankAcctNm, cbayBpBizPtnrAcctInfo.getBankAcctNm())
+                .isNotNull(CbayBpBizPtnrAcctInfo::getCreatTime)
+                .orderByDesc(CbayBpBizPtnrAcctInfo::getCreatTime)
+                .orderByAsc(CbayBpBizPtnrAcctInfo::getBpId)
                 .list();
         return ResponseEntity.success(getDataTable(list));
     }
 
     /**
-     * 合作伙伴下拉框
+     * 新增/编辑合作伙伴
+     * @param cbayBpBizPtnrAcctInfo
+     * @return
+     */
+    @PostMapping("/saveOrUpdate")
+    @TaskTime
+    @Log(title = "合作伙伴账户",businessType = BusinessType.INSERT)
+    public ResponseEntity saveOrUpdate(@RequestBody @Validated CbayBpBizPtnrAcctInfo cbayBpBizPtnrAcctInfo) {
+        cbayBpBizPtnrAcctInfo.setCreatTime(LocalDateTime.now());
+        boolean save = cbayBpBizPtnrAcctInfoService.saveOrUpdate(cbayBpBizPtnrAcctInfo);
+        if (save) {
+            return ResponseEntity.success("操作成功");
+        }
+        return ResponseEntity.error("操作失败");
+    }
+
+    /**
+     * 合作伙伴账号下拉框
      *
      * @return
      */

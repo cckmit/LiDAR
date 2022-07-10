@@ -41,7 +41,7 @@ public class CbayBpBizPtnrAcctInfoServiceImpl extends ServiceImpl<CbayBpBizPtnrA
                 }
                 label.append(cbayBpBizPtnrAcctInfo.getBankAcctNbr());
                 hashMap.put("label",label.toString());
-                hashMap.put("value",cbayBpBizPtnrAcctInfo.getBpId());
+                hashMap.put("value",cbayBpBizPtnrAcctInfo.getBankAcctNbr());
                 bpBizPtnrAcctInfos.add(hashMap);
             }
         });

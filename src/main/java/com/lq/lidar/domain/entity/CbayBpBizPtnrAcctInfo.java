@@ -3,6 +3,9 @@ package com.lq.lidar.domain.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -29,6 +32,7 @@ public class CbayBpBizPtnrAcctInfo implements Serializable {
      * 合作伙伴ID
      */
     @TableField("\"BP_ID\"")
+    @NotBlank(message = "合作伙伴不能为空")
     private String bpId;
 
     /**
@@ -41,18 +45,21 @@ public class CbayBpBizPtnrAcctInfo implements Serializable {
      *开户行名称
      */
     @TableField("\"BANK_NM\"")
+    @NotBlank(message = "开户行名称不能为空")
     private String bankNm;
 
     /**
      *开户行分支行名称
      */
     @TableField("\"BANK_BRCH_NM\"")
+    @NotBlank(message = "开户行分支行名称不能为空")
     private String bankBrchNm;
 
     /**
      *银行账户类别
      */
     @TableField("\"BANK_ACCT_TYPE_CD\"")
+    @NotBlank(message = "银行账户类别不能为空")
     private String bankAcctTypeCd;
 
     /**
@@ -65,6 +72,7 @@ public class CbayBpBizPtnrAcctInfo implements Serializable {
      *银行账户账号
      */
     @TableField("\"BANK_ACCT_NBR\"")
+    @NotBlank(message = "银行账户账号不能为空")
     private String bankAcctNbr;
 
     /**
@@ -101,6 +109,7 @@ public class CbayBpBizPtnrAcctInfo implements Serializable {
      *创建时间
      */
     @TableField("\"CREAT_TIME\"")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private LocalDateTime creatTime;
 
     /**
