@@ -7,13 +7,16 @@ import com.lq.lidar.common.core.controller.BaseController;
 import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.common.enums.BusinessType;
 import com.lq.lidar.domain.entity.CbayBpBizPtnrAcctInfo;
+import com.lq.lidar.domain.entity.CbayBpBizPtnrBase;
 import com.lq.lidar.service.ICbayBpBizPtnrAcctInfoService;
+import com.lq.lidar.service.ICbayBpBizPtnrBaseService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +33,8 @@ import java.util.Map;
 public class CbayBpBizPtnrAcctInfoController extends BaseController {
     @Resource
     ICbayBpBizPtnrAcctInfoService cbayBpBizPtnrAcctInfoService;
+    @Resource
+    ICbayBpBizPtnrBaseService cbayBpBizPtnrBaseService;
 
     @GetMapping("/list")
     public ResponseEntity list(CbayBpBizPtnrAcctInfo cbayBpBizPtnrAcctInfo) {
@@ -55,6 +60,8 @@ public class CbayBpBizPtnrAcctInfoController extends BaseController {
     @TaskTime
     @Log(title = "合作伙伴账户",businessType = BusinessType.INSERT)
     public ResponseEntity saveOrUpdate(@RequestBody @Validated CbayBpBizPtnrAcctInfo cbayBpBizPtnrAcctInfo) {
+        CbayBpBizPtnrBase cbayBpBizPtnrBase = cbayBpBizPtnrBaseService.getById(cbayBpBizPtnrAcctInfo.getBpId());
+        cbayBpBizPtnrAcctInfo.setBankAcctNm(cbayBpBizPtnrBase.getBpNm());
         cbayBpBizPtnrAcctInfo.setCreatTime(LocalDateTime.now());
         boolean save = cbayBpBizPtnrAcctInfoService.saveOrUpdate(cbayBpBizPtnrAcctInfo);
         if (save) {
@@ -74,15 +81,15 @@ public class CbayBpBizPtnrAcctInfoController extends BaseController {
         return ResponseEntity.success(bpBizPtnrAcctInfo);
     }
 
-    @GetMapping("/findBpBizPtnrAcctInfoByBpBankAcctId")
-    public ResponseEntity findBpBizPtnrAcctInfoByBpBankAcctId(String bpBankAcctId) {
+    @GetMapping("/findBpBizPtnrAcctInfoByBpBankAcctId/{bpBankAcctId}")
+    public ResponseEntity findBpBizPtnrAcctInfoByBpBankAcctId(@PathVariable String bpBankAcctId) {
         CbayBpBizPtnrAcctInfo cbayBpBizPtnrAcctInfo = cbayBpBizPtnrAcctInfoService.getById(bpBankAcctId);
         return ResponseEntity.success(cbayBpBizPtnrAcctInfo);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity delete(String bpBankAcctId) {
-        if (cbayBpBizPtnrAcctInfoService.removeById(bpBankAcctId)) {
+    @DeleteMapping("/delete/{bpBankAcctId}")
+    public ResponseEntity delete(@PathVariable String[] bpBankAcctId) {
+        if (cbayBpBizPtnrAcctInfoService.removeBatchByIds(Arrays.asList(bpBankAcctId))) {
             return ResponseEntity.success("删除成功！");
         }
         return ResponseEntity.error("删除失败！");
