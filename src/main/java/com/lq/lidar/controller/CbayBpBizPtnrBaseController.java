@@ -26,7 +26,7 @@ public class CbayBpBizPtnrBaseController {
     ICbayBpBizPtnrBaseService cbayBpBizPtnrBaseService;
 
     /**
-     * 根据合作伙伴类型查询合作伙伴
+     * 根据合作伙伴类型查询合作伙伴（下拉框使用）
      *
      * @param bpTypeCd 合作伙伴类型
      * @return
