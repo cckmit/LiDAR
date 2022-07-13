@@ -3,12 +3,13 @@ package com.lq.lidar.domain.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author LQ
@@ -43,6 +44,9 @@ public class CbayBpBizPtnrBase implements Serializable {
     @TableField("\"BP_OPER_STAT\"")
     private String bpOperStat;
 
+    /**
+     * 合作伙伴类型
+     */
     @TableField("\"BP_TYPE_CD\"")
     private String bpTypeCd;
 
@@ -692,63 +696,63 @@ public class CbayBpBizPtnrBase implements Serializable {
     @Override
     public String toString() {
         return "CbayBpBizPtnrBase{" +
-        "bpId=" + bpId +
-        ", cntrCd=" + cntrCd +
-        ", cityCd=" + cityCd +
-        ", stateCd=" + stateCd +
-        ", bpCd=" + bpCd +
-        ", bpNm=" + bpNm +
-        ", bpEnNm=" + bpEnNm +
-        ", bpOperStat=" + bpOperStat +
-        ", bpTypeCd=" + bpTypeCd +
-        ", bpRole=" + bpRole +
-        ", bpTel=" + bpTel +
-        ", rcptNm=" + rcptNm +
-        ", zip=" + zip +
-        ", mailAddr=" + mailAddr +
-        ", address=" + address +
-        ", spnsrId=" + spnsrId +
-        ", shrholdInd=" + shrholdInd +
-        ", coAuthBpInd=" + coAuthBpInd +
-        ", coRelBpInd=" + coRelBpInd +
-        ", blkBpInd=" + blkBpInd +
-        ", vipBpInd=" + vipBpInd +
-        ", suedBpInd=" + suedBpInd +
-        ", bpRiskCatCd=" + bpRiskCatCd +
-        ", coOrgId=" + coOrgId +
-        ", envrPnlInd=" + envrPnlInd +
-        ", badCrRcdInd=" + badCrRcdInd +
-        ", execListInd=" + execListInd +
-        ", citicRt=" + citicRt +
-        ", stdPoorRt=" + stdPoorRt +
-        ", capeTownStPty=" + capeTownStPty +
-        ", ownerOfc=" + ownerOfc +
-        ", createBy=" + createBy +
-        ", createTime=" + createTime +
-        ", updateBy=" + updateBy +
-        ", updateTime=" + updateTime +
-        ", bpStat=" + bpStat +
-        ", crLvl=" + crLvl +
-        ", greyBpInd=" + greyBpInd +
-        ", blkBpType=" + blkBpType +
-        ", newInd=" + newInd +
-        ", ratingTime=" + ratingTime +
-        ", ratingOfc=" + ratingOfc +
-        ", bpNameInitial=" + bpNameInitial +
-        ", certificatEwhetherPasTdue=" + certificatEwhetherPasTdue +
-        ", cntrCdRpt=" + cntrCdRpt +
-        ", cityCdRpt=" + cityCdRpt +
-        ", stateCdRpt=" + stateCdRpt +
-        ", fixReportInd=" + fixReportInd +
-        ", hitInd=" + hitInd +
-        ", hitType=" + hitType +
-        ", continueHitInd=" + continueHitInd +
-        ", scrnStatus=" + scrnStatus +
-        ", mlRiskLevel=" + mlRiskLevel +
-        ", mlRiskExamStatus=" + mlRiskExamStatus +
-        ", riskRmdInd=" + riskRmdInd +
-        ", countyCode=" + countyCode +
-        ", partnerCode=" + partnerCode +
-        "}";
+                "bpId=" + bpId +
+                ", cntrCd=" + cntrCd +
+                ", cityCd=" + cityCd +
+                ", stateCd=" + stateCd +
+                ", bpCd=" + bpCd +
+                ", bpNm=" + bpNm +
+                ", bpEnNm=" + bpEnNm +
+                ", bpOperStat=" + bpOperStat +
+                ", bpTypeCd=" + bpTypeCd +
+                ", bpRole=" + bpRole +
+                ", bpTel=" + bpTel +
+                ", rcptNm=" + rcptNm +
+                ", zip=" + zip +
+                ", mailAddr=" + mailAddr +
+                ", address=" + address +
+                ", spnsrId=" + spnsrId +
+                ", shrholdInd=" + shrholdInd +
+                ", coAuthBpInd=" + coAuthBpInd +
+                ", coRelBpInd=" + coRelBpInd +
+                ", blkBpInd=" + blkBpInd +
+                ", vipBpInd=" + vipBpInd +
+                ", suedBpInd=" + suedBpInd +
+                ", bpRiskCatCd=" + bpRiskCatCd +
+                ", coOrgId=" + coOrgId +
+                ", envrPnlInd=" + envrPnlInd +
+                ", badCrRcdInd=" + badCrRcdInd +
+                ", execListInd=" + execListInd +
+                ", citicRt=" + citicRt +
+                ", stdPoorRt=" + stdPoorRt +
+                ", capeTownStPty=" + capeTownStPty +
+                ", ownerOfc=" + ownerOfc +
+                ", createBy=" + createBy +
+                ", createTime=" + createTime +
+                ", updateBy=" + updateBy +
+                ", updateTime=" + updateTime +
+                ", bpStat=" + bpStat +
+                ", crLvl=" + crLvl +
+                ", greyBpInd=" + greyBpInd +
+                ", blkBpType=" + blkBpType +
+                ", newInd=" + newInd +
+                ", ratingTime=" + ratingTime +
+                ", ratingOfc=" + ratingOfc +
+                ", bpNameInitial=" + bpNameInitial +
+                ", certificatEwhetherPasTdue=" + certificatEwhetherPasTdue +
+                ", cntrCdRpt=" + cntrCdRpt +
+                ", cityCdRpt=" + cityCdRpt +
+                ", stateCdRpt=" + stateCdRpt +
+                ", fixReportInd=" + fixReportInd +
+                ", hitInd=" + hitInd +
+                ", hitType=" + hitType +
+                ", continueHitInd=" + continueHitInd +
+                ", scrnStatus=" + scrnStatus +
+                ", mlRiskLevel=" + mlRiskLevel +
+                ", mlRiskExamStatus=" + mlRiskExamStatus +
+                ", riskRmdInd=" + riskRmdInd +
+                ", countyCode=" + countyCode +
+                ", partnerCode=" + partnerCode +
+                "}";
     }
 }
