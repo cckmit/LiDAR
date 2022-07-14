@@ -1,8 +1,8 @@
 package com.lq.lidar.controller;
 
 
+import com.lq.lidar.common.core.controller.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author LQ
- * @since 2022-05-30
+ * @since 2022-07-14
  */
 @RestController
-@RequestMapping("/rental/olRentalReceiptVoucher")
-public class OlRentalReceiptVoucherController {
+@RequestMapping("/system/olRentalReceiptVoucher")
+public class OlRentalReceiptVoucherController extends BaseController {
 
 }
 

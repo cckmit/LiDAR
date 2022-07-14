@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author LQ
- * @since 2022-05-30
+ * @since 2022-07-14
  */
 @TableName("ol_rental_receipt_voucher")
 public class OlRentalReceiptVoucher implements Serializable {
@@ -24,169 +24,169 @@ public class OlRentalReceiptVoucher implements Serializable {
     /**
      * 主键，没有业务含义，系统自动生成
      */
-    @TableId("SEQNO")
+    @TableId("\"SEQNO\"")
     private String seqno;
 
     /**
      * 收据编号
      */
-    @TableField("RECEIPT_NO")
+    @TableField("\"RECEIPT_NO\"")
     private String receiptNo;
 
     /**
      * 收款日期
      */
-    @TableField("ARRIVE_DATE")
+    @TableField("\"ARRIVE_DATE\"")
     private LocalDateTime arriveDate;
 
     /**
      * 实际收款金额
      */
-    @TableField("ACT_AMT")
+    @TableField("\"ACT_AMT\"")
     private BigDecimal actAmt;
 
     /**
      * 应核销金额
      */
-    @TableField("WRITE_OFF_AMT")
+    @TableField("\"WRITE_OFF_AMT\"")
     private BigDecimal writeOffAmt;
 
     /**
      * 已核销金额
      */
-    @TableField("CONFIRM_AMT")
+    @TableField("\"CONFIRM_AMT\"")
     private BigDecimal confirmAmt;
 
     /**
      * 退款金额
      */
-    @TableField("REFUND_AMT")
+    @TableField("\"REFUND_AMT\"")
     private BigDecimal refundAmt;
 
     /**
      * 付款人ID
      */
-    @TableField("PAYER_ID")
+    @TableField("\"PAYER_ID\"")
     private String payerId;
 
     /**
      * 付款人名称
      */
-    @TableField("PAYER_NAME")
+    @TableField("\"PAYER_NAME\"")
     private String payerName;
 
     /**
      * 付款账号
      */
-    @TableField("PAY_ACCT_NO")
+    @TableField("\"PAY_ACCT_NO\"")
     private String payAcctNo;
 
     /**
      * 付款银行
      */
-    @TableField("PAY_BANK_CDE")
+    @TableField("\"PAY_BANK_CDE\"")
     private String payBankCde;
 
     /**
      * 付款户名
      */
-    @TableField("PAY_ACCT_NAME")
+    @TableField("\"PAY_ACCT_NAME\"")
     private String payAcctName;
 
     /**
      * 收款账号
      */
-    @TableField("RECV_ACCT_NO")
+    @TableField("\"RECV_ACCT_NO\"")
     private String recvAcctNo;
 
     /**
      * 收款银行
      */
-    @TableField("RECV_BANK_CDE")
+    @TableField("\"RECV_BANK_CDE\"")
     private String recvBankCde;
 
     /**
      * 收款人ID
      */
-    @TableField("RECEIVER_ID")
+    @TableField("\"RECEIVER_ID\"")
     private String receiverId;
 
     /**
      * 收款人名称
      */
-    @TableField("RECEIVER_NAME")
+    @TableField("\"RECEIVER_NAME\"")
     private String receiverName;
 
     /**
      * 合同表主键
      */
-    @TableField("CONTRACT_SEQNO")
+    @TableField("\"CONTRACT_SEQNO\"")
     private String contractSeqno;
 
     /**
      * 外部合同号
      */
-    @TableField("EXTERNAL_CONTRACT_NBR")
+    @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
     /**
      * 合同ID
      */
-    @TableField("CONTRACT_ID")
+    @TableField("\"CONTRACT_ID\"")
     private String contractId;
 
     /**
      * 操作人ID
      */
-    @TableField("OPERATOR_ID")
+    @TableField("\"OPERATOR_ID\"")
     private String operatorId;
 
     /**
      * 操作人名称
      */
-    @TableField("OPERATOR_NAME")
+    @TableField("\"OPERATOR_NAME\"")
     private String operatorName;
 
     /**
      * 未核销/部分核销/已核销
      */
-    @TableField("WRITE_OFF_STATUS")
+    @TableField("\"WRITE_OFF_STATUS\"")
     private String writeOffStatus;
 
     /**
      * 备注
      */
-    @TableField("MEMO")
+    @TableField("\"MEMO\"")
     private String memo;
 
-    @TableField("CURRENCY_CDE")
+    @TableField("\"CURRENCY_CDE\"")
     private String currencyCde;
 
     /**
      * 部门代码
      */
-    @TableField("DEPARTMENT_CDE")
+    @TableField("\"DEPARTMENT_CDE\"")
     private String departmentCde;
 
     /**
      * 是否暂存
      */
-    @TableField("IS_TEMP_SAVE")
+    @TableField("\"IS_TEMP_SAVE\"")
     private String isTempSave;
 
-    @TableField("IS_DEPOSIT_DEDUCT")
+    @TableField("\"IS_DEPOSIT_DEDUCT\"")
     private String isDepositDeduct;
 
-    @TableField("IS_PAYER_CASH_FLOW")
+    @TableField("\"IS_PAYER_CASH_FLOW\"")
     private String isPayerCashFlow;
 
-    @TableField("IS_RECEIVER_CASH_FLOW")
+    @TableField("\"IS_RECEIVER_CASH_FLOW\"")
     private String isReceiverCashFlow;
 
-    @TableField("IS_PAYMENT_ON_CREDIT")
+    @TableField("\"IS_PAYMENT_ON_CREDIT\"")
     private String isPaymentOnCredit;
 
-    @TableField("VOUCHERED_FEE_AMT")
+    @TableField("\"VOUCHERED_FEE_AMT\"")
     private BigDecimal voucheredFeeAmt;
 
 
@@ -441,37 +441,37 @@ public class OlRentalReceiptVoucher implements Serializable {
     @Override
     public String toString() {
         return "OlRentalReceiptVoucher{" +
-                "seqno=" + seqno +
-                ", receiptNo=" + receiptNo +
-                ", arriveDate=" + arriveDate +
-                ", actAmt=" + actAmt +
-                ", writeOffAmt=" + writeOffAmt +
-                ", confirmAmt=" + confirmAmt +
-                ", refundAmt=" + refundAmt +
-                ", payerId=" + payerId +
-                ", payerName=" + payerName +
-                ", payAcctNo=" + payAcctNo +
-                ", payBankCde=" + payBankCde +
-                ", payAcctName=" + payAcctName +
-                ", recvAcctNo=" + recvAcctNo +
-                ", recvBankCde=" + recvBankCde +
-                ", receiverId=" + receiverId +
-                ", receiverName=" + receiverName +
-                ", contractSeqno=" + contractSeqno +
-                ", externalContractNbr=" + externalContractNbr +
-                ", contractId=" + contractId +
-                ", operatorId=" + operatorId +
-                ", operatorName=" + operatorName +
-                ", writeOffStatus=" + writeOffStatus +
-                ", memo=" + memo +
-                ", currencyCde=" + currencyCde +
-                ", departmentCde=" + departmentCde +
-                ", isTempSave=" + isTempSave +
-                ", isDepositDeduct=" + isDepositDeduct +
-                ", isPayerCashFlow=" + isPayerCashFlow +
-                ", isReceiverCashFlow=" + isReceiverCashFlow +
-                ", isPaymentOnCredit=" + isPaymentOnCredit +
-                ", voucheredFeeAmt=" + voucheredFeeAmt +
-                "}";
+        "seqno=" + seqno +
+        ", receiptNo=" + receiptNo +
+        ", arriveDate=" + arriveDate +
+        ", actAmt=" + actAmt +
+        ", writeOffAmt=" + writeOffAmt +
+        ", confirmAmt=" + confirmAmt +
+        ", refundAmt=" + refundAmt +
+        ", payerId=" + payerId +
+        ", payerName=" + payerName +
+        ", payAcctNo=" + payAcctNo +
+        ", payBankCde=" + payBankCde +
+        ", payAcctName=" + payAcctName +
+        ", recvAcctNo=" + recvAcctNo +
+        ", recvBankCde=" + recvBankCde +
+        ", receiverId=" + receiverId +
+        ", receiverName=" + receiverName +
+        ", contractSeqno=" + contractSeqno +
+        ", externalContractNbr=" + externalContractNbr +
+        ", contractId=" + contractId +
+        ", operatorId=" + operatorId +
+        ", operatorName=" + operatorName +
+        ", writeOffStatus=" + writeOffStatus +
+        ", memo=" + memo +
+        ", currencyCde=" + currencyCde +
+        ", departmentCde=" + departmentCde +
+        ", isTempSave=" + isTempSave +
+        ", isDepositDeduct=" + isDepositDeduct +
+        ", isPayerCashFlow=" + isPayerCashFlow +
+        ", isReceiverCashFlow=" + isReceiverCashFlow +
+        ", isPaymentOnCredit=" + isPaymentOnCredit +
+        ", voucheredFeeAmt=" + voucheredFeeAmt +
+        "}";
     }
 }
