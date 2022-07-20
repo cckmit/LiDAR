@@ -15,4 +15,6 @@ import com.lq.lidar.domain.entity.CbaySysUser;
  */
 public interface ICbaySysUserService extends IService<CbaySysUser> {
     PageInfo<CbaySysUser> list(CbaySysUser sysUser);
+
+    CbaySysUser getByUserId(String userId);
 }

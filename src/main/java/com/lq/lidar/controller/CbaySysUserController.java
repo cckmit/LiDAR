@@ -68,8 +68,10 @@ public class CbaySysUserController extends BaseController {
      * @return
      */
     @GetMapping("/getByUserId/{userId}")
+    @TaskTime
     public ResponseEntity getByUserId(@PathVariable("userId") String userId) {
-        return ResponseEntity.success(iCbaySysUserService.getById(userId));
+        logger.info("通过userId获取用户信息:{}",userId);
+        return ResponseEntity.success(iCbaySysUserService.getByUserId(userId));
     }
 
     /**

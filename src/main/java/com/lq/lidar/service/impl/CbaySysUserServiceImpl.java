@@ -1,6 +1,7 @@
 package com.lq.lidar.service.impl;
 
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageInfo;
 import com.lq.lidar.domain.entity.CbaySysOffice;
 import com.lq.lidar.domain.entity.CbaySysUser;
@@ -8,17 +9,13 @@ import com.lq.lidar.mapper.CbaySysOfficeMapper;
 import com.lq.lidar.mapper.CbaySysUserMapper;
 import com.lq.lidar.service.ICbaySysUserService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
-
-import static com.lq.lidar.common.utils.PageUtils.startPage;
 
 /**
  * <p>
@@ -50,5 +47,11 @@ public class CbaySysUserServiceImpl extends ServiceImpl<CbaySysUserMapper, CbayS
         pageInfo.setList(collect);
 
         return pageInfo;
+    }
+
+    @Override
+    @Cacheable(cacheNames = {"sysUser"},key = "#userId")
+    public CbaySysUser getByUserId(String userId) {
+        return this.getById(userId);
     }
 }
