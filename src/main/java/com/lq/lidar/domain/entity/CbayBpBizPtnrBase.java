@@ -46,6 +46,8 @@ public class CbayBpBizPtnrBase implements Serializable {
 
     /**
      * 合作伙伴类型
+     * 304100000002 法人客户
+     * 304100000001 自然人客户
      */
     @TableField("\"BP_TYPE_CD\"")
     private String bpTypeCd;
