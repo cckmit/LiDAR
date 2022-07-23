@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -40,18 +41,23 @@ public class OlRentalReceiptVoucher implements Serializable {
      */
     @TableField("\"ARRIVE_DATE\"")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @NotNull(message = "收款日期不能为空")
     private LocalDate arriveDate;
 
     /**
      * 实际收款金额
      */
     @TableField("\"ACT_AMT\"")
+    @NotNull(message = "实际收款金额不能为空")
+    @DecimalMin(inclusive = false,value = "0",message = "实际收款金额应大于零")
     private BigDecimal actAmt;
 
     /**
      * 应核销金额
      */
     @TableField("\"WRITE_OFF_AMT\"")
+    @NotNull(message = "应核销金额不能为空")
+    @DecimalMin(inclusive = false,value = "0",message = "应核销金额应大于零")
     private BigDecimal writeOffAmt;
 
     /**
@@ -70,6 +76,7 @@ public class OlRentalReceiptVoucher implements Serializable {
      * 付款人ID
      */
     @TableField("\"PAYER_ID\"")
+    @NotBlank(message = "付款人不能为空")
     private String payerId;
 
     /**
