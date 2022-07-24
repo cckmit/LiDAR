@@ -12,5 +12,5 @@ import com.lq.lidar.domain.entity.OlRentalReceiptVoucher;
  * @since 2022-07-14
  */
 public interface IOlRentalReceiptVoucherService extends IService<OlRentalReceiptVoucher> {
-
+   boolean saveReceiptVoucher(OlRentalReceiptVoucher olRentalReceiptVoucher);
 }
