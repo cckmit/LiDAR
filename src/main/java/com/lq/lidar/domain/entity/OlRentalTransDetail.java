@@ -29,13 +29,13 @@ public class OlRentalTransDetail implements Serializable {
     /**
      * 与租赁合同表主键关联
      */
-    @TableId("CONTRACT_SEQNO")
+    @TableField("CONTRACT_SEQNO")
     private String contractSeqno;
 
     /**
      * 与租赁合同表合同号关联
      */
-    @TableId("EXTERNAL_CONTRACT_NBR")
+    @TableField("EXTERNAL_CONTRACT_NBR")
     private String externalContractNbr;
 
     /**
@@ -47,7 +47,7 @@ public class OlRentalTransDetail implements Serializable {
     /**
      * 交易主体ID
      */
-    @TableId("TRANS_SPV_ID")
+    @TableField("TRANS_SPV_ID")
     private String transSpvId;
 
     /**
@@ -65,7 +65,7 @@ public class OlRentalTransDetail implements Serializable {
     /**
      * 收到银行汇款/退不明款项（待清算款项）/退多收款/收取保证金/保证金退款/收到租金还款/收到罚息/收到维修储备金/支付维修储备金/提前终止/冲账
      */
-    @TableId("TRANS_TYPE")
+    @TableField("TRANS_TYPE")
     private String transType;
 
     /**
@@ -83,7 +83,7 @@ public class OlRentalTransDetail implements Serializable {
     /**
      * 存出资金账户币种
      */
-    @TableId("ACCTNO_OUT_CURRENCY")
+    @TableField("ACCTNO_OUT_CURRENCY")
     private String acctnoOutCurrency;
 
     /**
