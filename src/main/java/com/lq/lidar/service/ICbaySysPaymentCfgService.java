@@ -19,5 +19,6 @@ public interface ICbaySysPaymentCfgService extends IService<CbaySysPaymentCfg> {
     /**
      * 获取收款账号
      */
-    public List<Map<String, String>> findAllRecvAccounts();
+     List<Map<String, String>> findAllRecvAccounts();
+     void saveOrUpdateSysPaymentCfg(CbaySysPaymentCfg cbaySysPaymentCfg);
 }
