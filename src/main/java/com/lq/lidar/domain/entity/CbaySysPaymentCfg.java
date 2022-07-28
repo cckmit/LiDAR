@@ -3,11 +3,13 @@ package com.lq.lidar.domain.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * 账号信息
  * </p>
  *
  * @author LQ
@@ -27,6 +29,9 @@ public class CbaySysPaymentCfg implements Serializable {
     @TableField("\"SYS_IND\"")
     private String sysInd;
 
+    /**
+     *
+     */
     @TableField("\"SAP_ACCOUNT_NBR\"")
     private String sapAccountNbr;
 
@@ -39,7 +44,11 @@ public class CbaySysPaymentCfg implements Serializable {
     @TableField("\"BRANCH_ID\"")
     private String branchId;
 
+    /**
+     *账号
+     */
     @TableField("\"ACC_NBR\"")
+    @NotBlank(message = "账号不能为空")
     private String accNbr;
 
     @TableField("\"ACCOUNT_TYPE_CD\"")
@@ -63,10 +72,18 @@ public class CbaySysPaymentCfg implements Serializable {
     @TableField("\"BP_ID\"")
     private String bpId;
 
+    /**
+     *账户名称
+     */
     @TableField("\"REF_OFC_ID\"")
+    @NotBlank(message = "账号名称不能为空")
     private String refOfcId;
 
+    /**
+     * 业务币种
+     */
     @TableField("\"CRCY_CD\"")
+    @NotBlank(message = "币种不能空")
     private String crcyCd;
 
     @TableField("\"SWIFTCODE\"")
@@ -75,6 +92,9 @@ public class CbaySysPaymentCfg implements Serializable {
     @TableField("\"DEFAULT_IND\"")
     private String defaultInd;
 
+    /**
+     * 账户别名
+     */
     @TableField("\"ALIAS\"")
     private String alias;
 

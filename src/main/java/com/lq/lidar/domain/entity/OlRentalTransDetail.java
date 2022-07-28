@@ -23,217 +23,217 @@ public class OlRentalTransDetail implements Serializable {
     /**
      * 主键，没有业务含义，系统自动生成
      */
-    @TableId("SEQNO")
+    @TableId("\"SEQNO\"")
     private String seqno;
 
     /**
      * 与租赁合同表主键关联
      */
-    @TableField("CONTRACT_SEQNO")
+    @TableField("\"CONTRACT_SEQNO\"")
     private String contractSeqno;
 
     /**
      * 与租赁合同表合同号关联
      */
-    @TableField("EXTERNAL_CONTRACT_NBR")
+    @TableField("\"EXTERNAL_CONTRACT_NBR\"")
     private String externalContractNbr;
 
     /**
      * 合同ID
      */
-    @TableField("CONTRACT_ID")
+    @TableField("\"CONTRACT_ID\"")
     private String contractId;
 
     /**
      * 交易主体ID
      */
-    @TableField("TRANS_SPV_ID")
+    @TableField("\"TRANS_SPV_ID\"")
     private String transSpvId;
 
     /**
      * 交易主体名称
      */
-    @TableField("TRANS_SPV_NAME")
+    @TableField("\"TRANS_SPV_NAME\"")
     private String transSpvName;
 
     /**
      * 交易日期
      */
-    @TableField("TRANS_DATE")
+    @TableField("\"TRANS_DATE\"")
     private LocalDateTime transDate;
 
     /**
      * 收到银行汇款/退不明款项（待清算款项）/退多收款/收取保证金/保证金退款/收到租金还款/收到罚息/收到维修储备金/支付维修储备金/提前终止/冲账
      */
-    @TableField("TRANS_TYPE")
+    @TableField("\"TRANS_TYPE\"")
     private String transType;
 
     /**
      * 交易金额
      */
-    @TableField("TRANS_AMT")
+    @TableField("\"TRANS_AMT\"")
     private BigDecimal transAmt;
 
     /**
      * 存出资金账号
      */
-    @TableField("ACCTNO_OUT")
+    @TableField("\"ACCTNO_OUT\"")
     private String acctnoOut;
 
     /**
      * 存出资金账户币种
      */
-    @TableField("ACCTNO_OUT_CURRENCY")
+    @TableField("\"ACCTNO_OUT_CURRENCY\"")
     private String acctnoOutCurrency;
 
     /**
      * 存入资金账号
      */
-    @TableField("ACCTNO_IN")
+    @TableField("\"ACCTNO_IN\"")
     private String acctnoIn;
 
     /**
      * 存入资金账户币种
      */
-    @TableField("ACCTNO_IN_CURRENCY")
+    @TableField("\"ACCTNO_IN_CURRENCY\"")
     private String acctnoInCurrency;
 
     /**
      * 交易币种
      */
-    @TableField("CURRENCY_TRANS")
+    @TableField("\"CURRENCY_TRANS\"")
     private String currencyTrans;
 
     /**
      * 本位币种
      */
-    @TableField("CURRENCY_STANDARD")
+    @TableField("\"CURRENCY_STANDARD\"")
     private String currencyStandard;
 
     /**
      * 报告币种
      */
-    @TableField("CURRENCY_REPORT")
+    @TableField("\"CURRENCY_REPORT\"")
     private String currencyReport;
 
     /**
      * 折人民币汇率
      */
-    @TableField("EXCH_RTE_RMB")
+    @TableField("\"EXCH_RTE_RMB\"")
     private BigDecimal exchRteRmb;
 
     /**
      * 折本币汇率
      */
-    @TableField("EXCH_RTE_STANDARD")
+    @TableField("\"EXCH_RTE_STANDARD\"")
     private BigDecimal exchRteStandard;
 
     /**
      * 折报告币汇率
      */
-    @TableField("EXCH_RTE_REPORT")
+    @TableField("\"EXCH_RTE_REPORT\"")
     private BigDecimal exchRteReport;
 
     /**
      * 折存出账户汇率
      */
-    @TableField("EXCH_RTE_ACCT_OUT")
+    @TableField("\"EXCH_RTE_ACCT_OUT\"")
     private BigDecimal exchRteAcctOut;
 
     /**
      * 折存入账户汇率
      */
-    @TableField("EXCH_RTE_ACCT_IN")
+    @TableField("\"EXCH_RTE_ACCT_IN\"")
     private BigDecimal exchRteAcctIn;
 
     /**
      * 冲账前交易明细主键
      */
-    @TableField("SEQNO_BEFORE_REVERSE")
+    @TableField("\"SEQNO_BEFORE_REVERSE\"")
     private String seqnoBeforeReverse;
 
     /**
      * 产生的会计分录ID
      */
-    @TableField("VOUCHER_ID")
+    @TableField("\"VOUCHER_ID\"")
     private String voucherId;
 
     /**
      * 未记账/处理中/记账成功/记账失败
      */
-    @TableField("VOUCHER_STATUS")
+    @TableField("\"VOUCHER_STATUS\"")
     private String voucherStatus;
 
     /**
      * 核销主键
      */
-    @TableField("WRITE_OFF_SEQNO")
+    @TableField("\"WRITE_OFF_SEQNO\"")
     private String writeOffSeqno;
 
     /**
      * 保证金信息主键
      */
-    @TableField("CASH_DEPOSIT_SEQNO")
+    @TableField("\"CASH_DEPOSIT_SEQNO\"")
     private String cashDepositSeqno;
 
     /**
      * 费用信息主键
      */
-    @TableField("FEE_INFO_SEQNO")
+    @TableField("\"FEE_INFO_SEQNO\"")
     private String feeInfoSeqno;
 
     /**
      * 维修储备金信息主键
      */
-    @TableField("MAINTEN_FUND_SEQNO")
+    @TableField("\"MAINTEN_FUND_SEQNO\"")
     private String maintenFundSeqno;
 
     /**
      * 收款计划主键
      */
-    @TableField("RECEIVE_PLAN_SEQNO")
+    @TableField("\"RECEIVE_PLAN_SEQNO\"")
     private String receivePlanSeqno;
 
     /**
      * 备注
      */
-    @TableField("MEMO")
+    @TableField("\"MEMO\"")
     private String memo;
 
     /**
      * 收款单主键
      */
-    @TableField("RECEIPT_VOUCHER_SEQNO")
+    @TableField("\"RECEIPT_VOUCHER_SEQNO\"")
     private String receiptVoucherSeqno;
 
     /**
      * 增值税金额
      */
-    @TableField("VAT_AMT")
+    @TableField("\"VAT_AMT\"")
     private BigDecimal vatAmt;
 
     /**
      * 增值税币种
      */
-    @TableField("VAT_CURRENCY_CDE")
+    @TableField("\"VAT_CURRENCY_CDE\"")
     private String vatCurrencyCde;
 
     /**
      * 收款单实收金额
      */
-    @TableField("RECEIPT_VOUCHER_ACT_AMT")
+    @TableField("\"RECEIPT_VOUCHER_ACT_AMT\"")
     private BigDecimal receiptVoucherActAmt;
 
     /**
      * 冲账前的voucher_id
      */
-    @TableField("VAT_ORIG_RECEIVE_PLAN_SEQNO")
+    @TableField("\"VAT_ORIG_RECEIVE_PLAN_SEQNO\"")
     private String vatOrigReceivePlanSeqno;
 
     /**
      * 其他交易明细主键
      */
-    @TableField("OTHER_BUSI_SEQNO")
+    @TableField("\"OTHER_BUSI_SEQNO\"")
     private String otherBusiSeqno;
 
 
