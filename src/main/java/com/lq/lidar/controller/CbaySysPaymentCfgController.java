@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +61,16 @@ public class CbaySysPaymentCfgController extends BaseController {
         List<Map<String, String>> allRecvAccounts = cbaySysPaymentCfgService.findAllRecvAccounts();
         return ResponseEntity.success(allRecvAccounts);
 
+    }
+
+    @DeleteMapping("/delete/{collAcctCd}")
+    @Log(title = "账号管理", businessType = BusinessType.DELETE)
+    public ResponseEntity delete(@PathVariable String[] collAcctCd) {
+        boolean update = cbaySysPaymentCfgService.removeBatchByIds(Arrays.asList(collAcctCd));
+        if (update) {
+            return ResponseEntity.success("删除成功");
+        }
+        return ResponseEntity.error("删除失败");
     }
 }
 
