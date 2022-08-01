@@ -8,6 +8,7 @@ import com.lq.lidar.common.core.domain.ResponseEntity;
 import com.lq.lidar.common.enums.BusinessType;
 import com.lq.lidar.domain.entity.CbaySysPaymentCfg;
 import com.lq.lidar.service.ICbaySysPaymentCfgService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,9 +38,11 @@ public class CbaySysPaymentCfgController extends BaseController {
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity list() {
+    public ResponseEntity list(CbaySysPaymentCfg sysPaymentCfg) {
         startPage();
-        List<CbaySysPaymentCfg> list = cbaySysPaymentCfgService.list();
+        List<CbaySysPaymentCfg> list = cbaySysPaymentCfgService.lambdaQuery()
+                .eq(StringUtils.isNotBlank(sysPaymentCfg.getCrcyCd()),CbaySysPaymentCfg::getCrcyCd, sysPaymentCfg.getCrcyCd())
+                .list();
         return ResponseEntity.success(getDataTable(list));
     }
 
