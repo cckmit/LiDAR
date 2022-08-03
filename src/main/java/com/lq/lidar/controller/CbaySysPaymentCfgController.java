@@ -46,6 +46,11 @@ public class CbaySysPaymentCfgController extends BaseController {
         return ResponseEntity.success(getDataTable(list));
     }
 
+    /**
+     * 账号管理 保存更新
+     * @param sysPaymentCfg
+     * @return
+     */
     @PostMapping("/saveOrUpdate")
     @Log(title = "账号管理", businessType = BusinessType.INSERT)
     public ResponseEntity saveOrUpdate(@RequestBody @Validated CbaySysPaymentCfg sysPaymentCfg) {
